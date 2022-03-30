@@ -10,6 +10,9 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { Category } from "@mui/icons-material";
+import Newsub from "./pages/new/Newsub";
+import Product from "./pages/product/Product"
+
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -26,7 +29,7 @@ function App() {
               <Route path=":userId" element={<Single />} />
               <Route
                 path="new"
-                element={<New inputs={userInputs} title="Add New Category" />}
+                element={<Newsub inputs={userInputs} title="Add New Category" />}
               />
             </Route>
             <Route path="subcategary">
@@ -34,9 +37,17 @@ function App() {
               <Route path=":productId" element={<Single />} />
               <Route
                 path="new"
-                element={<New inputs={productInputs} title="Add New Sub-Category" />}
+                element={<Newsub inputs={productInputs} title="Add New Sub-Category" />}
               />
             </Route>
+            <Route path="Product" >
+              <Route index element={<Product />} />
+              <Route
+                path="new"
+                element={<Newsub inputs={productInputs} title="Add New Product" />}
+              />
+            </Route>
+
           </Route>
         </Routes>
       </BrowserRouter>

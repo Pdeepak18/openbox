@@ -40,8 +40,8 @@ const New = ({ inputs, title }) => {
               
                   
               <div className="formInput">
-               <label>Id:</label>
-               <input type="number" placeholder="45754"/>
+               <label>Name:</label>
+               <input type="text" placeholder="Name...."/>
               </div>
 
               <div className="formInput">

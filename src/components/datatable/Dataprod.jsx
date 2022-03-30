@@ -1,10 +1,10 @@
-import "./datasub.scss";
+import "./dataprod.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Datasub = () => {
+const Dataprod = () => {
   const [data, setData] = useState(userRows);
 
   const handleDelete = (id) => {
@@ -19,7 +19,7 @@ const Datasub = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/Subcategary/test" style={{ textDecoration: "none" }}>
+            <Link to="/product/test" style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -34,10 +34,10 @@ const Datasub = () => {
     },
   ];
   return (
-    <div className="datasub">
-      <div className="datasubTitle">
-        Add New Sub-Category
-        <Link to="/subcategary/new" className="link">
+    <div className="dataprod">
+      <div className="dataprodTitle">
+        Add New Product
+        <Link to="/product/new" className="link">
           Add New
         </Link>
       </div>
@@ -53,4 +53,4 @@ const Datasub = () => {
   );
 };
 
-export default Datasub;
+export default Dataprod;

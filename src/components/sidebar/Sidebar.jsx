@@ -2,6 +2,7 @@ import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import ProductionQuantityLimitsRoundedIcon from '@mui/icons-material/ProductionQuantityLimitsRounded';
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
 import InsertChartIcon from "@mui/icons-material/InsertChart";
@@ -47,10 +48,16 @@ const Sidebar = () => {
               <span>Sub-Category</span>
             </li>
           </Link>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>Orders</span>
-          </li>
+          <Link to="/product" style={{ textDecoration: "none" }}>
+            <li>
+              <ProductionQuantityLimitsRoundedIcon className="icon" />
+              <span>Product</span>
+            </li>
+          </Link>
+          {/* <li>
+            <ProductionQuantityLimitsRoundedIcon className="icon" />
+            <span>Products</span>
+          </li> */}
           <li>
             <LocalShippingIcon className="icon" />
             <span>Delivery</span>

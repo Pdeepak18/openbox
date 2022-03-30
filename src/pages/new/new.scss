@@ -3,7 +3,7 @@
   display: flex;
 
   .newContainer {
-    flex: 6;
+    flex: 12;
 
     .top,
     .bottom {
@@ -19,7 +19,7 @@
       }
 
       .left {
-        flex: 1;
+        flex: 12;
         text-align: center;
 
         img {
@@ -27,6 +27,12 @@
           height: 100px;
           border-radius: 50%;
           object-fit: cover;
+        }
+
+        label{
+          align-items: center;
+      justify-content: center;
+      flex-direction: column;
         }
       }
 
@@ -62,7 +68,7 @@
           }
 
           button {
-            width: 150px;
+            width: 550px;
             padding: 10px;
             border: none;
             background-color: teal;
