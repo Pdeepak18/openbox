@@ -2,7 +2,11 @@ import React from 'react'
 import "./product.scss"
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
-import Datatable from "../../components/datatable/Datatable"
+import Dataprod from "../../components/datatable/Dataprod"
+
+
+
+
 
 function Product() {
   return (
@@ -11,7 +15,7 @@ function Product() {
         
         <div className="container">
                 <Navbar />
-              <Datatable />
+              <Dataprod />
             
 
         </div>

@@ -1,64 +1,157 @@
+
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 
+import { Description, Router } from "@mui/icons-material";
+import axios from "axios";
+import { upload } from "@testing-library/user-event/dist/upload";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Datatable from "../../components/datatable/Datatable";
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import parse from 'html-react-parser';
+import { height } from "@mui/system";
+
+
+
+
 const New = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
+    const [categoryFile, setFile] = useState("");
+   const [text , setText] = useState("");
+    let navigate = useNavigate();
 
-  return (
-    <div className="new">
-      <Sidebar />
-      <div className="newContainer">
-        <Navbar />
-        <div className="top">
-          <h1>{title}</h1>
+    const [data, setData] = useState({
+        categoryName: "",
+        
+    })
+
+    function handle(e) {
+        const newdata = { ...data }
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+        console.log(newdata)
+    }
+
+    const onFileChange = (e) => {
+        console.log(e.target.files[0])
+        if (e.target && e.target.files[0]) {
+            setFile(e.target.files[0]);
+        }
+    }
+
+    const uploadImage = async () => {
+        try {
+            const formData = new FormData();
+            formData.append("categoryIcon", categoryFile);
+            formData.append("categoryName", data.categoryName);
+            formData.append("description", text);
+            const config = {
+                headers: {
+                    "content-type": "multipart/form-data"
+                }
+            };
+            const API = "category/addCategory";
+            const HOST = "http://localhost:8000/api";
+            const url = `${HOST}/${API}`;
+
+            const result = await axios.post(url, formData, config);
+
+
+
+        } catch (error) {
+            console.error(error);
+        }
+
+
+    };
+
+
+
+    return (
+        <div className="new">
+            <Sidebar />
+            <div className="newContainer">
+                <Navbar />
+                <div className="top">
+                    <h1>{title}</h1>
+                </div>
+                <div className="bottom">
+                    <img
+                        src={
+                            categoryFile
+                                ? URL.createObjectURL(categoryFile)
+                                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                        }
+                        alt=""
+                    />
+
+                    <div className="forInput">
+                        <label htmlFor="file">
+                            Image: <DriveFolderUploadOutlinedIcon className="icon" />
+                        </label>
+                    </div>
+
+
+                    <form >
+                        <input
+                            type="file"
+                            id="file"
+                            onChange={onFileChange}
+                            style={{ display: "none" }}
+                            name="categoryIcon"
+                        />
+
+
+                        <div className="formInput">
+                            <label><b> Name:</b></label>
+                            <input type="textarea" onChange={(e) => handle(e)} placeholder="Name...." size="72" id="categoryName" value={data.categoryName} />
+                        </div>
+
+                        {/* <div className="formInput">
+                           
+                            <textarea placeholder="About Product....." onChange={(e) => handle(e)} rows="8" cols="62.5" width="10px" border-radius="0.8px" id="description" value={data.description} />
+                        </div> */}
+                        
+                        
+                        
+                        <div className="editor">
+                        
+                        <CKEditor
+                       
+                        
+                        editor= {ClassicEditor }
+                        data={text}
+                        onChange = {(event,editor) => {
+                            const data= editor.getData()
+                            setText(data)
+
+                        }} />
+                    </div>
+                        
+                        <button onClick={(e) => uploadImage()}> <Link to="/categary" style={{ textDecoration: 'none', color: '#FFF' }}> Send </Link></button>
+                    </form>
+
+                   
+
+                </div>
+
+            </div>
+
+
         </div>
-        <div className="bottom">
-          <div className="left">
-            <img
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-              }
-              alt=""
-            />
-            <div className="forInput"> <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
-                </label>
-                <input
-                  type="file"
-                  id="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
-                /></div>
-          </div>
-          <div className="right">
-            <form>
-              
-                  
-              <div className="formInput">
-               <label>Name:</label>
-               <input type="text" placeholder="Name...."/>
-              </div>
 
-              <div className="formInput">
-               <label>Description:</label>
-               <input type="text" placeholder="About Product....."/>
-              </div>
 
-              
 
-              
-              <button>Send</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+
+
+
+    );
+
 };
 
 export default New;

@@ -2,14 +2,37 @@ import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
+
+  const [category, setCategory] = useState([]);
+
+useEffect(() => {
+  getAllCategory()
+},[])
+
+  const getAllCategory = async () => {
+    var result = await fetch("http://localhost:8000/api/category/getAllCategory")
+    var temp = await result.json()
+    console.log(result)
+    setCategory(temp)
+    
+  }
+
+  const userColumns = [
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "categoryName", headerName: "CategoryName", width: 200 },
+    // { field: "description", headerName: "Description", width: 400}
+
+  ]
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    setCategory(category.filter((item) => item.id !== id));
   };
+
+
+
 
   const actionColumn = [
     {
@@ -22,9 +45,12 @@ const Datatable = () => {
             <Link to="/categary/test" style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
+            <Link to="/Subcategary/test" style={{ textDecoration: "none" }}>
+              <div className="viewButton">Edit</div>
+            </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              //onClick={() => handleDelete(params.row.id)}
             >
               Delete
             </div>
@@ -43,7 +69,7 @@ const Datatable = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={data}
+        rows={category}
         columns={userColumns.concat(actionColumn)}
         pageSize={10}
         rowsPerPageOptions={[10]}

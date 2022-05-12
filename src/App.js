@@ -11,7 +11,13 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { Category } from "@mui/icons-material";
 import Newsub from "./pages/new/Newsub";
-import Product from "./pages/product/Product"
+import Newprod from "./pages/new/Newprod";
+import Product from "./pages/product/Product";
+import Taxmaster from "./pages/taxmaster/Taxmaster.jsx";
+import Banner from "./pages/banner/Banner";
+import { EditorState } from "draft-js";
+import {Editor} from "react-draft-wysiwyg";
+
 
 
 function App() {
@@ -29,7 +35,7 @@ function App() {
               <Route path=":userId" element={<Single />} />
               <Route
                 path="new"
-                element={<Newsub inputs={userInputs} title="Add New Category" />}
+                element={<New inputs={userInputs} title="Add New Category" />}
               />
             </Route>
             <Route path="subcategary">
@@ -44,9 +50,24 @@ function App() {
               <Route index element={<Product />} />
               <Route
                 path="new"
-                element={<Newsub inputs={productInputs} title="Add New Product" />}
+                element={<Newprod inputs={productInputs} title="Add New Product" />}
               />
             </Route>
+              <Route path="taxmaster" >
+              <Route index element={<Taxmaster />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}
+              />
+              </Route>
+
+              
+              <Route path="Banner" >
+              <Route index element={<Banner />} />
+              
+              </Route>
+              
+            
 
           </Route>
         </Routes>

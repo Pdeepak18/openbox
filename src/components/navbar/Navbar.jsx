@@ -21,17 +21,17 @@ const Navbar = () => {
         </div>
         <div className="items">
 
-          <div className="item">
+          {/* <div className="item">
             <LanguageOutlinedIcon className="icon" />
             English
-          </div>
+          </div> */}
 
-          <div className="item">
+          {/* <div className="item">
             <DarkModeOutlinedIcon
               className="icon"
               onClick={() => dispatch({ type: "TOGGLE" })}
             />
-          </div>
+          </div> */}
 
           {/* <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />

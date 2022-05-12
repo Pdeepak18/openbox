@@ -16,6 +16,9 @@ import CategoryIcon from '@mui/icons-material/Category';
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import PeopleIcon from '@mui/icons-material/People';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import CompareIcon from '@mui/icons-material/Compare';
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -59,18 +62,23 @@ const Sidebar = () => {
             <span>Products</span>
           </li> */}
           <li>
-            <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
+            <PeopleIcon className="icon" />
+            <span>Vendor's List</span>
           </li>
           <p className="title">USEFUL</p>
+          <Link to="/taxmaster" style={{ textDecoration: "none" }}>
+          
           <li>
-            <InsertChartIcon className="icon" />
-            <span>Stats</span>
+            <AppRegistrationIcon className="icon" />
+            <span>Taxmaster</span>
           </li>
-          <li>
+          </Link>
+          <Link to="/banner" style={{ textDecoration: "none" }}>
+            <li>
             <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
+            <span>Banner</span>
           </li>
+          </Link>
           <p className="title">SERVICE</p>
           <li>
             <SettingsSystemDaydreamOutlinedIcon className="icon" />

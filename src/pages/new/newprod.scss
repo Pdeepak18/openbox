@@ -1,0 +1,142 @@
+.container{
+    width: 100%;
+    display: flex;
+    height: 50%;
+    color: grey;
+    
+  
+    .subcontainer {
+    //  
+    flex: 6;
+  flex-direction: column;
+
+      
+    .top{
+        height: 10px;
+        margin: 10px;
+        -webkit-box-shadow: -8px -8px 5px -5px rgba(84,82,60,1);
+        -moz-box-shadow: -8px -8px 5px -5px rgba(84,82,60,1);
+        box-shadow: -8px -8px 5px -5px rgba(84,82,60,1);
+        display: flex;
+        padding: 10px;
+      margin: 20px;
+      justify-content: center;
+    }
+
+    h2{
+        color: black;
+    }
+
+    .bodycat{
+        margin: 15px;
+        padding: 15px;
+        color: grey;
+    }
+    .bodysubcat{
+        margin: 10px;
+        padding: 10px;
+        color: grey;
+    }
+
+
+    .temp{
+        margin-bottom: 0px;
+    }
+
+    .bodysub{
+        margin: 8px;
+
+    
+    }
+    h2{
+        color: grey;
+    }
+
+    .details{
+        padding:15px;
+        margin: 15px;
+
+        
+     
+        input[type="text"] {
+            margin: 5px;
+            font-size:15.4px;
+            height: 35px;
+            border:2px solid grey;
+            padding: 10px;
+            border-radius: 08px;
+        }
+
+        textarea{
+            padding: 5px;
+            border-radius: 08px;
+        }
+    }
+
+    .color{
+        justify-items: center;
+        display: flex;
+        flex-direction: column;
+        flex: 3;
+        padding: 15px;
+        
+        .react-tag-input {
+            margin: 5px;
+            padding: 5px;
+            min-height: 40px;
+            width:50%
+        }
+    
+
+    
+    select{
+       
+        width: 100px;
+        
+
+        option{
+            
+
+            padding: 10px;
+        }
+    }
+    }
+    .imagess{
+        display: flex;
+        flex: 3;
+
+
+
+        .forinput{
+            display: flex;
+            flex: 3;
+            flex-direction: column;
+
+            Label{
+                display: flex;
+                flex: 3;
+                flex-direction: column;
+            }
+
+            input[type="text"] {
+                padding: 5px;
+                margin: 5px;
+                height: 54px;
+            }
+
+        }
+    }
+    button {
+        margin: 337px;
+        width: 104px;
+        padding: 10px;
+        align-items: center;
+        border: none;
+        background-color: teal;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+    }
+}
