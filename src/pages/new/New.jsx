@@ -120,12 +120,17 @@ const New = ({ inputs, title }) => {
                         
                         
                         <div className="editor">
+                        <label><b>Description:</b></label>
                         
                         <CKEditor
                        
-                        
+                      
                         editor= {ClassicEditor }
+                        config={{
+                            removePlugins: ["EasyImage","ImageUpload"]
+                        }}
                         data={text}
+                      
                         onChange = {(event,editor) => {
                             const data= editor.getData()
                             setText(data)

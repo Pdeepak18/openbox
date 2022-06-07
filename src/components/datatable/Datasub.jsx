@@ -125,7 +125,7 @@ const Datasub = () => {
                     <h3 className='temp'>Select the category</h3>
                     <Box sx={{ minWidth: 100 }}>
                         <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}>Category</InputLabel>
+                            <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}>Cat</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"

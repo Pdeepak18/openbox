@@ -72,6 +72,17 @@
 
             
           }
+
+          .editor{
+
+            label{
+              align-items: center;
+          justify-content: center;
+          flex-direction: column;
+            }
+
+          }
+
           button {
             margin:310px;
             width: 550px;
