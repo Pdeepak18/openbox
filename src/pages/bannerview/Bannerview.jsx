@@ -59,7 +59,7 @@ const getBannerDetails = async (id) => {
         <div className="campimg">
         <label> <strong> Image :     </strong></label>
         {/* <input type="file" defaultValue={image}/> <br /> <br /> */}
-        <img src="https://images.news18.com/ibnlive/uploads/2021/09/flipkart_sale_bigbillion.jpg?impolicy=website&width=0&height=0" style="height:100px"   alt="image" /> <br /> <br />
+        <img src="https://images.news18.com/ibnlive/uploads/2021/09/flipkart_sale_bigbillion.jpg?impolicy=website&width=0&height=0"   alt="image" /> <br /> <br />
         </div>
         
 

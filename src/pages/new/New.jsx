@@ -20,7 +20,7 @@ import { height } from "@mui/system";
 
 
 
-const New = ({ inputs, title }) => {
+const New = ({  title }) => {
     const [categoryFile, setFile] = useState("");
    const [text , setText] = useState("");
     let navigate = useNavigate();
@@ -74,7 +74,9 @@ const New = ({ inputs, title }) => {
 
     return (
         <div className="new">
+        <div className="nsidebar">
             <Sidebar />
+            </div>
             <div className="newContainer">
                 <Navbar />
                 <div className="top">
@@ -109,7 +111,7 @@ const New = ({ inputs, title }) => {
 
                         <div className="formInput">
                             <label><b> Name:</b></label>
-                            <input type="textarea" onChange={(e) => handle(e)} placeholder="Name...." size="72" id="categoryName" value={data.categoryName} />
+                            <input type="textarea" onChange={(e) => handle(e)} placeholder="Name...." size="88" id="categoryName" value={data.categoryName} />
                         </div>
 
                         {/* <div className="formInput">

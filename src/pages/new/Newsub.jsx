@@ -22,7 +22,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import parse from 'html-react-parser';
 
-const Newsub = ({ inputs, title }) => {
+const Newsub = ({  title }) => {
     const [subcategoryFile, setFile] = useState("");
     const [text , setText] = useState("");
 
@@ -109,7 +109,9 @@ const Newsub = ({ inputs, title }) => {
 
     return (
         <div className="new">
+        <div className="nsidebar">
             <Sidebar />
+            </div>
             <div className="newContainer">
                 <Navbar />
                 <div className="top">
@@ -143,7 +145,7 @@ const Newsub = ({ inputs, title }) => {
                                 id="demo-simple-select"
                                 value={value}
                                 label="Cat"
-                                style={{ width: 610 }}
+                                style={{ width: 740 }}
                                 onChange={handleChange}
                             >   
                                 {
@@ -169,7 +171,7 @@ const Newsub = ({ inputs, title }) => {
 
                         <div className="formInput">
                             <label><b> Name:</b></label>
-                            <input type="textarea"  onChange={(e)=>handle(e)} placeholder="Name...."  size="72" id="subcategoryName" value={data.subcategoryName} />
+                            <input type="textarea"  onChange={(e)=>handle(e)} placeholder="Name...."  size="88" id="subcategoryName" value={data.subcategoryName} />
                         </div>
 
                         {/* <div className="formInput">
@@ -178,11 +180,12 @@ const Newsub = ({ inputs, title }) => {
                         </div> */}
 
                         <div className="editor">
-                        
+                        <label><b>Description:</b></label>
                         <CKEditor
-                       
-                        
                         editor= {ClassicEditor }
+                        config={{
+                            removePlugins: ["EasyImage","ImageUpload"]
+                        }}
                         data={text}
                         onChange = {(event,editor) => {
                             const data= editor.getData()

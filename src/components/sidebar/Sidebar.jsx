@@ -26,7 +26,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo" >  OPENBOX.IN</span>
+          <span className="logo" >  OPNBOX.IN</span>
         </Link>
       </div>
       <hr />
@@ -57,14 +57,21 @@ const Sidebar = () => {
               <span>Product</span>
             </li>
           </Link>
-          {/* <li>
-            <ProductionQuantityLimitsRoundedIcon className="icon" />
-            <span>Products</span>
-          </li> */}
+          
+          <Link to="/vendor" style={{ textDecoration: "none" }}>
           <li>
             <PeopleIcon className="icon" />
             <span>Vendor's List</span>
           </li>
+          </Link>
+
+          <Link to="/customer" style={{ textDecoration: "none" }}>
+          <li>
+            <PeopleIcon className="icon" />
+            <span>Customer's List</span>
+          </li>
+          </Link>
+          
           <p className="title">USEFUL</p>
           <Link to="/taxmaster" style={{ textDecoration: "none" }}>
           
@@ -82,11 +89,11 @@ const Sidebar = () => {
           <p className="title">SERVICE</p>
           <li>
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>System Health</span>
+            <span>Basic Accounting</span>
           </li>
           <li>
             <PsychologyOutlinedIcon className="icon" />
-            <span>Logs</span>
+            <span>User Right Accounting</span>
           </li>
           <li>
             <SettingsApplicationsIcon className="icon" />

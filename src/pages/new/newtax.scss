@@ -1,0 +1,53 @@
+
+
+.new {
+    width: 100%;
+    display: flex;
+    .nsidebar{
+        width: 210px;
+      }
+  
+
+    .forminput{
+        height: 15px;
+        padding: 30px;
+
+        align-items: center;
+        label{
+            padding: 50px;
+            
+        }
+        input[type=text]:focus {
+            align-items: center;
+            border: 3px solid #555;
+          }
+    }
+    .forminput1{
+        height: 15px;
+        padding: 30px;
+
+        align-items: center;
+        label{
+            padding: 50px;
+            
+        }
+        input[type=text]:focus {
+            align-items: center;
+            border: 3px solid #555;
+            width: 100px;
+          }
+    }
+
+    button {
+        margin:310px;
+        width: 150px;
+        padding: 10px;
+        border: none;
+        background-color: teal;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+  
+   }

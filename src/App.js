@@ -4,7 +4,7 @@ import Categary from "./pages/list/Categary";
 import Subcategary from "./pages/list/Subcategary";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route,Switch } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
@@ -12,11 +12,15 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { Category } from "@mui/icons-material";
 import Newsub from "./pages/new/Newsub";
 import Newprod from "./pages/new/Newprod";
+import Newtax from "./pages/new/Newtax";
 import Product from "./pages/product/Product";
 import Taxmaster from "./pages/taxmaster/Taxmaster.jsx";
 import Banner from "./pages/banner/Banner";
 import { EditorState } from "draft-js";
 import {Editor} from "react-draft-wysiwyg";
+import Newbanner from "./pages/new/Newbanner";
+import Bannerview from "./pages/bannerview/Bannerview";
+import Banneredit from "./pages/banneredit/Banneredit";
 
 
 
@@ -30,42 +34,58 @@ function App() {
           <Route path="/">
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
+
+            {/* category */}
             <Route path="categary">
               <Route index element={<Categary />} />
               <Route path=":userId" element={<Single />} />
               <Route
                 path="new"
-                element={<New inputs={userInputs} title="Add New Category" />}
+                element={<New  title="Add New Category" />}
               />
             </Route>
+
+              {/* subcategory */}
             <Route path="subcategary">
               <Route index element={<Subcategary />} />
               <Route path=":productId" element={<Single />} />
               <Route
                 path="new"
-                element={<Newsub inputs={productInputs} title="Add New Sub-Category" />}
+                element={<Newsub  title="Add New Sub-Category" />}
               />
             </Route>
+
+              {/* Product */}
             <Route path="Product" >
               <Route index element={<Product />} />
               <Route
                 path="new"
-                element={<Newprod inputs={productInputs} title="Add New Product" />}
+                element={<Newprod  title="Add New Product" />}
               />
             </Route>
-              <Route path="taxmaster" >
+
+              {/* Taxmaster */}
+            <Route path="taxmaster" >
               <Route index element={<Taxmaster />} />
               <Route
                 path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
+                element={<Newtax  title="Add New Tax-Details" />}
               />
-              </Route>
+            </Route>
 
+              {/* Banner */}
+            <Route path="Banner" >
               
-              <Route path="Banner" >
               <Route index element={<Banner />} />
               
-              </Route>
+              <Route path="view/:id" element={<Bannerview  />} /> 
+               <Route path="edit" element={<Banneredit />} />
+              <Route
+                path="new"
+                element={<Newbanner  title="Add New Banner-Details" />}
+              />
+            
+            </Route>
               
             
 

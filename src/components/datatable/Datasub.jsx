@@ -10,9 +10,39 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
+import Switch from "@mui/material/Switch";
+import React from "react";
+import { alpha, styled } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
 import axios from "axios";
 
 const Datasub = () => {
+
+  //Disable switch
+  //const label = { inputProps: { 'aria-label': 'Switch demo' } };
+  const [checked, setChecked] = React.useState(false);
+  const RedSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: red[900],
+      '&:hover': {
+        backgroundColor: alpha(red[900], theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: red[900],
+    },
+  }));
+  
+
+  async function handleStatus(id) {
+
+    alert("Want to Disable: "+ id+ " id  ")
+    setChecked(id.target.checked);
+  }
+
+  //end of disable  switch code
+
+
   
   const[value,setValue]=useState("");
 
@@ -81,8 +111,20 @@ const Datasub = () => {
 
 
   
-  const handleDelete = (id) => {
+async function  handleDelete  (id)  {
+  
+   
+    if(window.confirm("Want to delete?")){
     setsubCategory(subcategory.filter((item) => item.id !== id));
+    
+    
+    let del= await axios.post('http://localhost:8000/api/subcategory/deleteSubcategoryById', 
+    {id})
+
+  del=await del.json();
+  console.log(del);
+    }
+    
   };
 
 
@@ -112,6 +154,22 @@ const Datasub = () => {
       },
     },
   ];
+
+  const actionStatus = [{
+    field: "status",
+    headerName: "Status",
+    width: 150,
+    renderCell: (params) => {
+      return(
+        <div className="cellAction" >
+            <RedSwitch    onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
+            <label >Disable</label>
+        </div>
+      )
+    }
+  }];
+
+
   return (
     <div className="datasub">
       <div className="datasubTitle">
@@ -149,10 +207,10 @@ const Datasub = () => {
       <DataGrid
         className="datagrid"
         rows={subcategory}
-        columns={userColumns.concat(actionColumn)}
+        columns={userColumns.concat(actionColumn).concat(actionStatus)}
         pageSize={8}
         rowsPerPageOptions={[10]}
-        checkboxSelection
+        //checkboxSelection
       />
     </div>
   );

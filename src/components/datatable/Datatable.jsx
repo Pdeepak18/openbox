@@ -2,43 +2,85 @@ import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import React from "react";
+import Switch from "@mui/material/Switch";
+import { alpha, styled } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
+
 
 const Datatable = () => {
 
+  //Disable switch
+  //const label = { inputProps: { 'aria-label': 'Switch demo' } };
+  const [checked, setChecked] = React.useState(false);
+  const RedSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: red[900],
+      '&:hover': {
+        backgroundColor: alpha(red[900], theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: red[900],
+    },
+  }));
+  
+
+  async function handleStatus(id) {
+
+    alert("Want to Disable: "+ id+ " id  ")
+    setChecked(id.target.checked);
+  }
+
+  //end of disable  switch code
+ 
+
+
   const [category, setCategory] = useState([]);
 
-useEffect(() => {
-  getAllCategory()
-},[])
+  useEffect(() => {
+    getAllCategory();
+  }, []);
+
+
 
   const getAllCategory = async () => {
-    var result = await fetch("http://localhost:8000/api/category/getAllCategory")
-    var temp = await result.json()
-    console.log(result)
-    setCategory(temp)
-    
-  }
+    var result = await fetch(
+      "http://localhost:8000/api/category/getAllCategory"
+    );
+    var temp = await result.json();
+    console.log(result);
+    setCategory(temp);
+  };
 
   const userColumns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "categoryName", headerName: "CategoryName", width: 200 },
     // { field: "description", headerName: "Description", width: 400}
+  ];
 
-  ]
+  async function handleDelete(id) {
+    if (window.confirm("Want to delete?")) {
+      setCategory(category.filter((item) => item.id !== id));
 
-  const handleDelete = (id) => {
-    setCategory(category.filter((item) => item.id !== id));
-  };
+      let del = await axios.post(
+        "http://localhost:8000/api/category/deleteCategoryById",
+        { id }
+      );
 
-
-
+      del = await del.json();
+      console.log(del);
+      getAllCategory();
+    }
+  }
 
   const actionColumn = [
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 230,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -50,15 +92,34 @@ useEffect(() => {
             </Link>
             <div
               className="deleteButton"
-              //onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row.id)}
             >
               Delete
             </div>
+            
           </div>
         );
       },
     },
   ];
+
+
+  const actionStatus = [{
+    field: "status",
+    headerName: "Status",
+    width: 150,
+    renderCell: (params) => {
+      return(
+        <div className="cellAction" >
+            <RedSwitch  checked={checked}  onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
+            <label >Disable</label>
+        </div>
+      )
+    }
+  }];
+
+
+
   return (
     <div className="datatable">
       <div className="datatableTitle">
@@ -70,10 +131,12 @@ useEffect(() => {
       <DataGrid
         className="datagrid"
         rows={category}
-        columns={userColumns.concat(actionColumn)}
+        columns={userColumns.concat(actionColumn).concat(actionStatus)}
+       
+
         pageSize={10}
         rowsPerPageOptions={[10]}
-        checkboxSelection
+        //checkboxSelection
       />
     </div>
   );

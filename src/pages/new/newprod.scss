@@ -4,6 +4,7 @@
     height: 50%;
     color: grey;
     
+    
   
     .subcontainer {
     //  
@@ -57,6 +58,17 @@
         margin: 15px;
 
         
+            
+        
+         img{
+            width: 85px;
+            height: 85px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            opacity: 85%;
+        }
+
+        
      
         input[type="text"] {
             margin: 5px;
@@ -71,6 +83,11 @@
             padding: 5px;
             border-radius: 08px;
         }
+    }
+
+    .details1{
+        padding:15px;
+        margin: 15px;
     }
 
     .color{
@@ -124,6 +141,17 @@
                 height: 54px;
             }
 
+        }
+
+        #galeria{
+            display: flex;
+        }
+        #galeria img{
+            width: 85px;
+            height: 85px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            opacity: 85%;
         }
     }
     button {
