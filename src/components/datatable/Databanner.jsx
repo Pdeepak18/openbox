@@ -9,6 +9,7 @@ import Modal from 'react-modal';
 import Button from '@mui/material/Button';
 import Bannerview from '../../pages/bannerview/Bannerview';
 import { PropaneSharp } from '@mui/icons-material';
+import Banneredit from '../../pages/banneredit/Banneredit';
 
 
 const Databanner = () => {
@@ -18,7 +19,7 @@ const Databanner = () => {
     const userColumns = [
       { field: "id", headerName: "ID", width: 70 },
       { field: "name", headerName: "Name", width: 200 },
-      { field: "description", headerName: "Description", width: 200 },
+      { field: "description", headerName: "Category", width: 200 },
   
     ]
     useEffect(() => {
@@ -60,6 +61,17 @@ const Databanner = () => {
     )
   }
 
+  async function handleEdit (id){
+  
+    
+   return(
+     <div>
+       <Banneredit />
+     </div>
+     
+   )
+ }
+
   
 
 
@@ -78,10 +90,16 @@ const Databanner = () => {
                 
                 View
                 </div>
+
                </Link> 
-              <Link to="/banner/edit" style={{ textDecoration: "none" }} >
-                <div className="viewButton">Edit</div>
+              <Link to={"/banner/edit/"+params.row.id} style={{ textDecoration: "none" }} >
+                <div className="viewButton"
+                onClick={() => handleEdit(params.row.id)}
+                >
+                Edit
+                </div>
               </Link>
+
               <div
                 className="deleteButton"
                 onClick={() => handleDelete(params.row.id)}

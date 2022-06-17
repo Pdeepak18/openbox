@@ -6,6 +6,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState,useEffect } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const Bannerview = () => {
   const params = useParams();
@@ -54,14 +55,21 @@ const getBannerDetails = async (id) => {
         <div className="camp1">
         <label> <strong> Description :     </strong></label>
         <input type="text" defaultValue={description}/>
+        
         </div>
       
-        <div className="campimg">
+       
+        <div className="camp1">
         <label> <strong> Image :     </strong></label>
+        </div>
+        <div className="campimg">
+        
+
         {/* <input type="file" defaultValue={image}/> <br /> <br /> */}
         <img src="https://images.news18.com/ibnlive/uploads/2021/09/flipkart_sale_bigbillion.jpg?impolicy=website&width=0&height=0"   alt="image" /> <br /> <br />
         </div>
         
+        <button > <Link to="/banner" style={{ textDecoration: 'none', color: '#FFF' }}> Done</Link></button>
 
         </div>
       </div>

@@ -79,12 +79,12 @@ function App() {
               <Route index element={<Banner />} />
               
               <Route path="view/:id" element={<Bannerview  />} /> 
-               <Route path="edit" element={<Banneredit />} />
+              
               <Route
                 path="new"
                 element={<Newbanner  title="Add New Banner-Details" />}
               />
-            
+            <Route path="edit/:id" element={<Banneredit />} />
             </Route>
               
             

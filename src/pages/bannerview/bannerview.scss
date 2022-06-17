@@ -39,12 +39,31 @@
             font-weight: bold;
           }
 
+         
           
         
       }
 
       .campimg{
-        
+        img {
+          width: 200px;
+          height: 130px;
+          border-radius: 10%;
+          object-fit: cover;
+        }
+            
+      }
+
+      button {
+        margin:310px;
+        width: 550px;
+        padding: 10px;
+        border: none;
+        background-color: teal;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
       }
     }
 }
