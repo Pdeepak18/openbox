@@ -23,7 +23,7 @@ import { height } from "@mui/system";
 const New = ({  title }) => {
     const [categoryFile, setFile] = useState("");
    const [text , setText] = useState("");
-    let navigate = useNavigate();
+    //let navigate = useNavigate();
 
     const [data, setData] = useState({
         categoryName: "",

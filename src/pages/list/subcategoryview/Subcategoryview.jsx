@@ -1,56 +1,50 @@
 import React from 'react'
-import './bannerview.scss'
-//import  {withRouter}  from 'react-router-dom';
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
+import "./subcategoryview.scss"
+import Sidebar from "../../../components/sidebar/Sidebar";
+import Navbar from "../../../components/navbar/Navbar";
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState,useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
-const Bannerview = () => {
-  const params = useParams();
+
+const Subcategoryview = () => {
+    const params = useParams();
   const navigate = useNavigate();
-  // const[data,setData] =useState("")
-  const [name, setName] = useState("");
+  const [subcategoryName, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [file, setImage] = useState("");
-
-
- 
+  const [subcategoryIcon, setImage] = useState("");
 
   useEffect(async () => {
     
-    getBannerDetails(params.id);
+    getSubCategoryDetails(params.id);
 }, [])
 
-const getBannerDetails = async (id) => {
+const getSubCategoryDetails = async (id) => {
   
-  var result =await axios.post('http://localhost:8000/api/banner/getBannerById', 
+  var result =await axios.post('http://localhost:8000/api/subcategory/getsubCategory', 
   {id})
   var result = await result.data
   
-  setName(result[0].name);
-  console.log(result[0].name)
+  setName(result[0].subcategoryName);
+  console.log(result[0].categoryName)
 
   setDescription(result[0].description);
   console.log(result[0].description)
 
-  setImage(result[0].image);
-  console.log(result[0].image)
+  setImage(result[0].subcategoryIcon);
+  console.log(result[0].categoryIcon)
  
 }
-
-
   return (
-    <div className="bannerview">
+    <div className="categoryview">
       <Sidebar />
-      <div className="bannerviewContainer">
+      <div className="categoryviewContainer">
         <Navbar />
         <div className="temp">
         <div className="camp1">
         <label> <strong> Name :     </strong></label>
-        <input type="text" defaultValue={name} disabled /> 
+        <input type="text" defaultValue={subcategoryName} disabled /> 
         </div>
         <div className="camp1">
         <label> <strong> Description :     </strong></label>
@@ -78,4 +72,4 @@ const getBannerDetails = async (id) => {
   )
 }
 
-export default Bannerview
+export default Subcategoryview

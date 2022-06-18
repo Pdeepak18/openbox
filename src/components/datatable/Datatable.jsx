@@ -8,13 +8,16 @@ import React from "react";
 import Switch from "@mui/material/Switch";
 import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
+import Categoryview from '../../pages/list/categoryview/Categoryview';
+import Categoryedit from '../../pages/list/categoryedit/Categoryedit';
+
 
 
 const Datatable = () => {
 
   //Disable switch
   //const label = { inputProps: { 'aria-label': 'Switch demo' } };
-  const [checked, setChecked] = React.useState(false);
+  //const [checked, setChecked] = React.useState(false);
   const RedSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
       color: red[900],
@@ -29,13 +32,45 @@ const Datatable = () => {
   
 
   async function handleStatus(id) {
+    status(id)
+    window.location.reload()
 
-    alert("Want to Disable: "+ id+ " id  ")
-    setChecked(id.target.checked);
+    
   }
+
+  const status = async (id) => {
+   
+    let del = await axios.post(
+        "http://localhost:8000/api/category/editStatus",
+        { id }
+      );
+  };
 
   //end of disable  switch code
  
+  async function handleView (id){
+   
+    
+   return(
+     <div>
+       <Categoryview />
+     </div>
+     
+   )
+ }
+
+ async function handleEdit (id){
+ 
+   
+  return(
+    <div>
+      <Categoryedit />
+    </div>
+    
+  )
+}
+
+
 
 
   const [category, setCategory] = useState([]);
@@ -84,10 +119,10 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/categary/test" style={{ textDecoration: "none" }}>
+            <Link to={"/categary/view/"+params.row.id} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
-            <Link to="/Subcategary/test" style={{ textDecoration: "none" }}>
+            <Link to={"/categary/edit/"+params.row.id} style={{ textDecoration: "none" }}>
               <div className="viewButton">Edit</div>
             </Link>
             <div
@@ -111,7 +146,7 @@ const Datatable = () => {
     renderCell: (params) => {
       return(
         <div className="cellAction" >
-            <RedSwitch  checked={checked}  onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
+            <RedSwitch  checked={params.row.isActive==0 ? true :false}  onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
             <label >Disable</label>
         </div>
       )

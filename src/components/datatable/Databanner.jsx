@@ -93,7 +93,7 @@ const Databanner = () => {
 
                </Link> 
               <Link to={"/banner/edit/"+params.row.id} style={{ textDecoration: "none" }} >
-                <div className="viewButton"
+                <div className="editButton"
                 onClick={() => handleEdit(params.row.id)}
                 >
                 Edit

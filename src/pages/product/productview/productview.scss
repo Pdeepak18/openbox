@@ -1,10 +1,9 @@
-.bannerview{
+.productview{
     display: flex;
     width: 100%;
    
-    
 
-    .bannerviewContainer{
+    .productviewContainer{
         flex: 6;
     }
 
@@ -17,7 +16,6 @@
       align-items: center;
       //width: 170px;
       //display: flex;
-     
 
       .camp1{
         margin: 10px;
@@ -47,28 +45,13 @@
       }
 
       .campimg{
-        justify-content:center;
-        text-align: center;
-      align-items: center;
-        display:flex;
-        flex: 1;
-        img {
-            width: 200px;
-            height: 130px;
-            border-radius: 10%;
-            object-fit: cover;
-          }
-
-
-            
-      }
-      .bottom12{
         img {
           width: 200px;
-          height: 130px;
+          height: 330px;
           border-radius: 10%;
           object-fit: cover;
         }
+            
       }
 
       button {

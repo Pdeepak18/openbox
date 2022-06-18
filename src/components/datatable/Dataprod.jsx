@@ -8,7 +8,8 @@ import React from "react";
 import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import axios from "axios";
-
+import Productedit from '../../pages/product/productedit/Productedit';
+import Productview from '../../pages/product/productview/Productview';
 
 const Dataprod = () => {
 
@@ -29,15 +30,41 @@ const Dataprod = () => {
   
 
   async function handleStatus(id) {
+    status(id)
+    window.location.reload()
 
-    alert("Want to Disable: "+ id+ " id  ")
-
-    //setChecked(id.target.checked);
+    
   }
+
+  const status = async (id) => {
+   
+    let del = await axios.post(
+        "http://localhost:8000/api/product/editStatus",
+        { id }
+      );
+  };
 
   //end of disable  switch code
 
+  async function handleView (id){
+  return(
+     <div>
+       <Productview />
+     </div>
+     
+   )
+ }
 
+ async function handleEdit (id){
+ 
+   
+  return(
+    <div>
+      <Productedit />
+    </div>
+    
+  )
+}
   const [data, setData] = useState(userRows);
   const [product, setProduct] = useState([]);
 
@@ -85,11 +112,14 @@ const Dataprod = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/product/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
+            <Link to={"/product/view/"+params.row.id} style={{ textDecoration: "none" }}>
+              <div className="viewButton"
+               onClick={() => handleView(params.row.id)}
+               >View</div>
             </Link>
-            <Link to="/Subcategary/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">Edit</div>
+            <Link to={"/product/edit/"+params.row.id} style={{ textDecoration: "none" }}>
+              <div className="viewButton"
+              onClick={() => handleEdit(params.row.id)}>Edit</div>
             </Link>
             <div
               className="deleteButton"
@@ -102,7 +132,7 @@ const Dataprod = () => {
       },
     },
   ];
-
+ 
   const actionStatus = [{
     field: "status",
     headerName: "Status",
@@ -110,7 +140,7 @@ const Dataprod = () => {
     renderCell: (params) => {
       return(
         <div className="cellAction" >
-            <RedSwitch      onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
+            <RedSwitch  checked={params.row.isActive==0 ? true :false}    onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
             <label >Disable</label>
         </div>
       )

@@ -25,7 +25,7 @@ import parse from 'html-react-parser';
 const Newsub = ({  title }) => {
     const [subcategoryFile, setFile] = useState("");
     const [text , setText] = useState("");
-
+    
     const[value,setValue]=useState("");
 
     const [categoryId,setcategoryID] =useState()
@@ -85,7 +85,7 @@ const Newsub = ({  title }) => {
             formData.append("subcategoryIcon", subcategoryFile);
             formData.append("subcategoryName", data.subcategoryName);
             formData.append("description", text);
-            formData.append("categoryId",categoryId)
+            formData.append("categoryId",categoryId);
             
 
             const config = {

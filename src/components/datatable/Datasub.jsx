@@ -15,12 +15,14 @@ import React from "react";
 import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import axios from "axios";
+import Subcategoryview from '../../pages/list/subcategoryview/Subcategoryview';
+import Subcategoryedit from '../../pages/list/subcategoryedit/Subcategoryedit';
 
 const Datasub = () => {
 
   //Disable switch
   //const label = { inputProps: { 'aria-label': 'Switch demo' } };
-  const [checked, setChecked] = React.useState(false);
+  //const [checked, setChecked] = React.useState(false);
   const RedSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
       color: red[900],
@@ -33,16 +35,47 @@ const Datasub = () => {
     },
   }));
   
-
   async function handleStatus(id) {
+    status(id)
+    window.location.reload()
 
-    alert("Want to Disable: "+ id+ " id  ")
-    setChecked(id.target.checked);
+    
   }
+
+  const status = async (id) => {
+   
+    let del = await axios.post(
+        "http://localhost:8000/api/subcategory/editStatus",
+        { id }
+      );
+  };
+
+  
 
   //end of disable  switch code
 
+  async function handleView (id){
+   
+    
+   return(
+     <div>
+       <Subcategoryview />
+     </div>
+     
+   )
+ }
 
+ async function handleEdit (id){
+ 
+   
+  return(
+    <div>
+      <Subcategoryedit />
+    </div>
+    
+  )
+}
+  
   
   const[value,setValue]=useState("");
 
@@ -137,10 +170,10 @@ async function  handleDelete  (id)  {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/Subcategary/test" style={{ textDecoration: "none" }}>
+            <Link to={"/subcategary/view/"+params.row.id} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
-            <Link to="/Subcategary/test" style={{ textDecoration: "none" }}>
+            <Link to={"/subcategary/edit/"+params.row.id} style={{ textDecoration: "none" }}>
               <div className="viewButton">Edit</div>
             </Link>
             <div
@@ -162,7 +195,7 @@ async function  handleDelete  (id)  {
     renderCell: (params) => {
       return(
         <div className="cellAction" >
-            <RedSwitch    onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
+            <RedSwitch   checked={params.row.isActive==0 ? true :false}  onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
             <label >Disable</label>
         </div>
       )

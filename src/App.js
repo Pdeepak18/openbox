@@ -21,8 +21,12 @@ import {Editor} from "react-draft-wysiwyg";
 import Newbanner from "./pages/new/Newbanner";
 import Bannerview from "./pages/bannerview/Bannerview";
 import Banneredit from "./pages/banneredit/Banneredit";
-
-
+import Productedit from './pages/product/productedit/Productedit';
+import Productview from './pages/product/productview/Productview';
+import Categoryview from './pages/list/categoryview/Categoryview';
+import Categoryedit from './pages/list/categoryedit/Categoryedit';
+import Subcategoryview from './pages/list/subcategoryview/Subcategoryview';
+import Subcategoryedit from './pages/list/subcategoryedit/Subcategoryedit';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -38,7 +42,9 @@ function App() {
             {/* category */}
             <Route path="categary">
               <Route index element={<Categary />} />
-              <Route path=":userId" element={<Single />} />
+              
+              <Route path="view/:id" element={<Categoryview  />} /> 
+              <Route path="edit/:id" element={<Categoryedit />} />
               <Route
                 path="new"
                 element={<New  title="Add New Category" />}
@@ -48,7 +54,8 @@ function App() {
               {/* subcategory */}
             <Route path="subcategary">
               <Route index element={<Subcategary />} />
-              <Route path=":productId" element={<Single />} />
+              <Route path="view/:id" element={<Subcategoryview  />} /> 
+              <Route path="edit/:id" element={<Subcategoryedit />} />
               <Route
                 path="new"
                 element={<Newsub  title="Add New Sub-Category" />}
@@ -58,6 +65,9 @@ function App() {
               {/* Product */}
             <Route path="Product" >
               <Route index element={<Product />} />
+              <Route path="view/:id" element={<Productview  />} /> 
+              <Route path="edit/:id" element={<Productedit />} />
+
               <Route
                 path="new"
                 element={<Newprod  title="Add New Product" />}
@@ -79,12 +89,13 @@ function App() {
               <Route index element={<Banner />} />
               
               <Route path="view/:id" element={<Bannerview  />} /> 
+              <Route path="edit/:id" element={<Banneredit />} />
               
               <Route
                 path="new"
                 element={<Newbanner  title="Add New Banner-Details" />}
               />
-            <Route path="edit/:id" element={<Banneredit />} />
+            
             </Route>
               
             

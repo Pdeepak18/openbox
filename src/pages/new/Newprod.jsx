@@ -40,6 +40,7 @@ export default function Newprod() {
   const [state, setState] = useState([]);
   const [tags, setTags] = useState([]);
   const [temp, setFileImage] = useState([]);
+  const [file, setFile] = useState("");
 
   const [data, setData] = useState({
     productName: "",
@@ -105,7 +106,7 @@ export default function Newprod() {
 
   
 
-  const [file, setFile] = useState("");
+ 
 
   //images upload
   const onFileChange = (e) => {
@@ -128,7 +129,7 @@ export default function Newprod() {
       formData.append("productDescription", data.productDescription);
       formData.append("highlightFeature", data.highlightFeature);
       formData.append("color", JSON.stringify(tags));
-      formData.append("image", JSON.stringify(file));
+      formData.append("image", file);
 
       console.log(formData);
 
