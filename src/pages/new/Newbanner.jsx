@@ -53,7 +53,7 @@ function handle(e) {
     } catch (error) {
         console.error(error);
     }
-
+    window.location.reload()
 
 };
 

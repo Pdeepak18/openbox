@@ -31,7 +31,7 @@ const Newtax = ({  title }) => {
         console.log(res.data )
       })
 
-
+      window.location.reload()
     };
 
   return (

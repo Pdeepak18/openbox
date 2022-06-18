@@ -21,11 +21,12 @@ import { Link } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import parse from 'html-react-parser';
+import { useNavigate } from "react-router-dom";
 
 const Newsub = ({  title }) => {
     const [subcategoryFile, setFile] = useState("");
-    const [text , setText] = useState("");
-    
+    const [richtext , setRichText] = useState("");
+    let navigate = useNavigate();
     const[value,setValue]=useState("");
 
     const [categoryId,setcategoryID] =useState()
@@ -81,11 +82,12 @@ const Newsub = ({  title }) => {
     const uploadImage = async () => {
         try {
             const formData = new FormData();
-
+            console.log(richtext);
             formData.append("subcategoryIcon", subcategoryFile);
             formData.append("subcategoryName", data.subcategoryName);
-            formData.append("description", text);
+            
             formData.append("categoryId",categoryId);
+            formData.append("descripition", richtext);
             
 
             const config = {
@@ -103,6 +105,7 @@ const Newsub = ({  title }) => {
         } catch (error) {
             console.error(error);
         }
+        window.location.reload()
     };
   
 
@@ -181,18 +184,25 @@ const Newsub = ({  title }) => {
 
                         <div className="editor">
                         <label><b>Description:</b></label>
+
                         <CKEditor
+
+
                         editor= {ClassicEditor }
                         config={{
                             removePlugins: ["EasyImage","ImageUpload"]
                         }}
-                        data={text}
+                        data={richtext}
+
                         onChange = {(event,editor) => {
                             const data= editor.getData()
-                            setText(data)
+                            setRichText(data)
+                          
 
                         }} />
                     </div>
+
+
                         <button onClick={(e)=>uploadImage()}>  <Link to="/subcategary" style={{ textDecoration: 'none' ,color: '#FFF' }} >Send  </Link></button>
                     </form>
 

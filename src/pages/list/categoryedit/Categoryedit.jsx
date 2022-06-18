@@ -71,6 +71,7 @@ const onFileChange = (e) => {
   } catch (error) {
       console.error(error);
   }
+  window.location.reload()
 
 
 };

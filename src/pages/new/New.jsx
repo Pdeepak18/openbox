@@ -23,7 +23,7 @@ import { height } from "@mui/system";
 const New = ({  title }) => {
     const [categoryFile, setFile] = useState("");
    const [text , setText] = useState("");
-    //let navigate = useNavigate();
+    let navigate = useNavigate();
 
     const [data, setData] = useState({
         categoryName: "",
@@ -47,6 +47,7 @@ const New = ({  title }) => {
     const uploadImage = async () => {
         try {
             const formData = new FormData();
+            console.log(text)
             formData.append("categoryIcon", categoryFile);
             formData.append("categoryName", data.categoryName);
             formData.append("description", text);
@@ -66,7 +67,7 @@ const New = ({  title }) => {
         } catch (error) {
             console.error(error);
         }
-
+        window.location.reload()
 
     };
 

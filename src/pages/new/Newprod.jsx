@@ -147,7 +147,7 @@ export default function Newprod() {
     } catch (error) {
       console.error(error);
     }
-
+    window.location.reload()
 
     
   };

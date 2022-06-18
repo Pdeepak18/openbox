@@ -12,7 +12,7 @@ const Subcategoryview = () => {
     const params = useParams();
   const navigate = useNavigate();
   const [subcategoryName, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [descripition, setDescription] = useState("");
   const [subcategoryIcon, setImage] = useState("");
 
   useEffect(async () => {
@@ -29,8 +29,8 @@ const getSubCategoryDetails = async (id) => {
   setName(result[0].subcategoryName);
   console.log(result[0].categoryName)
 
-  setDescription(result[0].description);
-  console.log(result[0].description)
+  setDescription(result[0].descripition);
+  console.log(result[0].descripition)
 
   setImage(result[0].subcategoryIcon);
   console.log(result[0].categoryIcon)
@@ -48,7 +48,7 @@ const getSubCategoryDetails = async (id) => {
         </div>
         <div className="camp1">
         <label> <strong> Description :     </strong></label>
-        <input type="text" defaultValue={description} disabled/>
+        <input type="text" defaultValue={descripition} disabled/>
         
         </div>
       
@@ -63,7 +63,7 @@ const getSubCategoryDetails = async (id) => {
         <img src="https://images.news18.com/ibnlive/uploads/2021/09/flipkart_sale_bigbillion.jpg?impolicy=website&width=0&height=0"   alt="image" /> <br /> <br />
         </div>
         
-        <button > <Link to="/banner" style={{ textDecoration: 'none', color: '#FFF' }}> Done</Link></button>
+        <button > <Link to="/subcategary" style={{ textDecoration: 'none', color: '#FFF' }}> Done</Link></button>
 
         </div>
       </div>
