@@ -20,13 +20,17 @@ import PeopleIcon from '@mui/icons-material/People';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import CompareIcon from '@mui/icons-material/Compare';
 
+import nameIcon from './nameIcon.png'
+import name from './name.png'
+
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
   return (
     <div className="sidebar">
-      <div className="top">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo" >  OPNBOX.IN</span>
+      <div className="top align-self-center">
+      <Link to="/" style={{ textDecoration: "none" }}>
+          {/* <span className="logo" >  OPENBOX.IN</span> */}
+          <img className = "nameIcon" src={name} alt="" />
         </Link>
       </div>
       <hr />

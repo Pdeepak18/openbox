@@ -122,3 +122,148 @@ export const userRows = [
   //   age: 65,
   // },
 ];
+
+
+// Temporary Vendor Data's
+
+export const vendorColumn =[
+  { field: "id", headerName: "ID", width: 100 },
+  {
+    field: "VendorName",
+    headerName: "Vendor Name",
+    width: 400,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.img} alt="avatar" />
+          {params.row.VendorName}
+        </div>
+      );
+    },
+  },
+  { field: "PhoneNo", headerName: "Phone No.", width: 200 },
+  { field: "Email", headerName: "Email", width: 400 },
+
+];
+
+export const vendorRow=[
+  {
+    id: 1,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 2,
+    VendorName: "John Doe",
+    img: "https://source.unsplash.com/random/300x300",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 3,
+    VendorName: "John Doe",
+    img: "https://source.unsplash.com/random/300x300",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 4,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 5,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 6,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 7,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 8,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 9,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 10,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 11,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 12,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 13,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 14,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 15,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 16,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+  {
+    id: 17,
+    VendorName: "John Doe",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    PhoneNo:"212-970-4133",
+    Email:"john.doe@nomail.com"
+  },
+];
