@@ -10,15 +10,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 10px;
 
     .logo {
       font-size: 20px;
       font-weight: bold;
       color: #ef9356;
     }
+    .nameIcon{
+      width: 73%;
+    }
   }
 
   hr {
+    margin-top: 0px;
     height: 0;
     border: 0.5px solid rgb(230, 227, 227);
   }
@@ -46,7 +51,7 @@
         cursor: pointer;
 
         &:hover {
-          background-color: #ece8ff;
+          background-color: #FFDDC7;
         }
 
         .icon {

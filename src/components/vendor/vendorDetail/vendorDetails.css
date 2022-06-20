@@ -1,0 +1,15 @@
+.heading{
+  font-weight: 900px;
+}
+.accordion-button {
+
+  background-color: #FFDDC7;
+  margin-bottom: 2px;
+}
+
+.accordion-button.collapsed{
+  background-color: #FF934F;
+}
+.Documents{
+  margin-bottom: 10px;
+}

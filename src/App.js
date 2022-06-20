@@ -28,6 +28,16 @@ import Categoryedit from './pages/list/categoryedit/Categoryedit';
 import Subcategoryview from './pages/list/subcategoryview/Subcategoryview';
 import Subcategoryedit from './pages/list/subcategoryedit/Subcategoryedit';
 
+// Vendor
+import Vendor from "./pages/Vendor/Vendor";
+import VendorProfile from "./pages/Vendor/VendorProfile"
+// Customer
+import Customer from "./pages/Customer/customer"
+
+// Bootstarp
+import 'bootstrap/dist/js/bootstrap.bundle.min'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
@@ -97,6 +107,18 @@ function App() {
               />
             
             </Route>
+            {/* Vendor */}
+            <Route path="Vendor">
+            <Route index element={<Vendor />} />
+            <Route path="VendorProfile" element={<VendorProfile />} />
+            </Route>
+
+            {/* Customer */}
+            <Route path="Customer" >
+              <Route index element={<Customer />} />
+              
+              </Route>
+
               
             
 
