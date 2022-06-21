@@ -2,15 +2,81 @@ import "./datasub.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { vendorColumn, vendorRow } from "../../datatablesource";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Switch from "@mui/material/Switch";
+import { alpha, styled } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
+import Vendordetails from '../vendor/vendorDetail/Vendordetails'
+import VendorProfile from '../../pages/Vendor/VendorProfile'
 // import lol from ""
 
 const DataVendor = () => {
-  const [data, setData] = useState(vendorRow);
+  const [data, setData] = useState();
+  //Switch
+  const RedSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: red[900],
+      '&:hover': {
+        backgroundColor: alpha(red[900], theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: red[900],
+    },
+  }));
+  
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  async function handleStatus(id) {
+    status(id)
+    window.location.reload()
+
+    
+  }
+
+  const status = async (id) => {
+   
+    let del = await axios.post(
+        "http://localhost:8000/api/vendormanagement/editStatus",
+        { id }
+      );
   };
+
+  // View 
+  async function handleView (id){
+    //alert(id)
+   return(
+      <div>
+        <VendorProfile />
+      </div>
+    )
+  }
+
+  // fetch all vendor list
+  const [vendor, setVendor] = useState([]);
+
+  useEffect(() => {
+    getAllVendor();
+  }, []);
+
+  const getAllVendor = async () => {
+    var result = await fetch(
+      "http://localhost:8000/api/vendormanagement/getMainList"
+    );
+    var temp = await result.json();
+    console.log(result);
+    setVendor(temp);
+  };
+
+
+  //columns
+  const userColumns = [
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "name", headerName: "Vendor Name", width: 200 },
+    { field: "email", headerName: "Vendor Email", width: 200 },
+    { field: "phone", headerName: "Vendor Phone-no", width: 200 },
+  ];
+
 
   const actionColumn = [
     {
@@ -20,7 +86,7 @@ const DataVendor = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="./VendorProfile" style={{ textDecoration: "none" }}>
+            <Link to={"/vendor/view/"+params.row.id} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
           </div>
@@ -28,12 +94,29 @@ const DataVendor = () => {
       },
     },
   ];
+
+
+  const actionStatus = [{
+    field: "status",
+    headerName: "Status",
+    width: 150,
+    renderCell: (params) => {
+      return(
+        <div className="cellAction" >
+            <RedSwitch  checked={params.row.isActive==0 ? true :false}  onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
+            <label >Disable</label>
+        </div>
+      )
+    }
+  }];
+
+
   return (
     <div className="datasub">
       <DataGrid
         className="datagrid"
-        rows={data}
-        columns={vendorColumn.concat(actionColumn)}
+        rows={vendor}
+        columns={userColumns.concat(actionColumn).concat(actionStatus)}
         pageSize={8}
         rowsPerPageOptions={[10]}
       />

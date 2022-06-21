@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React from "react";
 import axios from "axios";
+import Taxedit from "../../pages/taxmaster/taxedit/Taxedit"
 
 
 const Datatax = () => {
@@ -34,6 +35,18 @@ const Datatax = () => {
     }
   }
 
+  async function handleEdit (id){
+ 
+   
+    return(
+      <div>
+        <Taxedit />
+      </div>
+      
+    )
+  }
+  
+
   const getAllTax = async () => {
     var result = await fetch("http://localhost:8000/api/tax/getAllTax");
     var temp = await result.json();
@@ -49,11 +62,8 @@ const Datatax = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/categary/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-            <Link to="/Subcategary/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">Edit</div>
+            <Link to={"/taxmaster/edit/"+params.row.id} style={{ textDecoration: "none" }}>
+              <div className="viewButton"  onClick={() => handleEdit(params.row.id)}>Edit</div>
             </Link>
             <div
               className="deleteButton"

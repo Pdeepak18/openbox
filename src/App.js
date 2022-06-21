@@ -15,6 +15,7 @@ import Newprod from "./pages/new/Newprod";
 import Newtax from "./pages/new/Newtax";
 import Product from "./pages/product/Product";
 import Taxmaster from "./pages/taxmaster/Taxmaster.jsx";
+import Taxedit from "./pages/taxmaster/taxedit/Taxedit"
 import Banner from "./pages/banner/Banner";
 import { EditorState } from "draft-js";
 import {Editor} from "react-draft-wysiwyg";
@@ -27,6 +28,8 @@ import Categoryview from './pages/list/categoryview/Categoryview';
 import Categoryedit from './pages/list/categoryedit/Categoryedit';
 import Subcategoryview from './pages/list/subcategoryview/Subcategoryview';
 import Subcategoryedit from './pages/list/subcategoryedit/Subcategoryedit';
+// import Vendordetails from './components/vendor/vendorDetail/VendorDetails'
+//import VendorProfile from "./pages/Vendor/VendorProfile";
 
 // Vendor
 import Vendor from "./pages/Vendor/Vendor";
@@ -87,6 +90,7 @@ function App() {
               {/* Taxmaster */}
             <Route path="taxmaster" >
               <Route index element={<Taxmaster />} />
+              <Route path="edit/:id" element={<Taxedit />} />
               <Route
                 path="new"
                 element={<Newtax  title="Add New Tax-Details" />}
@@ -95,22 +99,21 @@ function App() {
 
               {/* Banner */}
             <Route path="Banner" >
-              
               <Route index element={<Banner />} />
-              
               <Route path="view/:id" element={<Bannerview  />} /> 
               <Route path="edit/:id" element={<Banneredit />} />
-              
               <Route
                 path="new"
                 element={<Newbanner  title="Add New Banner-Details" />}
               />
-            
             </Route>
+
+
             {/* Vendor */}
             <Route path="Vendor">
             <Route index element={<Vendor />} />
-            <Route path="VendorProfile" element={<VendorProfile />} />
+            {/* <Route path="view/:id" element={Vendordetails />} /> */}
+            <Route path="view/:id" element={<VendorProfile />} />
             </Route>
 
             {/* Customer */}

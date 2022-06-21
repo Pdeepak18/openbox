@@ -171,10 +171,12 @@ async function  handleDelete  (id)  {
         return (
           <div className="cellAction">
             <Link to={"/subcategary/view/"+params.row.id} style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
+              <div className="viewButton"
+               onClick={() => handleView(params.row.id)}>View</div>
             </Link>
             <Link to={"/subcategary/edit/"+params.row.id} style={{ textDecoration: "none" }}>
-              <div className="viewButton">Edit</div>
+              <div className="viewButton"
+              onClick={() => handleEdit(params.row.id)}>Edit</div>
             </Link>
             <div
               className="deleteButton"
