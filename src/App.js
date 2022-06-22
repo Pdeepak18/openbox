@@ -34,6 +34,9 @@ import VendorProfile from "./pages/Vendor/VendorProfile"
 // Customer
 import Customer from "./pages/Customer/customer"
 
+// Bassic Accounting
+import Orderlist from "./pages/basicAccounting/Orderlist"
+
 // Bootstarp
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -93,6 +96,11 @@ function App() {
               />
             </Route>
 
+            {/* Bassic Accounting */}
+            <Route path="bassicAccounitng" >
+              <Route index element={<Orderlist />} />
+            </Route>
+
               {/* Banner */}
             <Route path="Banner" >
               
@@ -107,6 +115,7 @@ function App() {
               />
             
             </Route>
+
             {/* Vendor */}
             <Route path="Vendor">
             <Route index element={<Vendor />} />
