@@ -96,6 +96,7 @@ const Datatable = () => {
     // { field: "description", headerName: "Description", width: 400}
   ];
 
+  //Delete function 
   async function handleDelete(id) {
     if (window.confirm("Want to delete?")) {
       setCategory(category.filter((item) => item.id !== id));
@@ -120,10 +121,12 @@ const Datatable = () => {
         return (
           <div className="cellAction">
             <Link to={"/categary/view/"+params.row.id} style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
+              <div className="viewButton"
+              onClick={() => handleView(params.row.id)}>View</div>
             </Link>
             <Link to={"/categary/edit/"+params.row.id} style={{ textDecoration: "none" }}>
-              <div className="viewButton">Edit</div>
+              <div className="viewButton"
+              onClick={() => handleEdit(params.row.id)}>Edit</div>
             </Link>
             <div
               className="deleteButton"
