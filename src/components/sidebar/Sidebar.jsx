@@ -19,6 +19,7 @@ import { useContext } from "react";
 import PeopleIcon from '@mui/icons-material/People';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import CompareIcon from '@mui/icons-material/Compare';
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 import nameIcon from './nameIcon.png'
 import name from './name.png'
@@ -84,6 +85,14 @@ const Sidebar = () => {
             <span>Taxmaster</span>
           </li>
           </Link>
+
+          <Link to="/bassicAccounitng" style={{ textDecoration: "none" }}> 
+          <li>
+            <CurrencyRupeeIcon className="icon" />
+            <span>Bassic Accounting</span>
+          </li>
+          </Link>
+          
           <Link to="/banner" style={{ textDecoration: "none" }}>
             <li>
             <NotificationsNoneIcon className="icon" />
