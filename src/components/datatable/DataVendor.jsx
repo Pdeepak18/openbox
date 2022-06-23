@@ -7,7 +7,7 @@ import axios from "axios";
 import Switch from "@mui/material/Switch";
 import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
-import Vendordetails from '../vendor/vendorDetail/Vendordetails'
+import Vendordetails from '../vendor/vendorDetail/vendorDetails'
 import VendorProfile from '../../pages/Vendor/VendorProfile'
 // import lol from ""
 

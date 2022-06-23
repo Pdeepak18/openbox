@@ -2,7 +2,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import "./Vendor.scss";
 import ProfileCard from "../../components/vendor/profile"
-import VendorDetails from "../../components/vendor/vendorDetail/Vendordetails"
+import VendorDetails from "../../components/vendor/vendorDetail/vendorDetails"
 import List from "../../components/table/ProductTable";
 import Table from "../../components/table/Table";
 import { useParams, useNavigate } from 'react-router-dom'

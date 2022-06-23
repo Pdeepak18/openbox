@@ -1,13 +1,15 @@
 import "./ordercard.css"
 import iPhone from "./iphone.jpg"
 
+import { Link } from "react-router-dom";
+
 export default function Ordercard(){
 
   return(
     <div>
     <div className="row">
       
-      <div className="col-8">
+      <div className="col">
 
       
         <div className="card">
@@ -32,7 +34,10 @@ export default function Ordercard(){
               </div>
               <div className="col-4">
                 <div className="row"><span> <strong>ORDER  # 405-6059282-4595534 </strong> </span></div>
-                <div className="row"><button type="button" className="btn-sm bd">View order details</button>
+                <div className="row">
+                  <Link to={"/bassicAccounitng/orderdetails"} >
+                  <button type="button" className="btn-sm bd">View order details</button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -68,7 +73,6 @@ export default function Ordercard(){
         </div>
 
       </div>
-      <hr />
       </div>
   );
 

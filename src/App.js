@@ -39,6 +39,7 @@ import Customer from "./pages/Customer/customer"
 
 // Bassic Accounting
 import Orderlist from "./pages/basicAccounting/Orderlist"
+import Orderdetails from "./pages/basicAccounting/Orderdetails"
 
 // Bootstarp
 import 'bootstrap/dist/js/bootstrap.bundle.min'
@@ -103,6 +104,7 @@ function App() {
             {/* Bassic Accounting */}
             <Route path="bassicAccounitng" >
               <Route index element={<Orderlist />} />
+              <Route path="orderdetails" element={<Orderdetails />} />
             </Route>
 
               {/* Banner */}
