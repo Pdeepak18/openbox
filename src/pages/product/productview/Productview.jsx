@@ -3,47 +3,49 @@ import "./productview.scss"
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
 import { useParams, useNavigate } from 'react-router-dom'
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import iPhone from "../../../components/order/iphone.jpg"
+
 
 const Productview = () => {
-const params = useParams();
+  const params = useParams();
   const navigate = useNavigate();
   const [productName, setName] = useState("");
   const [productDescription, setDescription] = useState("");
-  const[highlightFeature,setFeature] =useState("")
+  const [highlightFeature, setFeature] = useState("")
   const [file, setImage] = useState([]);
-  const[color,setColor] = useState([]);
+  const [color, setColor] = useState([]);
 
   useEffect(async () => {
-    
+
     getProductDetails(params.id);
-}, [])
+  }, [])
 
-const getProductDetails = async (id) => {
-  
-  var result =await axios.post('http://localhost:8000/api/product/getProduct', 
-  {id})
-  var result = await result.data
+  const getProductDetails = async (id) => {
 
-  
-  setName(result[0].productName);
-  console.log(result[0].productName)
+    var result = await axios.post('http://localhost:8000/api/product/getProduct',
+      { id })
+    var result = await result.data
 
-  setDescription(result[0].productDescription);
-  console.log(result[0].productDescription)
 
-  setImage(result[0].image);
-  console.log(result[0].image)
+    setName(result[0].productName);
+    console.log(result[0].productName)
 
-  setColor(result[0].color);
-  console.log(result[0].color)
+    setDescription(result[0].productDescription);
+    console.log(result[0].productDescription)
 
-  setFeature(result[0].highlightFeature);
-  console.log(result[0].highlightFeature)
- 
-}
+    setImage(result[0].image);
+    console.log(result[0].image)
+
+    setColor(result[0].color);
+    console.log(result[0].color)
+
+    setFeature(result[0].highlightFeature);
+    console.log(result[0].highlightFeature)
+
+  }
 
   return (
     <div className="productview">
@@ -51,44 +53,74 @@ const getProductDetails = async (id) => {
       <div className="productviewContainer">
         <Navbar />
         <div className="temp">
-        <div className="camp1">
-        <label> <strong> Name :     </strong></label>
-        <input type="text" defaultValue={productName}  disabled /> 
-        </div>
-        <div className="camp1">
-        <label> <strong> Description :     </strong></label>
-        <input type="text" defaultValue={productDescription} disabled />
-        
-        </div>
-        <div className="camp1">
-        <label> <strong> Feature :     </strong></label>
-        <input type="text"  defaultValue={highlightFeature} disabled />
-        
-        </div>
-        <div className="camp1">
-        <label> <strong> Color :     </strong></label>
-        <input type="text" defaultValue={color} disabled />
-        
-        </div>
+          <div className="camp1">
+            <h1 className='d-flex justify-content-center mt-2 mb-4'><strong> {productName}</strong></h1>
 
-      
-       
-        <div className="camp1">
-        <label> <strong> Image :     </strong></label>
-        </div>
-        <div className="campimg">
-        
 
-        {/* <input type="file" defaultValue={image}/> <br /> <br /> */}
-        <img src="https://rukminim1.flixcart.com/image/312/312/kqzj7gw0/washing-machine-new/k/t/a/7-p7020ngay-lg-original-imag4vnghhh5qzhq.jpeg?q=70"   alt="image" /> <br /> <br />
-        </div>
+            <div className="row d-flex justify-content-center">
+              <div className="col d-flex justify-content-center">
+                <img className='previewImageProduct img-thumbnail' src={iPhone} />
+
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-2"></div>
+              <div className="col-8 d-flex justify-content-center">
+                <div>
+
+                
+                <div className="details mb-4">
+                  <h5 className="field" >
+                    Product Name:
+                  </h5>
+                  <input
+                    type="text"
+                    name="Name"
+
+                    size="80"
+                    defaultValue={productName}
+                    disabled
+                  />
+                </div>
+                <div className="details mb-4">
+                  <h5 className="field">
+                    Product Description:
+                  </h5>
+                  <div className='parsedHTML' dangerouslySetInnerHTML={{ __html: productDescription }}></div>
+                </div>
+                <div className="details mb-4">
+                  <h5 className="field">
+                  Highlight Feature:
+                  </h5>
+                  <div className='parsedHTML' dangerouslySetInnerHTML={{ __html: highlightFeature }}></div>
+                </div>
+                <div className="details mb-4">
+                  <h5 className="field" >
+                    Colors:
+                  </h5>
+                  <input
+                    type="text"
+                    name="Name"
+
+                    size="80"
+                    defaultValue={color}
+                    disabled
+                  />
+                </div>
         
-        <button > <Link to="/product" style={{ textDecoration: 'none', color: '#FFF' }}> Done</Link></button>
+                <Link to="/product" ><button className='buttonN' >  Done</button></Link>
+              </div>
+              </div>
+            </div>
+            <div className="col-2"></div>
+          </div>
+
+
 
         </div>
       </div>
 
-    </div>
+    </div >
   )
 }
 

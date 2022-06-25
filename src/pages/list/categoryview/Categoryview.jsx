@@ -6,7 +6,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import parse from 'html-react-parser';
+
 
 
 
@@ -69,9 +69,9 @@ const Categoryview = () => {
                   <h5 className="field">
                     Category Description:
                   </h5>
-                  <div  className='parsedHTML' dangerouslySetInnerHTML={{__html: description}}></div>
+                  <div  className='parsedHTMLforCat' dangerouslySetInnerHTML={{__html: description}}></div>
                 </div>
-                <button className='buttonN' > <Link to="/categary" style={{ textDecoration: 'none', color: '#FFF' }}> Done</Link></button>
+                <Link to="/categary" ><button className='buttonN' >  Done</button></Link>
               </div>
             </div>
           </div>

@@ -37,39 +37,46 @@ const getSubCategoryDetails = async (id) => {
  
 }
   return (
-    <div className="categoryview">
+    <div className="sub-categoryview">
       <Sidebar />
-      <div className="categoryviewContainer">
+      <div className="sub-categoryviewContainer">
         <Navbar />
-        <div className="temp">
+        <div className="temp-sub">
         <div className="camp1">
-        <label> <strong> Name :     </strong></label>
-        <input type="text" defaultValue={subcategoryName} disabled /> 
-        </div>
-        <div className="camp1">
-        <label> <strong> Description :     </strong></label>
-        <input type="text" defaultValue={descripition} disabled/>
-        
-        </div>
-      
-       
-        <div className="camp1">
-        <label> <strong> Image :     </strong></label>
-        </div>
-        <div className="campimg">
-        
+        <h1 className='d-flex justify-content-center mt-2 mb-4'>Sub-Category: <strong> {subcategoryName}</strong></h1>
+        <div className="row">
+          <div className="col-4 d-flex flex-row-reverse">
+          <img className='previewImage img-thumbnail' src="https://images.news18.com/ibnlive/uploads/2021/09/flipkart_sale_bigbillion.jpg?impolicy=website&width=0&height=0" alt="image" />  
+          </div>
+          <div className="col-8">
+          <div className="details mb-4">
+                  <h5 className="field" >
+                    Sub-Category Name:
+                  </h5>
+                  <input
+                    type="text"
+                    name="Name"
 
-        {/* <input type="file" defaultValue={image}/> <br /> <br /> */}
-        <img src="https://images.news18.com/ibnlive/uploads/2021/09/flipkart_sale_bigbillion.jpg?impolicy=website&width=0&height=0"   alt="image" /> <br /> <br />
+                    size="80"
+                    defaultValue={subcategoryName}
+                    disabled
+                  />
+          </div>
+          <div className="details mb-4">
+                  <h5 className="field">
+                    Sub-Category Description:
+                  </h5>
+                  <div  className='parsedHTMLforSub' dangerouslySetInnerHTML={{__html: descripition}}></div>
+                </div>
+                <Link to="/subcategary" ><button className='buttonN' >  Done</button></Link>
+        </div> 
         </div>
-        
-        <button > <Link to="/subcategary" style={{ textDecoration: 'none', color: '#FFF' }}> Done</Link></button>
-
         </div>
       </div>
 
     </div>
-  )
+    </div>
+  );
 }
 
 export default Subcategoryview

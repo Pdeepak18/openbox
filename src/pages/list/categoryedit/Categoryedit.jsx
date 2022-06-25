@@ -94,7 +94,7 @@ return (
 
           <div className="col-8 d-flex justify-content-center">
             <div>
-              <div className="camp1">
+              <div className="">
                 <h1 className='d-flex  justify-content-center mt-2 mb-4'>Category: <strong> {categoryName}</strong></h1>
                 <div className="campimg d-flex justify-content-center">
                   <input
@@ -120,7 +120,7 @@ return (
                     <UploadIcon className="icon" />Upload Images
                   </label>
                 </div>
-                <div className="details de mb-4 ">
+                <div className="details  mb-4 ">
                   <h5 className="field" color="grey">
                     Category Name:
                   </h5>

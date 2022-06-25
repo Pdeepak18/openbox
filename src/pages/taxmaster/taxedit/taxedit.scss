@@ -1,0 +1,35 @@
+.buttonTax {
+
+  // width: 104px;
+  padding: 10px;
+  align-items: center;
+  border: none;
+  background-color: #ef9356;
+
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+
+}
+input[type="text"] {
+  // margin: 5px;
+  font-size: 15px;
+  height: 40px;
+  border: 1px solid #C4C4C4;
+  padding: 10px;
+  border-radius: 4px;
+
+}
+input[type=text]:focus {
+  align-items: center;
+  border: 0.5px solid #555;
+}
+input[type=number] {
+  align-items: center;
+  border: 0.5px solid #c4c4c4;
+  border-radius: 4px;
+  width: 47.7em;
+  height: 50px;
+}

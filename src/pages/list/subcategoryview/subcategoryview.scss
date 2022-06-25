@@ -1,0 +1,64 @@
+.sub-categoryview{
+
+  display: flex;
+  width: 100%;
+ 
+
+  .sub-categoryviewContainer{
+      flex: 6;
+  }
+
+  .temp-sub {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 10px;
+    margin: 20px;
+    height: 900px;
+    //width: 170px;
+    //display: flex;
+
+    
+  }
+}
+.buttonN {
+
+// width: 104px;
+padding: 10px;
+align-items: center;
+border: none;
+background-color: #ef9356;
+
+font-weight: bold;
+cursor: pointer;
+border-radius: 5px;
+color: white;
+font-weight: bold;
+
+}
+.previewImage{
+display: block;
+max-width:400px;
+max-height:400px;
+width: auto;
+height: auto;
+}
+input[type="text"] {
+// margin: 5px;
+font-size: 15px;
+height: 40px;
+border: 1px solid #C4C4C4;
+padding: 10px;
+border-radius: 4px;
+
+}
+.de{
+border:0.5px solid red;
+}
+.parsedHTMLforSub{
+background-color: #f3f3f3;
+height: 300px;
+width: 60%;
+border: 1px solid #C4C4C4;
+border-radius: 4px;
+overflow-y: auto;  padding: 10px;
+}

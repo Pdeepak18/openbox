@@ -2,10 +2,12 @@ import React from 'react'
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useParams, useNavigate } from 'react-router-dom'
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import UploadIcon from '@mui/icons-material/Upload';
+
 
 
 const Banneredit = () => {
@@ -18,126 +20,139 @@ const Banneredit = () => {
   const [file, setImage] = useState("");
 
   useEffect(async () => {
-    
+
     getBannerDetails(params.id);
-}, [])
+  }, [])
 
-//api integrate to fetch details
-const getBannerDetails = async (id) => {
-  
-  var result =await axios.post('http://localhost:8000/api/banner/getBannerById', 
-  {id})
-  var result = await result.data
-  
-  setName(result[0].name);
-  console.log(result[0].name)
+  //api integrate to fetch details
+  const getBannerDetails = async (id) => {
 
-  setDescription(result[0].description);
-  console.log(result[0].description)
+    var result = await axios.post('http://localhost:8000/api/banner/getBannerById',
+      { id })
+    var result = await result.data
 
-  setImage(result[0].image);
-  console.log(result[0].image)
- 
-}
+    setName(result[0].name);
+    console.log(result[0].name)
 
+    setDescription(result[0].description);
+    console.log(result[0].description)
 
+    setImage(result[0].image);
+    console.log(result[0].image)
+
+  }
 
 
-const onFileChange = (e) => {
+
+
+  const onFileChange = (e) => {
     console.log(e.target.files[0]);
     if (e.target && e.target.files[0]) {
       setFile(e.target.files[0]);
     }
   };
 
-const editBanner = async () => {
-  
-    try {
-        const formData = new FormData();
-        formData.append("id",params.id)
-        formData.append("image", bannerFile);
-        formData.append("name", name);
-        formData.append("description", description);
-        const config = {
-            headers: {
-                "content-type": "multipart/form-data"
-            }
-        };
-        const API = "banner/editBannerById";
-        const HOST = "http://localhost:8000/api";
-        const url = `${HOST}/${API}`;
+  const editBanner = async () => {
 
-        const result = await axios.post(url, formData, config);
+    try {
+      const formData = new FormData();
+      formData.append("id", params.id)
+      formData.append("image", bannerFile);
+      formData.append("name", name);
+      formData.append("description", description);
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      };
+      const API = "banner/editBannerById";
+      const HOST = "http://localhost:8000/api";
+      const url = `${HOST}/${API}`;
+
+      const result = await axios.post(url, formData, config);
 
 
 
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
 
 
-};
+  };
 
 
-return (
+  return (
     <div className="bannerview">
       <Sidebar />
       <div className="bannerviewContainer">
         <Navbar />
-        <div className="temp">
-          
-            <div className="camp1">
-        
-              <label> <strong> Name :     </strong></label>
-              <input type="text" value={name}  onChange={(e) => {setName(e.target.value)}} /> 
+        <div className="tempE">
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col-8  d-flex justify-content-center">
+              <div>
+                <div className="camp1">
+                <div className="campimg d-flex justify-content-center">
+                  <input
+                    type="file"
+                    id="file"
+                    onChange={onFileChange}
+                    style={{ display: "none" }}
+                    name="categoryIcon"
+                  />
+                  <img
+                    className="img-thumbnail previewImage"
+                    src={
+                      bannerFile
+                        ? URL.createObjectURL(bannerFile)
+                        : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                    }
+                  />
+                </div>
+                <div className="forInput mt-4 mb-4 d-flex justify-content-center" >
+                  <label htmlFor="file" class="custom-file-upload">
+                    <input type="file" />
+                    <UploadIcon className="icon" />Upload Images
+                  </label>
+                </div>
+                <div className="details mb-4">
+                  <h5 className="field" >
+                    Banner Name:
+                  </h5>
+                  <input
+                    type="text"
+                    name="Name"
+
+                    size="80"
+                    value={name} onChange={(e) => { setName(e.target.value) }}
+                  />
+                </div>
+                <div className="details mb-4">
+                  <h5 className="field" >
+                    Banner Category:
+                  </h5>
+                  <input
+                    type="text"
+                    name="Name"
+
+                    size="80"
+                    value={description} onChange={(e) => { setDescription(e.target.value) }}
+                  />
+                </div>
+                  
+                <Link to="/banner"> <button className='buttonX' onClick={(e) => editBanner()} >  Done</button></Link>
+                    </div>
+              </div>
             </div>
-
-            <div className="camp1">
-                <label> <strong> Description :     </strong></label>
-                  <input type="text" value={description}  onChange={(e) => {setDescription(e.target.value)} }/>
-            </div>
-      
-
-            <div className="campimg">
-            <label htmlFor="file">
-              Image: <DriveFolderUploadOutlinedIcon className="icon" />
-            </label>
+            <div className="col-2"></div>
           </div>
-          <div className="campimg">
-            <input
-              type="file"
-              id="file"
-              
-              onChange={onFileChange}
-              style={{ display: "none" }}
-              name="categoryIcon"
-            />
-            <img
-            src={
-              bannerFile
-                ? URL.createObjectURL(bannerFile)
-                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-            }
-            //style={{ width: "130px", justifyContent:'center', alignItems:'center' }}
-            alt=""
-          />
-          </div>
-            
-          
-          
-            
-           
-            
 
-             
-            <button onClick={(e) => editBanner()} > <Link to="/banner" style={{ textDecoration: 'none', color: '#FFF' }}> Done</Link></button>
 
-            
-             
+
         </div>
-        
+
       </div>
-      
+
 
     </div>
   )

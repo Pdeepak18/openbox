@@ -7,6 +7,7 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import UploadIcon from '@mui/icons-material/Upload';
 
 const Productedit = () => {
   const params = useParams();
@@ -92,71 +93,87 @@ const onFileChange = (e) => {
       <div className="productviewContainer">
         <Navbar />
         <div className="temp">
-          
-            <div className="camp1">
+          <div className="camp1">
+            <h1 className='d-flex justify-content-center mt-2 mb-4'><strong> {productName}</strong></h1>
+
+
+            <div className="row d-flex justify-content-center">
+              <div className="col d-flex justify-content-center">
+              <div className="campimg d-flex justify-content-center">
+                  <input
+                    type="file"
+                    id="file"
+                    onChange={onFileChange}
+                    style={{ display: "none" }}
+                    name="categoryIcon"
+                  />
+                  <img
+                    className="img-thumbnail previewImage"
+                    src={
+                      bannerFile
+                        ? URL.createObjectURL(bannerFile)
+                        : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                    }
+                  />
+                </div>
+
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-2"></div>
+              <div className="col-8 d-flex justify-content-center">
+                <div>
+
+                
+                <div className="details mb-4">
+                  <h5 className="field" >
+                    Product Name:
+                  </h5>
+                  <input
+                    type="text"
+                    name="Name"
+                    size="80"
+                    value={productName}  onChange={(e) => {setName(e.target.value)}}
+                  />
+                </div>
+                <div className="details mb-4">
+                  <h5 className="field">
+                    Product Description:
+                  </h5>
+                  <input className='description' type="text" value={productDescription}  onChange={(e) => {setDescription(e.target.value)} }/>
+                </div>
+                <div className="details mb-4">
+                  <h5 className="field">
+                  Highlight Feature:
+                  </h5>
+                  <input className='description' type="text" value={highlightFeature}  onChange={(e) => {setFeature(e.target.value)} }/>
+                </div>
+                <div className="details mb-4">
+                  <h5 className="field" >
+                    Colors:
+                  </h5>
+                  <input
+                    type="text"
+                    name="Name"
+
+                    size="80"
+                    value={color}  onChange={(e) => {setColor(e.target.value)} }
+                  />
+                </div>
         
-              <label> <strong> Name :     </strong></label>
-              <input type="text" value={productName}  onChange={(e) => {setName(e.target.value)}} /> 
+                <Link to="/product" ><button className='buttonN' onClick={(e) => editProduct()}>  Done</button></Link>
+              </div>
+              </div>
             </div>
-
-            <div className="camp1">
-                <label> <strong> Description :     </strong></label>
-                  <input type="text" value={productDescription}  onChange={(e) => {setDescription(e.target.value)} }/>
-            </div>
-
-            <div className="camp1">
-                <label> <strong> Features :     </strong></label>
-                  <input type="text" value={highlightFeature}  onChange={(e) => {setFeature(e.target.value)} }/>
-            </div>
-
-            <div className="camp1">
-                <label> <strong> Color :     </strong></label>
-                  <input type="text" value={color}  onChange={(e) => {setColor(e.target.value)} }/>
-            </div>
-      
-
-            <div className="campimg">
-            <label htmlFor="file">
-              Image: <DriveFolderUploadOutlinedIcon className="icon" />
-            </label>
+            <div className="col-2"></div>
           </div>
-          <div className="campimg">
-            <input
-              type="file"
-              id="file"
-              
-              onChange={onFileChange}
-              style={{ display: "none" }}
-              name="categoryIcon"
-            />
-            <img
-            src={
-              bannerFile
-                ? URL.createObjectURL(bannerFile)
-                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-            }
-            //style={{ width: "130px", justifyContent:'center', alignItems:'center' }}
-            alt=""
-          />
-          </div>
-            
-          
-          
-            
-           
-            
 
-             
-            <button onClick={(e) => editProduct()} > <Link to="/product" style={{ textDecoration: 'none', color: '#FFF' }}> Done</Link></button>
 
-            
-             
+
         </div>
-        
       </div>
-      
 
-    </div>
+    </div >
   )
 }
 

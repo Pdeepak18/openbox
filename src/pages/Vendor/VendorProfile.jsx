@@ -1,6 +1,6 @@
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import "./Vendor.scss";
+import "./VendorProfile.scss";
 import ProfileCard from "../../components/vendor/profile"
 import VendorDetails from "../../components/vendor/vendorDetail/vendorDetails"
 import List from "../../components/table/ProductTable";
@@ -39,9 +39,9 @@ const getStoreDetailsById = async (id) => {
 }
 
   return (
-    <div className="Vendor">
+    <div className="VendorDetail">
       <Sidebar />
-      <div className="mainContainer">
+      <div className="vdConatiner">
         <Navbar />
         <div className="top">
           <ProfileCard
