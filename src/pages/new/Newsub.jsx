@@ -2,7 +2,8 @@ import "./newsub.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState,useEffect } from "react";
+import UploadIcon from '@mui/icons-material/Upload'
+import { useState, useEffect } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Cast, Description } from "@mui/icons-material";
@@ -23,60 +24,59 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import parse from 'html-react-parser';
 import { useNavigate } from "react-router-dom";
 
-const Newsub = ({  title }) => {
+const Newsub = ({ title }) => {
     const [subcategoryFile, setFile] = useState("");
-    const [richtext , setRichText] = useState("");
+    const [richtext, setRichText] = useState("");
     let navigate = useNavigate();
-    const[value,setValue]=useState("");
+    const [value, setValue] = useState("");
 
-    const [categoryId,setcategoryID] =useState()
-    const handleChange =e =>
-    {
+    const [categoryId, setcategoryID] = useState()
+    const handleChange = e => {
         setcategoryID(e.target.value)
         console.log(e.target)
         setValue(e.target.value);
-        
-    }
-    
 
-    const [data,setData] = useState({
-        subcategoryName : "" ,
-        
+    }
+
+
+    const [data, setData] = useState({
+        subcategoryName: "",
+
     })
 
     const [item, setItem] = useState([])
 
-    function handle(e){
-            const newdata={...data}
-            newdata[e.target.id] = e.target.value
-            setData(newdata)
-            console.log(newdata)
+    function handle(e) {
+        const newdata = { ...data }
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+        console.log(newdata)
     }
 
-    const onFileChange = (e) =>{
+    const onFileChange = (e) => {
         setFile(e.target.files[0])
         console.log(e.target.files[0])
-        if(e.target && e.target.files[0]){
+        if (e.target && e.target.files[0]) {
             setFile(e.target.files[0]);
         }
     }
 
-   
+
 
     useEffect(() => {
         fetchCategory()
-    },[])
+    }, [])
 
     const fetchCategory = async () => {
         var result = await fetch("http://localhost:8000/api/category/getAllCategory")
         var temp = await result.json()
         console.log(temp)
         setItem(temp)
-        
-        
+
+
     }
 
-    
+
 
 
     const uploadImage = async () => {
@@ -85,10 +85,10 @@ const Newsub = ({  title }) => {
             console.log(richtext);
             formData.append("subcategoryIcon", subcategoryFile);
             formData.append("subcategoryName", data.subcategoryName);
-            
-            formData.append("categoryId",categoryId);
+
+            formData.append("categoryId", categoryId);
             formData.append("descripition", richtext);
-            
+
 
             const config = {
                 headers: {
@@ -100,124 +100,135 @@ const Newsub = ({  title }) => {
             const url = `${HOST}/${API}`;
 
             const result = await axios.post(url, formData, config);
-            
-            
+
+
         } catch (error) {
             console.error(error);
         }
         window.location.reload()
     };
-  
+
 
 
     return (
-        <div className="new">
-        <div className="nsidebar">
+        <div className="newSub">
             <Sidebar />
-            </div>
             <div className="newContainer">
                 <Navbar />
-                <div className="top">
-                    <h1>{title}</h1>
-                </div>
-                <div className="bottom">
-                    <img
-                        src={
-                            subcategoryFile
-                                ? URL.createObjectURL(subcategoryFile)
-                                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                        }
-                        alt=""
-                    />
+                <div className="newCard">
+                    <div className="row">
+                        <div className="col-2"></div>
+                        <div className="col-8">
+                            <div className="newTitle mt-2 mb-5 d-flex justify-content-center">
 
-                    <div className="forInput"> 
-                    <label htmlFor="file">
-                        Image: <DriveFolderUploadOutlinedIcon className="icon" />
-                    </label>
-                       </div>
+                                <h1> <strong>{title}</strong> </h1>
+                            </div>
+                            <div className="newForm">
+                                <div className="d-flex justify-content-center ">
+                                    <img
+                                        className="img-thumbnail previewImage"
+                                        src={
+                                            subcategoryFile
+                                                ? URL.createObjectURL(subcategoryFile)
+                                                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                                        }
 
+                                    />
+                                </div>
 
-                    <form >
-                    <div className="bodycat ">
-                    <h3 className='temp'>Select the category</h3>
-                    <Box sx={{ minWidth: 100 }}>
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}>Cat</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={value}
-                                label="Cat"
-                                style={{ width: 740 }}
-                                onChange={handleChange}
-                            >   
-                                {
-                                    item.map((i)=>(
-                                        <MenuItem value={i.id}>{i.categoryName}</MenuItem>
-                                    ))
-                                }
-                                
-                                
-                            </Select>
-                        </FormControl>
-                    </Box>
+                                <div className="forInput mt-4 mb-4 d-flex justify-content-center" >
+                                    <label htmlFor="file" class="custom-file-upload">
+                                        <input type="file" />
+                                        <UploadIcon className="icon" />Upload Images
+                                    </label>
+                                </div>
 
-                </div>
-                    <input
-                            type="file"
-                            id="file"
-                            onChange={onFileChange}
-                            style={{ display: "none" }}
-                            name="subcategoryIcon"
-                        />
+                                <form className="d-flex justify-content-center">
+                                <div >
+                                    <div className="bodycat mb-4">
+                                        <h5 className='field'>Select the category</h5>
+                                        <Box sx={{ minWidth: 100 }}>
+                                            <FormControl fullWidth>
+                                                <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}>Category</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    value={value}
+                                                    label="Cat"
+                                                    style={{ width: 740 }}
+                                                    onChange={handleChange}
+                                                >
+                                                    {
+                                                        item.map((i) => (
+                                                            <MenuItem value={i.id}>{i.categoryName}</MenuItem>
+                                                        ))
+                                                    }
 
 
-                        <div className="formInput">
-                            <label><b> Name:</b></label>
-                            <input type="textarea"  onChange={(e)=>handle(e)} placeholder="Name...."  size="88" id="subcategoryName" value={data.subcategoryName} />
-                        </div>
+                                                </Select>
+                                            </FormControl>
+                                        </Box>
 
-                        {/* <div className="formInput">
+                                    </div>
+                                    <input
+                                        type="file"
+                                        id="file"
+                                        onChange={onFileChange}
+                                        style={{ display: "none" }}
+                                        name="subcategoryIcon"
+                                    />
+
+
+                                    <div className="details mb-4">
+                                        <h5 className="field" color="grey">
+                                           Sub-Category Name:
+                                        </h5>
+                                        <input
+                                            type="text"
+                                            name="Name"
+                                            id="categoryName"
+                                            size="100"
+                                            onChange={(e) => handle(e)}
+                                            placeholder="Category Name"
+                                            value={data.categoryName}
+                                        />
+                                    </div>
+
+                                    {/* <div className="formInput">
                             <label><b> Description:</b></label>
                             <textarea placeholder="About Product....."  onChange={(e)=>handle(e)} rows="8"cols="62.5" width="10px" border-radius="0.8px" id="description" value={data.description} />
                         </div> */}
 
-                        <div className="editor">
-                        <label><b>Description:</b></label>
+                                    <div className=" mb-4">
+                                        <h5 className="field">Category Description:</h5>
+                                        <CKEditor
+                                            editor={ClassicEditor}
+                                            config={{
+                                                removePlugins: ["EasyImage", "ImageUpload"]
+                                            }}
+                                            data={richtext}
+                                            onChange={(event, editor) => {
+                                                const data = editor.getData()
+                                                setRichText(data)
 
-                        <CKEditor
+                                            }} />
+                                    </div>
 
 
-                        editor= {ClassicEditor }
-                        config={{
-                            removePlugins: ["EasyImage","ImageUpload"]
-                        }}
-                        data={richtext}
+                                    <Link to="/subcategary"><button className="buttonN mb-3" onClick={(e) => uploadImage()}>  Add New Sub-Category  </button></Link>
+                                </div>
+                                </form>
 
-                        onChange = {(event,editor) => {
-                            const data= editor.getData()
-                            setRichText(data)
-                          
-
-                        }} />
+                            </div>
+                        </div>
+                        <div className="col-2"></div>
                     </div>
-
-
-                        <button onClick={(e)=>uploadImage()}>  <Link to="/subcategary" style={{ textDecoration: 'none' ,color: '#FFF' }} >Send  </Link></button>
-                    </form>
-
                 </div>
 
             </div>
 
 
         </div>
-
-
-
-
-
-
     );
 
 };

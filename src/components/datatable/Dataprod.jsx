@@ -10,7 +10,7 @@ import { red } from '@mui/material/colors';
 import axios from "axios";
 import Productedit from '../../pages/product/productedit/Productedit';
 import Productview from '../../pages/product/productview/Productview';
-
+import Box from '@mui/material/Box';
 const Dataprod = () => {
 
   //Disable switch
@@ -152,11 +152,15 @@ const Dataprod = () => {
   return (
     <div className="dataprod">
       <div className="dataprodTitle">
-        Add New Product
+        <h1><strong>Products</strong></h1>
+
         <Link to="/product/new" className="link">
-          Add New
+          Add New Product
         </Link>
       </div>
+      <div className="datasub">
+      <Box sx={{ height: 800, width: '100%' }}>
+        
       <DataGrid
         className="datagrid"
         rows={product}
@@ -164,7 +168,9 @@ const Dataprod = () => {
         pageSize={10}
         rowsPerPageOptions={[10]}
         //checkboxSelection
-      />
+        />
+        </Box>
+        </div>
     </div>
   );
 };

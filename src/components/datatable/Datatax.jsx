@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import axios from "axios";
 import Taxedit from "../../pages/taxmaster/taxedit/Taxedit"
+import Box from '@mui/material/Box';
 
 
 const Datatax = () => {
@@ -80,11 +81,12 @@ const Datatax = () => {
   return (
     <div className="datatax">
       <div className="datataxTitle">
-        Add New Tax-Details
+      <h1> <strong>Tax Details</strong></h1>
         <Link to="/taxmaster/new" className="link">
           Add New
         </Link>
       </div>
+      <Box sx={{ height: 800, width: '100%' }}>
       <DataGrid
         className="datagrid"
         rows={Tax}
@@ -93,6 +95,7 @@ const Datatax = () => {
         rowsPerPageOptions={[10]}
         //checkboxSelection
       />
+      </Box>
     </div>
   );
 };

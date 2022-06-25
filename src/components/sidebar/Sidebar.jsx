@@ -21,20 +21,18 @@ import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import CompareIcon from '@mui/icons-material/Compare';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
-import nameIcon from './nameIcon.png'
 import name from './name.png'
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
   return (
     <div className="sidebar">
-      <div className="top align-self-center">
+      <div className="top ">
       <Link to="/" style={{ textDecoration: "none" }}>
           {/* <span className="logo" >  OPENBOX.IN</span> */}
           <img className = "nameIcon" src={name} alt="" />
         </Link>
       </div>
-      <hr />
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
@@ -100,10 +98,10 @@ const Sidebar = () => {
           </li>
           </Link>
           <p className="title">SERVICE</p>
-          <li>
+          {/* <li>
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
             <span>Basic Accounting</span>
-          </li>
+          </li> */}
           <li>
             <PsychologyOutlinedIcon className="icon" />
             <span>User Right Accounting</span>

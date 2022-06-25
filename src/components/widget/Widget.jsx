@@ -4,6 +4,7 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import { Link } from "react-router-dom";
 
 const Widget = ({ type }) => {
   let data;
@@ -15,9 +16,10 @@ const Widget = ({ type }) => {
   switch (type) {
     case "user":
       data = {
-        title: "USERS",
+        title: "TOTAL USERS",
         isMoney: false,
-        link: "See all users",
+        // <Link to="/vendor" style={{ textDecoration: "none" }}></Link>,
+        link:(<Link to="/customer" style={{ textDecoration: "none" }}><span>Customer List</span></Link> ),
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -31,9 +33,9 @@ const Widget = ({ type }) => {
       break;
     case "order":
       data = {
-        title: "ORDERS",
+        title: "TOTAL VENDORS",
         isMoney: false,
-        link: "View all orders",
+        link:(<Link to="/vendor" style={{ textDecoration: "none" }}><span>Vendor List</span></Link> ),
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"

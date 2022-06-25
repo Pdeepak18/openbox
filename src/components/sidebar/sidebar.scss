@@ -10,7 +10,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 10px;
+    padding-left: 10px; 
+    border-bottom: 0.5px solid rgb(230, 227, 227);
 
     .logo {
       font-size: 20px;
@@ -21,13 +22,6 @@
       width: 73%;
     }
   }
-
-  hr {
-    margin-top: 0px;
-    height: 0;
-    border: 0.5px solid rgb(230, 227, 227);
-  }
-
   .center {
     padding-left: 10px;
 

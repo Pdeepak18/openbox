@@ -114,7 +114,7 @@ function App() {
               <Route path="edit/:id" element={<Banneredit />} />
               <Route
                 path="new"
-                element={<Newbanner  title="Add New Banner-Details" />}
+                element={<Newbanner  title="Add New Banner" />}
               />
             </Route>
 

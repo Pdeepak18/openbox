@@ -4,12 +4,12 @@ import "./customer.scss";
 import DataVendor from "../../components/datatable/DataVendor";
 function Customer() {
   return (
-    <div className="Vendor">
+    <div className="customer">
       <Sidebar />
-      <div className="mainContainer">
+      <div className="customerContainer">
         <Navbar />
-        <div className="bottom">
-          <h1 className="title"><strong>Customer List</strong></h1>
+        <div className="customerList">
+          <h1><strong>Customer List</strong></h1>
           <DataVendor />
         </div>
       </div>

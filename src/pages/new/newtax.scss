@@ -1,12 +1,41 @@
-
-
-.new {
+.newTax {
     width: 100%;
     display: flex;
-    .nsidebar{
-        width: 210px;
-      }
+    .newContainer{
+        flex: 6;
+    flex-direction: column;
+
+    .newCard {
+        height: 900px;
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        padding: 10px;
+        margin: 20px;
+        .left {
+          flex: 12;
+          text-align: center;
   
+          img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+  
+          label {
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+          }
+        }
+  
+        .right {
+          flex: 2;
+          height: 300px;
+          }
+        }
+
+}
 
     .forminput{
         height: 15px;
@@ -17,10 +46,7 @@
             padding: 50px;
             
         }
-        input[type=text]:focus {
-            align-items: center;
-            border: 3px solid #555;
-          }
+
     }
     .forminput1{
         height: 15px;
@@ -31,23 +57,35 @@
             padding: 50px;
             
         }
-        input[type=text]:focus {
-            align-items: center;
-            border: 3px solid #555;
-            width: 100px;
-          }
+
+        
     }
 
-    button {
-        margin:310px;
-        width: 150px;
-        padding: 10px;
-        border: none;
-        background-color: teal;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 10px;
-      }
   
    }
+   .buttonN {
+
+    // width: 104px;
+    padding: 10px;
+    align-items: center;
+    border: none;
+    background-color: #ef9356;
+
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+
+}
+input[type=text]:focus {
+    align-items: center;
+    border: 0.5px solid #555;
+  }
+input[type=number] {
+    align-items: center;
+    border: 0.5px solid #c4c4c4;
+    border-radius: 4px;
+    width: 47.7em;
+    height: 50px;
+  }

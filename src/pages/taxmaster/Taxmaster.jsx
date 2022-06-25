@@ -10,7 +10,9 @@ function Taxmaster() {
     <Sidebar/>
     <div className="TaxContainer">
       <Navbar/>
+      <div className="taxList">
       <Datatax/>
+      </div>
     </div>
   </div>
   )

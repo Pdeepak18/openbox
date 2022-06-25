@@ -9,7 +9,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import Vendordetails from '../vendor/vendorDetail/vendorDetails'
 import VendorProfile from '../../pages/Vendor/VendorProfile'
-// import lol from ""
+import Box from '@mui/material/Box';
 
 const DataVendor = () => {
   const [data, setData] = useState();
@@ -112,7 +112,8 @@ const DataVendor = () => {
 
 
   return (
-    <div className="datasub">
+    <div className="data-sub">
+      <Box sx={{ height: 800, width: '100%' }}>
       <DataGrid
         className="datagrid"
         rows={vendor}
@@ -120,6 +121,7 @@ const DataVendor = () => {
         pageSize={8}
         rowsPerPageOptions={[10]}
       />
+      </Box>
     </div>
   );
 };

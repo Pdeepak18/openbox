@@ -9,7 +9,9 @@ const Categary = () => {
       <Sidebar/>
       <div className="CatContainer">
         <Navbar/>
+        <div className="CategoryList">
         <Datatable/>
+        </div>
       </div>
     </div>
   )

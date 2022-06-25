@@ -6,61 +6,85 @@ import { useState } from "react";
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
-const Newtax = ({  title }) => {
+const Newtax = ({ title }) => {
   const [data, setData] = useState({
-        taxName: "",
-        taxValue: "",
-        
+    taxName: "",
+    taxValue: "",
+
+  })
+
+  function handle(e) {
+    const newdata = { ...data }
+    newdata[e.target.id] = e.target.value
+    setData(newdata)
+    console.log(newdata)
+  }
+
+
+  const taxx = async (e) => {
+    e.preventDefault();
+    axios.post("http://localhost:8000/api/tax/addTax", {
+      name: data.taxName,
+      value: parseInt(data.taxValue)
     })
-
-    function handle(e) {
-        const newdata = { ...data }
-        newdata[e.target.id] = e.target.value
-        setData(newdata)
-        console.log(newdata)
-    }
-
-
-    const taxx = async (e) => {
-      e.preventDefault();
-      axios.post("http://localhost:8000/api/tax/addTax",{
-        name:data.taxName,
-        value:parseInt(data.taxValue)
-      })
       .then(res => {
-        console.log(res.data )
+        console.log(res.data)
       })
 
-      window.location.reload()
-    };
+    window.location.reload()
+  };
 
   return (
-    <div className="new">
-     <div className="nsidebar">
-            <Sidebar />
-            </div>
+    <div className="newTax">
+      <Sidebar />
       <div className="newContainer">
         <Navbar />
-        <div className="top">
-          <h1>{title}</h1>
-        </div>
-        <form>
-          <div className="forminput">
-            <label>
-              <strong> Taxname: &nbsp; &nbsp;</strong>
-              <input type="text" name="name" onChange={(e) => handle(e)} placeholder="Name...." size="22" id="taxName" value={data.taxName}/>
-            </label>
+        <div className="newCard">
+          <div className="row">
+
+
+            <div className="col-2"></div>
+            <div className="col-8 d-flex justify-content-center">
+              <div className="top">
+                <h1 className="mt-2 mb-5 d-flex justify-content-center">{title}</h1>
+                <form>
+                  <div className="details mb-4">
+                    <h5 className="field">
+                      Tax Name:
+                    </h5>
+                    <input
+                      type="text"
+                      name="Name"
+                      id="taxName"
+                      size="100"
+                      onChange={(e) => handle(e)}
+                      placeholder="Tax Name"
+                      value={data.taxName}
+                    />
+
+                  </div>
+                  <div className="details mb-4 ">
+                    <h5 className="field" >
+                      Tax Value:
+                    </h5>
+                    <input
+                      type="number"
+                      name="value" id="taxValue"
+                      onChange={(e) => handle(e)}
+                      placeholder="% of Tax"
+                      value={data.taxValue}
+                    />
+                  </div>
+                  <Link to="/taxmaster" >
+                    <button className="buttonN" onClick={(e) => taxx(e)}>  Add New Tax </button>
+                  </Link>
+                </form>
               </div>
-              <div className="forminput1">
-              <label >
-              <strong> TaxValue: &nbsp; &nbsp;</strong>
-                <input type="number" name="value" id="taxValue" onChange={(e) => handle(e)} size="42" value={data.taxValue} />
-              </label>
+            </div>
+            <div className="col-2"></div>
 
           </div>
-
-          <button onClick={(e) => taxx(e)}> <Link to="/taxmaster" style={{ textDecoration: 'none', color: '#FFF' }}> Send </Link></button>
-        </form>
+        </div>
       </div>
     </div>
   );

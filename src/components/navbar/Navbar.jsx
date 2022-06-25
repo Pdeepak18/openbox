@@ -15,10 +15,10 @@ const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);
 
   return (
-    <div className="navbar">
-      <div className="wrapper">
+    <div className="navbar ">
+      <div className="wrapper ">
         <div className="search">
-          <input type="text" placeholder="Search..." size={170}/>
+          <input type="text" placeholder="Search..." size={50}/>
           <SearchOutlinedIcon />
         </div>
         <div className="items">

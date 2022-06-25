@@ -10,7 +10,8 @@ import Button from '@mui/material/Button';
 import Bannerview from '../../pages/bannerview/Bannerview';
 import { PropaneSharp } from '@mui/icons-material';
 import Banneredit from '../../pages/banneredit/Banneredit';
-
+import Box from '@mui/material/Box';
+import "./databanner.scss"
 
 const Databanner = () => {
     const[Banner,setBanner]=useState([]);
@@ -116,11 +117,12 @@ const Databanner = () => {
   return (
     <div  className="databanner">
         <div className="databannerTitle">
-      Add New Banner
+        <h1> <strong>Banners</strong></h1>
       <Link to="/banner/new" className="link">
         Add New
       </Link>
     </div>
+    <Box sx={{ height: 800, width: '100%' }}>
     <DataGrid
       className="datagrid"
       rows={Banner}
@@ -130,6 +132,7 @@ const Databanner = () => {
       editRowsModel
       //checkboxSelection
     />
+    </Box>
   </div>
     
   )

@@ -1,26 +1,19 @@
-import React from 'react'
 import "./product.scss"
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
 import Dataprod from "../../components/datatable/Dataprod"
 
-
-
-
-
 function Product() {
   return (
     <div className="product">
-         <Sidebar />
+      <Sidebar />
+      <div className="pcontainer">
+        <Navbar />
         
-        <div className="container">
-                <Navbar />
-              <Dataprod />
-            
-
-        </div>
+        <Dataprod />
+      </div>
     </div>
   )
 }
 
-export default Product
+export default Product;

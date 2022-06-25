@@ -17,14 +17,16 @@
     padding-right: 10px;
 
     .search {
+      margin-top: 0;
       display: flex;
       align-items: center;
       border: 1.5px solid lightgray;
       padding: 3px;
-      border-radius: 2px;
+      border-radius: 5px;
+      height: 30px;
       
   
-
+      
       input {
         border: none;
         outline: none;
@@ -79,4 +81,8 @@
       }
     }
   }
+}
+
+.de{
+  border: 0.5px solid red;
 }

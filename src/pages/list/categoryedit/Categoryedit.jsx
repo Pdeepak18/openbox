@@ -7,6 +7,10 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import UploadIcon from '@mui/icons-material/Upload';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 
 
 const Categoryedit = () => {
@@ -16,6 +20,7 @@ const Categoryedit = () => {
   const [categoryName, setName] = useState("");
   const [description, setDescription] = useState("");
   const [categoryIcon, setImage] = useState("");
+  const [des, setDes] = useState("");
 
   useEffect(async () => {
     
@@ -36,8 +41,10 @@ const getCategoryDetails = async (id) => {
 
   setImage(result[0].categoryIcon);
   console.log(result[0].categoryIcon)
- 
+
+  setDes(result[0].description); 
 }
+
 
 const onFileChange = (e) => {
     console.log(e.target.files[0]);
@@ -76,68 +83,93 @@ const onFileChange = (e) => {
 
 };
 
-  return (
-    <div className="bannerview">
-      <Sidebar />
-      <div className="bannerviewContainer">
-        <Navbar />
-        <div className="temp">
-          
-            <div className="camp1">
-        
-              <label> <strong> Name :     </strong></label>
-              <input type="text" value={categoryName}  onChange={(e) => {setName(e.target.value)}} /> 
-            </div>
+return (
+  <div className="bannerview">
+    <Sidebar />
+    <div className="bannerviewContainer">
+      <Navbar />
+      <div className="tempE " >
+        <div className="row">
+          <div className="col-2"></div>
 
-            <div className="camp1">
-                <label> <strong> Description :     </strong></label>
-                  <input type="text" value={description}  onChange={(e) => {setDescription(e.target.value)} }/>
-            </div>
-      
+          <div className="col-8 d-flex justify-content-center">
+            <div>
+              <div className="camp1">
+                <h1 className='d-flex  justify-content-center mt-2 mb-4'>Category: <strong> {categoryName}</strong></h1>
+                <div className="campimg d-flex justify-content-center">
+                  <input
+                    type="file"
+                    id="file"
+                    onChange={onFileChange}
+                    style={{ display: "none" }}
+                    name="categoryIcon"
+                  />
+                  <img
+                    className="img-thumbnail previewImage"
+                    src={
+                      bannerFile
+                        ? URL.createObjectURL(bannerFile)
+                        : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                    }
+                  />
+                </div>
 
-            <div className="campimg">
-            <label htmlFor="file">
-              Image: <DriveFolderUploadOutlinedIcon className="icon" />
-            </label>
-          </div>
-          <div className="campimg">
-            <input
-              type="file"
-              id="file"
+                <div className="forInput mt-4 mb-4 d-flex justify-content-center" >
+                  <label htmlFor="file" class="custom-file-upload">
+                    <input type="file" />
+                    <UploadIcon className="icon" />Upload Images
+                  </label>
+                </div>
+                <div className="details de mb-4 ">
+                  <h5 className="field" color="grey">
+                    Category Name:
+                  </h5>
+                  <input
+                    type="text"
+                    name="Name"
+                    id="categoryName"
+                    size="100"
+                    value={categoryName} onChange={(e) => { setName(e.target.value) }}
+                  />
+                
+                {/* <label> <strong> Name :     </strong></label>
+<input type="text" value={categoryName} onChange={(e) => { setName(e.target.value) }} /> */}
               
-              onChange={onFileChange}
-              style={{ display: "none" }}
-              name="categoryIcon"
-            />
-            <img
-            src={
-              bannerFile
-                ? URL.createObjectURL(bannerFile)
-                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-            }
-            //style={{ width: "130px", justifyContent:'center', alignItems:'center' }}
-            alt=""
-          />
+
+              {/* <div className="camp1">
+<label> <strong> Description :     </strong></label>
+<input type="text" value={description} onChange={(e) => { setDescription(e.target.value) }} />
+</div> */}
+              <div className="editorx  mt-4 mb-4">
+                <h5 className="field">Category Description:</h5>
+                <CKEditor
+                  editor={ClassicEditor}
+                  config={{
+                    removePlugins: ["EasyImage", "ImageUpload"]
+                  }}
+                  data={description}
+                  onChange={ ( event, editor ) => {
+                    const data = editor.getData();
+                    console.log( { event, editor, data } );
+                } }/>
+                  
+              </div>
+              <Link to="/categary"><button className='buttonX' onClick={(e) => editCategory()} >  Done</button></Link>
+              </div>
+
+            </div>
           </div>
-            
-          
-          
-            
-           
-            
-
-             
-            <button onClick={(e) => editCategory()} > <Link to="/categary" style={{ textDecoration: 'none', color: '#FFF' }}> Done</Link></button>
-
-            
-             
         </div>
-        
+        <div className="col-2"></div>
       </div>
-      
+
 
     </div>
-  )
+
+
+  </div>
+  </div>
+)
 }
 
 export default Categoryedit

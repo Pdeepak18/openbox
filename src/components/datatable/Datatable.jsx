@@ -10,7 +10,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import Categoryview from '../../pages/list/categoryview/Categoryview';
 import Categoryedit from '../../pages/list/categoryedit/Categoryedit';
-
+import Box from '@mui/material/Box';
 
 
 const Datatable = () => {
@@ -161,21 +161,21 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New Category
+        <h1><strong>Categories</strong></h1>
         <Link to="/categary/new" className="link">
-          Add New
+          Add New Category
         </Link>
       </div>
+      <Box sx={{ height: 800, width: '100%' }}>
       <DataGrid
         className="datagrid"
         rows={category}
         columns={userColumns.concat(actionColumn).concat(actionStatus)}
-       
-
-        pageSize={10}
-        rowsPerPageOptions={[10]}
+        pageSize={13}
+        rowsPerPageOptions={[13]}
         //checkboxSelection
       />
+      </Box>
     </div>
   );
 };

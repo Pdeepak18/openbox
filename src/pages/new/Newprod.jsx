@@ -14,7 +14,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MUIRichTextEditor from "mui-rte";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import UploadIcon from '@mui/icons-material/Upload';
 import axios from "axios";
 import _ from "lodash";
 import { Link } from "react-router-dom";
@@ -24,12 +24,9 @@ import "react-dropzone-uploader/dist/styles.css";
 import Dropzone from "react-dropzone-uploader";
 import MultiImageInput from "react-multiple-image-input";
 
-
-
-
 export default function Newprod() {
- 
-  const [text , setText] = useState("");
+
+  const [text, setText] = useState("");
   const [images, setImages] = useState({});
   const [value, setValue] = useState("");
   const [categoryId, setcategoryID] = useState();
@@ -56,7 +53,7 @@ export default function Newprod() {
   useEffect(() => {
     fetchCategory();
   }, []);
-  
+
   // useEffect(() => {
   //   fetchsubCategory();
   // }, []);
@@ -83,7 +80,7 @@ export default function Newprod() {
     setsubValue(e.target.value);
   };
 
-  
+
 
   const fetchCategory = async () => {
     var result = await fetch(
@@ -94,19 +91,19 @@ export default function Newprod() {
     setItem(temp);
   };
 
-  
+
 
   const fetchsubCategory = async (id) => {
-    var result =await axios.post('http://localhost:8000/api/subcategory/getsubCategoryByCategoryId', 
-    {categoryId :id})
+    var result = await axios.post('http://localhost:8000/api/subcategory/getsubCategoryByCategoryId',
+      { categoryId: id })
     var ans = await result.data
     setsubItem(ans)
-    
+
   };
 
-  
 
- 
+
+
 
   //images upload
   const onFileChange = (e) => {
@@ -116,7 +113,7 @@ export default function Newprod() {
     }
   };
 
-  
+
 
   //api integrate
   const uploadImage = async () => {
@@ -149,133 +146,148 @@ export default function Newprod() {
     }
     window.location.reload()
 
-    
+
   };
 
   return (
-    <div className="container">
+    <div className="newProduct">
       <Sidebar />
       <div className="subcontainer">
         <Navbar />
-        <div className="top">
-          <h2>Add New Product</h2>
-        </div>
+        <div className="form">
+          <div className="top mb-5">
+            <h1> <strong> Add New Product</strong></h1>
+          </div>
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col-8">
+              <div className="bodycat ">
+                <h5 className="field">Select the category</h5>
+                <Box sx={{ minWidth: 100 }}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={value}
+                      label="Cat"
+                      style={{ width: 760 }}
+                      onChange={handleChange}
+                    >
+                      {item.map((i) => (
+                        <MenuItem value={i.id} key={i.id}>
+                          {i.categoryName}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Box>
+              </div>
 
-        {/* category dropdown */}
-        <div className="bodycat ">
-          <h3 className="temp">Select the category</h3>
-          <Box sx={{ minWidth: 100 }}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Cat</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={value}
-                label="Cat"
-                style={{ width: 760 }}
-                onChange={handleChange}
-              >
-                {item.map((i) => (
-                  <MenuItem value={i.id} key={i.id}>
-                    {i.categoryName}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Box>
-        </div>
+              {/* subcategory dropdown       */}
+              <div className="bodycat">
+                <h5 className="field">Select the Sub- category</h5>
+                <Box sx={{ minWidth: 100 }}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Sub-category</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={subvalue}
+                      label="Sub"
+                      style={{ width: 760 }}
+                      onChange={handlesubChange}
+                    >
+                      {subitem.map((i) => (
+                        <MenuItem value={i.id} key={i.id}>
+                          {i.subcategoryName}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Box>
+              </div>
 
-        {/* subcategory dropdown       */}
-        <div className="bodycat">
-          <h3 className="temp">Select the Sub- category</h3>
-          <Box sx={{ minWidth: 100 }}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Sub</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={subvalue}
-                label="Sub"
-                style={{ width: 760 }}
-                onChange={handlesubChange}
-              >
-                {subitem.map((i) => (
-                  <MenuItem value={i.id} key={i.id}>
-                    {i.subcategoryName}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Box>
-        </div>
+              {/* product name */}
+              <div className="details ">
+                <h5 className="field" color="grey">
+                  Product Name:
+                </h5>
+                <input
+                  type="text"
+                  name="Name"
+                  id="productName"
+                  size="100"
+                  onChange={(e) => handle(e)}
+                  placeholder="Product Name"
+                  value={data.productName}
+                />
+              </div>
 
-                  {/* product name */}
-        <div className="details ">
-          <h3 className="temp" color="grey">
-            Name :
-          </h3>
-          <input
-            type="text"
-            name="Name"
-            id="productName"
-            size="90"
-            onChange={(e) => handle(e)}
-            placeholder="Name of the product..."
-            value={data.productName}
-          />
-        </div>
+              {/* Description    */}
 
-               {/* Description    */}
-               
-        <div className="details">
-          <h3 className="temp" color="grey">
-            Description:{" "}
-          </h3>
-          <textarea
-            name="description"
-            id="productDescription"
-            cols="105"
-            rows="10"
-            onChange={(e) => handle(e)}
-            value={data.productDescription}
-          ></textarea>
-        </div>
+              <div className="details">
+                <h5 className="field" color="grey">
+                  Description:{" "}
+                </h5>
+                <div className="editor">
+                  <CKEditor
+                    editor={ClassicEditor}
+                    onChange={() => { }}
+                  />
+                </div>
+                {/* <textarea
+                  name="description"
+                  id="productDescription"
+                  cols="100"
+                  rows="10"
+                  onChange={(e) => handle(e)}
+                  value={data.productDescription}
+                ></textarea> */}
+              </div>
 
-          {/* Tags Input */}
-        <div className="color details">
-          <h3 className="temp">Choose the color:</h3>
+              {/* Tags Input */}
+              <div className="color details">
+                <h5 className="field">Choose the color:</h5>
 
-          <ReactTagInput
-            tags={tags}
-            onChange={(e) => {
-              setTags(e)
-              //console.log(e);
-              console.log(tags);
-            }}
-            value={data.color}
-          />
-        </div>
+                {/* <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color"></input> */}
+                <ReactTagInput
+                  tags={tags}
+                  onChange={(e) => {
+                    setTags(e)
+                    //console.log(e);
+                    console.log(tags);
+                  }}
+                  value={data.color}
+                />
+              </div>
 
-          {/* Highly features */}
-        <div className="details">
-          <h3 className="temp" color="grey">
-            Highlight Features:
-          </h3>
-          <textarea
-            name="" id="highlightFeature"
-            cols="105"
-            rows="10"
-            onChange={(e) => handle(e)}
-            value={data.highlightFeature}
-          ></textarea>
-        </div>
-          
-          {/* Upload images */}
-        <div className="details1">
-          <label>
-            <b>Upload images:</b>{" "}
-          </label>
-          {/* <MultiImageInput
+              {/* Highly features */}
+              <div className="details">
+                <h5 className="field" color="grey">
+                  Highlight Features:
+                </h5>
+                <div className="editor">
+                  <CKEditor
+                    editor={ClassicEditor}
+                    onChange={() => { }}
+                  />
+                </div>
+                {/* <textarea
+                  name="" id="highlightFeature"
+                  cols="100"
+                  rows="10"
+                  onChange={(e) => handle(e)}
+                  value={data.highlightFeature}
+                ></textarea> */}
+              </div>
+
+              {/* Upload images */}
+              <div className="details1">
+
+                <h5 className="field">Upload images:</h5>{" "}
+
+                {/* <MultiImageInput
             max={6}
             images={images}
             setImages={setImages}
@@ -287,43 +299,49 @@ export default function Newprod() {
             }}
             theme="light"
             //onChange={onFilechange} */}
-            
-            <div className="forInput">
-            <label htmlFor="file">
-              Image: <DriveFolderUploadOutlinedIcon className="icon" />
-            </label>
-          </div>
-          <input
-              type="file"
-              id="file"
-              multiple
-              onChange={onFileChange}
-              style={{ display: "none" }}
-              name="categoryIcon"
-            />
-            <div className="bottom12">
-          <img
-            src={
-              file
-                ? URL.createObjectURL(file)
-                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-            }
-            alt=""
-          />
-          </div>
 
-         
+                <div className="forInput mt-4 mb-4" >
+                  <label htmlFor="file" class="custom-file-upload">
+                    <input type="file" />
+                    <UploadIcon className="icon" />Upload Images
+                  </label>
+                </div>
+                <input
+                  type="file"
+                  id="file"
+                  multiple
+                  onChange={onFileChange}
+                  style={{ display: "none" }}
+                  name="categoryIcon"
+                />
+                <div className="">
+                  <img
+                    className="img-thumbnail previewImage"
+                    src={
+                      file
+                        ? URL.createObjectURL(file)
+                        : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                    }
+                  />
+                </div>
+              </div>
+              <Link
+                to="/product"
+                style={{ textDecoration: "none", color: "#FFF" }}
+              >
+                <button className="btn buttonP" onClick={(e) => uploadImage()}>
+                  {" "}
+
+                  Add Product{" "}
+
+                </button>
+              </Link>
+            </div>
+            <div className="col-2"></div>
+          </div>
+          {/* category dropdown */}
+
         </div>
-
-        <button onClick={(e) => uploadImage()}>
-          {" "}
-          <Link
-            to="/product"
-            style={{ textDecoration: "none", color: "#FFF" }}
-          >
-            Send{" "}
-          </Link>
-        </button>
       </div>
     </div>
   );

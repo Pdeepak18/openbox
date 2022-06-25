@@ -2,7 +2,7 @@ import "./datasub.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Dropdown } from 'semantic-ui-react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -34,75 +34,74 @@ const Datasub = () => {
       backgroundColor: red[900],
     },
   }));
-  
+
   async function handleStatus(id) {
     status(id)
     window.location.reload()
 
-    
+
   }
 
   const status = async (id) => {
-   
+
     let del = await axios.post(
-        "http://localhost:8000/api/subcategory/editStatus",
-        { id }
-      );
+      "http://localhost:8000/api/subcategory/editStatus",
+      { id }
+    );
   };
 
-  
+
 
   //end of disable  switch code
 
-  async function handleView (id){
-   
-    
-   return(
-     <div>
-       <Subcategoryview />
-     </div>
-     
-   )
- }
-
- async function handleEdit (id){
- 
-   
-  return(
-    <div>
-      <Subcategoryedit />
-    </div>
-    
-  )
-}
-  
-  
-  const[value,setValue]=useState("");
-
-  const [categoryId,setcategoryID] =useState()
+  async function handleView(id) {
 
 
-    //select the category 
-    const handleChange =e =>
-    {
-        setcategoryID(e.target.value)
-        console.log(e.target)
-        setValue(e.target.value);
-        fetchSubCategoryById(e.target.value)
-        
-    }
+    return (
+      <div>
+        <Subcategoryview />
+      </div>
+
+    )
+  }
+
+  async function handleEdit(id) {
+
+
+    return (
+      <div>
+        <Subcategoryedit />
+      </div>
+
+    )
+  }
+
+
+  const [value, setValue] = useState("");
+
+  const [categoryId, setcategoryID] = useState()
+
+
+  //select the category 
+  const handleChange = e => {
+    setcategoryID(e.target.value)
+    console.log(e.target)
+    setValue(e.target.value);
+    fetchSubCategoryById(e.target.value)
+
+  }
   //fetch category name in the dropdown
   const [item, setItem] = useState([])
-    useEffect(() => {
-      fetchCategory()
-  },[])
+  useEffect(() => {
+    fetchCategory()
+  }, [])
 
   const fetchCategory = async () => {
-      var result = await fetch("http://localhost:8000/api/category/getAllCategory")
-      var temp = await result.json()
-      console.log(temp)
-      setItem(temp)
- }
+    var result = await fetch("http://localhost:8000/api/category/getAllCategory")
+    var temp = await result.json()
+    console.log(temp)
+    setItem(temp)
+  }
 
 
 
@@ -110,16 +109,16 @@ const Datasub = () => {
   const [subcategory, setsubCategory] = useState([]);
 
 
-  const fetchSubCategoryById = async(id) => {
- 
-    var result =await axios.post('http://localhost:8000/api/subcategory/getsubCategoryByCategoryId', 
-    {categoryId :id})
+  const fetchSubCategoryById = async (id) => {
+
+    var result = await axios.post('http://localhost:8000/api/subcategory/getsubCategoryByCategoryId',
+      { categoryId: id })
     var ans = await result.data
     setsubCategory(ans)
-    }
-    
-   
- 
+  }
+
+
+
 
   // useEffect(() => {
   //   fetchSubCategoryById(categoryId)
@@ -131,33 +130,33 @@ const Datasub = () => {
   //   var temp = await result.json()
   //   console.log(result)
   //   setsubCategory(temp)
-    
+
   // }
 
 
   //
   const userColumns = [
     { field: "id", headerName: "ID", width: 70 },
-   { field: "subcategoryName", headerName: "SubCategoryName", width: 200 },
+    { field: "subcategoryName", headerName: "SubCategoryName", width: 200 },
     //{ field: "description", headerName: "Description", width: 400}
-]
+  ]
 
 
-  
-async function  handleDelete  (id)  {
-  
-   
-    if(window.confirm("Want to delete?")){
-    setsubCategory(subcategory.filter((item) => item.id !== id));
-    
-    
-    let del= await axios.post('http://localhost:8000/api/subcategory/deleteSubcategoryById', 
-    {id})
 
-  del=await del.json();
-  console.log(del);
+  async function handleDelete(id) {
+
+
+    if (window.confirm("Want to delete?")) {
+      setsubCategory(subcategory.filter((item) => item.id !== id));
+
+
+      let del = await axios.post('http://localhost:8000/api/subcategory/deleteSubcategoryById',
+        { id })
+
+      del = await del.json();
+      console.log(del);
     }
-    
+
   };
 
 
@@ -170,13 +169,13 @@ async function  handleDelete  (id)  {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={"/subcategary/view/"+params.row.id} style={{ textDecoration: "none" }}>
+            <Link to={"/subcategary/view/" + params.row.id} style={{ textDecoration: "none" }}>
               <div className="viewButton"
-               onClick={() => handleView(params.row.id)}>View</div>
+                onClick={() => handleView(params.row.id)}>View</div>
             </Link>
-            <Link to={"/subcategary/edit/"+params.row.id} style={{ textDecoration: "none" }}>
+            <Link to={"/subcategary/edit/" + params.row.id} style={{ textDecoration: "none" }}>
               <div className="viewButton"
-              onClick={() => handleEdit(params.row.id)}>Edit</div>
+                onClick={() => handleEdit(params.row.id)}>Edit</div>
             </Link>
             <div
               className="deleteButton"
@@ -195,10 +194,10 @@ async function  handleDelete  (id)  {
     headerName: "Status",
     width: 150,
     renderCell: (params) => {
-      return(
+      return (
         <div className="cellAction" >
-            <RedSwitch   checked={params.row.isActive==0 ? true :false}  onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
-            <label >Disable</label>
+          <RedSwitch checked={params.row.isActive == 0 ? true : false} onClick={() => handleStatus(params.row.id)} inputProps={{ 'aria-label': 'controlled' }} />
+          <label >Disable</label>
         </div>
       )
     }
@@ -207,46 +206,50 @@ async function  handleDelete  (id)  {
 
   return (
     <div className="datasub">
-      <div className="datasubTitle">
-        Add New Sub-Category
-        <Link to="/subcategary/new" className="link">
-          Add New
+      <div className="datasubTitle ms-2 mt-2">
+        <h1><strong>Sub-Categories</strong></h1>
+
+        <Link to="/subcategary/new" className="link me-2">
+          Add New Sub-Category
         </Link>
       </div>
 
       <div className="bodycat ">
-                    <h3 className='temp'>Select the category</h3>
-                    <Box sx={{ minWidth: 100 }}>
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}>Cat</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={value}
-                                label="Cat"
-                                style={{ width: 470 }}
-                                onChange={handleChange}
-                            >   
-                                {
-                                    item.map((i)=>(
-                                        <MenuItem  value={i.id} key={i.id} >{i.categoryName}</MenuItem>
-                                    ))
-                                }
-                                
-                                
-                            </Select>
-                        </FormControl>
-                    </Box>
+        <h3 className='temp'>Select the category</h3>
+     
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}>Category </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={value}
+              label="Cat"
+              style={{ width: 470 }}
+              onChange={handleChange}
+            >
+              {
+                item.map((i) => (
+                  <MenuItem value={i.id} key={i.id} >{i.categoryName}</MenuItem>
+                ))
+              }
+            </Select>
+          </FormControl>
+        
 
-                </div>
+      </div>
+
+        
+      <Box sx={{ height: 700, width: '100%' }} className="mb-4">
       <DataGrid
-        className="datagrid"
+        className="datagrid ms-2 "
         rows={subcategory}
         columns={userColumns.concat(actionColumn).concat(actionStatus)}
         pageSize={8}
         rowsPerPageOptions={[10]}
         //checkboxSelection
-      />
+        />
+      </Box>
+ 
     </div>
   );
 };

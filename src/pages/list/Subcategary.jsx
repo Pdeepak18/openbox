@@ -11,7 +11,9 @@ const Subcategary =() => {
       <Sidebar/>
         <div className="SubCatContainer">
           <Navbar/>
+          <div className="sub-categoryList">
           <Datasub/>
+          </div>
         </div>
       </div>
     

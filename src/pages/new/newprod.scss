@@ -1,170 +1,194 @@
-.container{
-    width: 100%;
+.newProduct {
     display: flex;
-    height: 50%;
-    color: grey;
-    
-    
-  
+
     .subcontainer {
-    //  
-    flex: 6;
-  flex-direction: column;
-
-      
-    .top{
-        height: 10px;
-        margin: 10px;
-        -webkit-box-shadow: -8px -8px 5px -5px rgba(84,82,60,1);
-        -moz-box-shadow: -8px -8px 5px -5px rgba(84,82,60,1);
-        box-shadow: -8px -8px 5px -5px rgba(84,82,60,1);
-        display: flex;
-        padding: 10px;
-      margin: 20px;
-      justify-content: center;
-    }
-
-    h2{
-        color: black;
-    }
-
-    .bodycat{
-        margin: 15px;
-        padding: 15px;
-        color: grey;
-    }
-    .bodysubcat{
-        margin: 10px;
-        padding: 10px;
-        color: grey;
-    }
-
-
-    .temp{
-        margin-bottom: 0px;
-    }
-
-    .bodysub{
-        margin: 8px;
-
-    
-    }
-    h2{
-        color: grey;
-    }
-
-    .details{
-        padding:15px;
-        margin: 15px;
-
-        
-            
-        
-         img{
-            width: 85px;
-            height: 85px;
-            border-radius: 10px;
-            box-shadow: 0 0 8px rgba(0,0,0,0.2);
-            opacity: 85%;
-        }
-
-        
-     
-        input[type="text"] {
-            margin: 5px;
-            font-size:15.4px;
-            height: 35px;
-            border:2px solid grey;
-            padding: 10px;
-            border-radius: 08px;
-        }
-
-        textarea{
-            padding: 5px;
-            border-radius: 08px;
-        }
-    }
-
-    .details1{
-        padding:15px;
-        margin: 15px;
-    }
-
-    .color{
-        justify-items: center;
-        display: flex;
+        flex: 6;
         flex-direction: column;
-        flex: 3;
-        padding: 15px;
+        .form{
+            -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+            box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+            padding: 20px;
+            margin: 10px 20px;
         
-        .react-tag-input {
-            margin: 5px;
-            padding: 5px;
-            min-height: 40px;
-            width:50%
+
+        .top {
+            height: 10px;
+
+            display: flex;
+            justify-content: center;
         }
-    
 
-    
-    select{
-       
-        width: 100px;
-        
+        .field{
+            font-size: 10;
+            color: black;
+            font-weight: bold;
+        }
 
-        option{
-            
+        .bodycat {
+            margin: 15px;
+            padding: 15px;
+            color: grey;
+        }
 
+        .bodysubcat {
+            margin: 10px;
             padding: 10px;
+            color: grey;
         }
-    }
-    }
-    .imagess{
-        display: flex;
-        flex: 3;
+
+
+        .temp {
+            margin-bottom: 0px;
+        }
+
+        .bodysub {
+            margin: 8px;
+
+
+        }
+        .details {
+            padding: 15px;
+            margin: 15px;
+
+            img {
+                width: 85px;
+                height: 85px;
+                border-radius: 10px;
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+                opacity: 85%;
+            }
 
 
 
-        .forinput{
+            input[type="text"] {
+                // margin: 5px;
+                font-size: 15px;
+                height: 50px;
+                border: 1px solid #C4C4C4;
+                padding: 10px;
+                border-radius: 4px;
+            }
+
+            textarea {
+                padding: 5px;
+                border: 1px solid #C4C4C4;
+                padding: 10px;
+                border-radius: 4px;
+            }
+        }
+
+        .details1 {
+            padding: 15px;
+            margin: 15px;
+        }
+
+        .color {
+            justify-items: center;
+            display: flex;
+            flex-direction: column;
+            flex: 3;
+            padding: 15px;
+
+            .react-tag-input {
+                margin: 5px;
+                padding: 5px;
+                min-height: 40px;
+                width: 50%
+            }
+
+
+
+            select {
+
+                width: 100px;
+
+
+                option {
+
+
+                    padding: 10px;
+                }
+            }
+        }
+
+        .imagess {
             display: flex;
             flex: 3;
-            flex-direction: column;
 
-            Label{
+
+
+            .forinput {
                 display: flex;
                 flex: 3;
                 flex-direction: column;
+
+                Label {
+                    display: flex;
+                    flex: 3;
+                    flex-direction: column;
+                }
+
+                input[type="text"] {
+                    padding: 5px;
+                    margin: 5px;
+                    height: 54px;
+                }
+
             }
 
-            input[type="text"] {
-                padding: 5px;
-                margin: 5px;
-                height: 54px;
+            #galeria {
+                display: flex;
             }
 
+            #galeria img {
+                width: 85px;
+                height: 85px;
+                border-radius: 10px;
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+                opacity: 85%;
+            }
+        }
+        .buttonP {
+
+            // width: 104px;
+            padding: 10px;
+            align-items: center;
+            border: none;
+            background-color: #ef9356;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-left: 30px;
+
         }
 
-        #galeria{
-            display: flex;
-        }
-        #galeria img{
-            width: 85px;
-            height: 85px;
-            border-radius: 10px;
-            box-shadow: 0 0 8px rgba(0,0,0,0.2);
-            opacity: 85%;
-        }
     }
-    button {
-        margin: 337px;
-        width: 104px;
-        padding: 10px;
-        align-items: center;
-        border: none;
-        background-color: teal;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 10px;
-      }
-    }
+}
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.previewImage{
+    display: block;
+    max-width:180px;
+    max-height:180px;
+    width: auto;
+    height: auto;
+}
+.editor{
+    width: 80%;
+}
+.ck-editor__editable
+{
+   min-height: 250px !important;
+   max-height: 250px !important;
 }
