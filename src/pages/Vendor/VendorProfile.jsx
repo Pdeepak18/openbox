@@ -8,6 +8,7 @@ import Table from "../../components/table/Table";
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState,useEffect } from "react";
 import axios from "axios";
+import Producttable from "../../components/vendor/Producttable";
 
 
 
@@ -61,7 +62,7 @@ const getStoreDetailsById = async (id) => {
         </div>
         <div className="bottom">
           <h1 className="title"><strong>Listed Products</strong></h1>
-          <List />
+          <Producttable />
         </div>
         <div className="bottom">
           <h1 className="title"><strong>Transaction History</strong></h1>

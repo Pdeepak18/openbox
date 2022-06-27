@@ -35,7 +35,7 @@ import Subcategoryedit from './pages/list/subcategoryedit/Subcategoryedit';
 import Vendor from "./pages/Vendor/Vendor";
 import VendorProfile from "./pages/Vendor/VendorProfile"
 // Customer
-import Customer from "./pages/Customer/customer"
+import Customer from "./pages/Customer/Customer"
 
 // Bassic Accounting
 import Orderlist from "./pages/basicAccounting/Orderlist"

@@ -1,44 +1,56 @@
 import "./vendor.scss";
-
+import "../datatable/datasub.scss"
 import { DataGrid } from "@mui/x-data-grid";
 import { vendorColumn, vendorRow } from "../../datatablesource";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import React from "react";
 
-const DataVendor = () => {
-  const [data, setData] = useState(vendorRow);
+const Producttable = () => {
+  const params = useParams();
+  //const navigate = useNavigate();
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  
+  const [vendorproduct, setVendorproduct] = useState([]);
+
+  useEffect(() => {
+    fetchProductByvendorId();
+  }, []);
+
+  const fetchProductByvendorId = async () => {
+    alert(params.id);
+    var result = await axios.post(
+      "http://localhost:9000/api/list/getAllProduct",
+      { id:params.id }
+    );
+    var ans = await result.data;
+    console.log(ans);
+    setVendorproduct(ans);
   };
 
-  const actionColumn = [
-    {
-      field: "action",
-      headerName: "Action",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <Link to="./pages/Vendor/VendorProfile.jsx" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-          </div>
-        );
-      },
-    },
+  const userColumns = [
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "productName", headerName: "productName", width: 400 },
+    { field: "quantity", headerName: "quantity", width: 200 },
+    { field: "price", headerName: "price", width: 230 },
   ];
+
   return (
     <div className="datasub">
       <DataGrid
         className="datagrid"
-        rows={data}
-        columns={vendorColumn.concat(actionColumn)}
+
+
+        rows={vendorproduct}
+        columns={userColumns}
         pageSize={8}
         rowsPerPageOptions={[10]}
+        //checkboxSelection
       />
     </div>
   );
 };
-export default DataVendor;
 
+export default Producttable;

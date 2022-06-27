@@ -158,7 +158,7 @@ const Dataprod = () => {
           Add New Product
         </Link>
       </div>
-      <div className="datasub">
+      <div className="datasubProduct">
       <Box sx={{ height: 800, width: '100%' }}>
         
       <DataGrid
