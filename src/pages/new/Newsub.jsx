@@ -40,9 +40,13 @@ const Newsub = ({ title }) => {
 
 
     const [data, setData] = useState({
-        subcategoryName: "",
+        categoryName: "",
+
+
 
     })
+
+    //const [subName , setSubName] =useState("")
 
     const [item, setItem] = useState([])
 
@@ -84,7 +88,7 @@ const Newsub = ({ title }) => {
             const formData = new FormData();
             console.log(richtext);
             formData.append("subcategoryIcon", subcategoryFile);
-            formData.append("subcategoryName", data.subcategoryName);
+            formData.append("subcategoryName", data.categoryName);
 
             formData.append("categoryId", categoryId);
             formData.append("descripition", richtext);
