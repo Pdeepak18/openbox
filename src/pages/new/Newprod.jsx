@@ -46,6 +46,8 @@ export default function Newprod() {
     //color: [],
   });
 
+   const [productDescription, setProductDescription] = useState();
+   const [highlightFeature, setHighlightFeature] = useState();
 
 
 
@@ -233,7 +235,15 @@ export default function Newprod() {
                 <div className="editor">
                   <CKEditor
                     editor={ClassicEditor}
-                    onChange={() => { }}
+                    config={{
+                      removePlugins: ["EasyImage", "ImageUpload"]
+                  }}
+                    value={productDescription}
+                    onChange={(event, editor) => {
+                      const data = editor.getData()
+                      setProductDescription(data)
+
+                  }}
                   />
                 </div>
                 {/* <textarea
@@ -270,7 +280,15 @@ export default function Newprod() {
                 <div className="editor">
                   <CKEditor
                     editor={ClassicEditor}
-                    onChange={() => { }}
+                    config={{
+                      removePlugins: ["EasyImage", "ImageUpload"]
+                  }}
+                  value={highlightFeature}
+                    onChange={(event, editor) => {
+                      const data = editor.getData()
+                      setHighlightFeature(data)
+
+                  }}
                   />
                 </div>
                 {/* <textarea

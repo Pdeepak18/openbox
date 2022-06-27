@@ -5,34 +5,67 @@ import Ordercard from "../../components/order/Ordercard"
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { maxWidth, width } from "@mui/system";
+import { Link } from "react-router-dom";
+
+
+const status = "Pending"
+
+
 
 const columns = [
-{field:'id', headerName:"ORDER ID",width: 200},
+  { field: 'id', headerName: "ORDER ID", width: 150, },
+  { field: 'date', headerName: "ORDER PLACED", width: 200 },
+  { field: 'productName', headerName: "PRODUCT NAME", width: 200 },
+  { field: 'quantity', headerName: "QUANTITY", width: 100 },
+  { field: 'customer', headerName: "SHIP TO", width: 200 },
+  { field: 'vendor', headerName: "SOLD BY", width: 200 },
+  { field: 'amount', headerName: "TOTAL AMOUNT", width: 150 },
   {
-    field: "Order",
-    headerName: "ORDER",
+    field: 'status', headerName: "ORDER STATUS",
     renderCell: () => {
       return (
-        <Ordercard/>
+        <>
+          <button type="button" className="btn-sm ba">{status}</button>
+        </>
       );
     },
-    width: 1000,
+    width: 150
+  },
+  {
+    field: 'detail', headerName: "DETAILS",
+    renderCell: () => {
+      return (
+        <>
+          <Link to={"/bassicAccounitng/orderdetails"} >
+            <button type="button" className="btn-sm bd">Details</button>
+          </Link>
+        </>
+      );
 
+
+    }, width: 100
   }
 
 ];
 
+// if want to use OrderCard Component
+// {
+//   field: "Order",
+//   headerName: "ORDER",
+//   renderCell: () => {
+//     return (
+//       <Ordercard />
+//     );
+//   },
+//   width: 1000,
+// },
+
 const rows = [
-  { id:"405-6059282" },
-  { id: "405-6059283" },
-  { id: "405-6059284" },
-  { id: "405-6059285" },
-  { id: "405-6059286" },
-  { id: "405-6059287" },
-  { id: "405-6059288" },
-  { id: "405-6059289" },
-  { id: "405-60592810" },
-  { id: "405-60592811" },
+  {
+    id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
+    , amount: "₹ 59, 999", status: "", detail: ""
+  },
+
 
 ];
 
@@ -53,8 +86,6 @@ export default function Orderlist() {
                 pageSize={5}
                 rowsPerPageOptions={[5]}
                 disableSelectionOnClick
-                rowHeight={250}
-
               />
             </Box>
 

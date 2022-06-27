@@ -165,8 +165,8 @@ const Dataprod = () => {
         className="datagrid"
         rows={product}
         columns={userColumns.concat(actionColumn).concat(actionStatus)}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
+        pageSize={13}
+        rowsPerPageOptions={[13]}
         //checkboxSelection
         />
         </Box>

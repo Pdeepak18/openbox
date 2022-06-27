@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
+
 const Taxedit = () => {
   const params = useParams();
   const navigate = useNavigate();
@@ -44,8 +45,9 @@ const Taxedit = () => {
       .then(res => {
         console.log(res.data)
       })
-
+      navigate("/taxmaster")
     window.location.reload()
+
   };
 
 

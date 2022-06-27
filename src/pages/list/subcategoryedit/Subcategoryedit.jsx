@@ -14,7 +14,7 @@ const Subcategoryedit = () => {
   const navigate = useNavigate();
   const [bannerFile, setFile] = useState("");
   const [subcategoryName, setName] = useState("");
-  const [descripition, setDescription] = useState("");
+  const [descripition, setDescripition] = useState("");
   const [subcategoryIcon, setImage] = useState("");
 
   useEffect(async () => {
@@ -31,7 +31,7 @@ const Subcategoryedit = () => {
     setName(result[0].subcategoryName);
     console.log(result[0].subcategoryName)
 
-    setDescription(result[0].descripition);
+    setDescripition(result[0].descripition);
     console.log(result[0].descripition)
 
     setImage(result[0].subcategoryIcon);
@@ -53,7 +53,7 @@ const Subcategoryedit = () => {
       formData.append("id", params.id)
       formData.append("subcategoryIcon", bannerFile);
       formData.append("subcategoryName", subcategoryName);
-      formData.append("description", descripition);
+      formData.append("descripition", descripition);
 
       const config = {
         headers: {
@@ -122,8 +122,8 @@ const Subcategoryedit = () => {
                     value={subcategoryName} onChange={(e) => { setName(e.target.value) }}
                   />
                   <div className="editorx  mt-4 mb-4">
-                    <h5 className="field">Category Description:</h5>
-                    <input className='description' type="text" value={descripition} onChange={(e) => { setDescription(e.target.value) }} />
+                    <h5 className="field">Sub-Category Description:</h5>
+                    <input className='description' type="text" value={descripition} onChange={(e) => { setDescripition(e.target.value) }} />
                   </div>
                   <Link to="/subcategary"><button className='buttonX' onClick={(e) => editSubCategory()} >  Done</button></Link>
                 </div>

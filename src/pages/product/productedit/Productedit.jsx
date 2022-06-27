@@ -118,6 +118,12 @@ const onFileChange = (e) => {
                 </div>
 
               </div>
+                <div className="forInput mt-4 mb-4 d-flex justify-content-center" >
+                  <label htmlFor="file" class="custom-file-upload">
+                    <input type="file" />
+                    <UploadIcon className="icon" />Upload Images
+                  </label>
+                </div>
             </div>
             <div className="row">
               <div className="col-2"></div>
