@@ -26,7 +26,7 @@ import MultiImageInput from "react-multiple-image-input";
 
 export default function Newprod() {
 
-  const [text, setText] = useState("");
+  //const [text, setText] = useState("");
   const [images, setImages] = useState({});
   const [value, setValue] = useState("");
   const [categoryId, setcategoryID] = useState();
@@ -46,9 +46,9 @@ export default function Newprod() {
     //color: [],
   });
 
-   const [productDescription, setProductDescription] = useState();
-   const [highlightFeature, setHighlightFeature] = useState();
-
+   const [productDescription, setProductDescription] = useState("");
+   const [highlightFeature, setHighlightFeature] = useState("");
+   const [text, setText] = useState("");
 
 
   //useeffect to fetch category and subcategory
@@ -56,9 +56,7 @@ export default function Newprod() {
     fetchCategory();
   }, []);
 
-  // useEffect(() => {
-  //   fetchsubCategory();
-  // }, []);
+
 
 
 
@@ -125,8 +123,8 @@ export default function Newprod() {
       formData.append("categoryId", categoryId);
       formData.append("subCategoryId", subcategoryId);
       formData.append("productName", data.productName);
-      formData.append("productDescription", data.productDescription);
-      formData.append("highlightFeature", data.highlightFeature);
+      formData.append("productDescription", productDescription);
+      formData.append("highlightFeature", highlightFeature);
       formData.append("color", JSON.stringify(tags));
       formData.append("image", file);
 
@@ -230,7 +228,7 @@ export default function Newprod() {
 
               <div className="details">
                 <h5 className="field" color="grey">
-                  Description:{" "}
+                  Description:
                 </h5>
                 <div className="editor">
                   <CKEditor
@@ -238,7 +236,7 @@ export default function Newprod() {
                     config={{
                       removePlugins: ["EasyImage", "ImageUpload"]
                   }}
-                    value={productDescription}
+                    data={productDescription}
                     onChange={(event, editor) => {
                       const data = editor.getData()
                       setProductDescription(data)

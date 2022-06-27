@@ -142,7 +142,7 @@ return (
 </div> */}
               <div className="editorx  mt-4 mb-4">
                 <h5 className="field">Category Description:</h5>
-                {/* <CKEditor
+                <CKEditor
                   editor={ClassicEditor}
                   config={{
                     removePlugins: ["EasyImage", "ImageUpload"]
@@ -150,9 +150,10 @@ return (
                   data={description}
                   onChange={ ( event, editor ) => {
                     const data = editor.getData();
-                    console.log( { event, editor, data } );
-                } }/> */}
-                <input type="text"size="100" value={description} onChange={(e) => { setDescription(e.target.value) }} />
+                    setDescription(data);
+                    //console.log( { event, editor, data } );
+                } }/>
+                {/* <input type="text"size="100" value={description} onChange={(e) => { setDescription(e.target.value) }} /> */}
                   
               </div>
               <Link to="/categary"><button className='buttonX' onClick={(e) => editCategory()} >  Done</button></Link>

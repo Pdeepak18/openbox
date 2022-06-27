@@ -238,7 +238,7 @@ const Datasub = () => {
 
       </div>
 
-        
+        <div className="datasub">
       <Box sx={{ height: 700, width: '100%' }} className="mb-4">
       <DataGrid
         className="datagrid ms-2 "
@@ -249,7 +249,7 @@ const Datasub = () => {
         //checkboxSelection
         />
       </Box>
- 
+      </div>
     </div>
   );
 };
