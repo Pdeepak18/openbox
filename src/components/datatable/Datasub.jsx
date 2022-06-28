@@ -205,7 +205,7 @@ const Datasub = () => {
 
 
   return (
-    <div className="datasub">
+    <div className="datasubCategory">
       <div className="datasubTitle ms-2 mt-2">
         <h1><strong>Sub-Categories</strong></h1>
 
@@ -238,7 +238,7 @@ const Datasub = () => {
 
       </div>
 
-        <div className="datasub">
+        <div className="data-sub">
       <Box sx={{ height: 700, width: '100%' }} className="mb-4">
       <DataGrid
         className="datagrid ms-2 "

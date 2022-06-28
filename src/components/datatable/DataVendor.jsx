@@ -118,8 +118,8 @@ const DataVendor = () => {
         className="datagrid"
         rows={vendor}
         columns={userColumns.concat(actionColumn).concat(actionStatus)}
-        pageSize={8}
-        rowsPerPageOptions={[10]}
+        pageSize={13}
+        rowsPerPageOptions={[13]}
       />
       </Box>
     </div>

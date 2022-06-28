@@ -5,8 +5,10 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Newtax = ({ title }) => {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     taxName: "",
     taxValue: "",
@@ -30,7 +32,7 @@ const Newtax = ({ title }) => {
       .then(res => {
         console.log(res.data)
       })
-
+      navigate("/taxmaster")
     window.location.reload()
   };
 

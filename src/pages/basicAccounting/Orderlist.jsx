@@ -65,6 +65,43 @@ const rows = [
     id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
     , amount: "₹ 59, 999", status: "", detail: ""
   },
+  {
+    id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
+    , amount: "₹ 59, 999", status: "", detail: ""
+  },
+  {
+    id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
+    , amount: "₹ 59, 999", status: "", detail: ""
+  },
+  {
+    id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
+    , amount: "₹ 59, 999", status: "", detail: ""
+  },
+  {
+    id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
+    , amount: "₹ 59, 999", status: "", detail: ""
+  },
+  {
+    id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
+    , amount: "₹ 59, 999", status: "", detail: ""
+  },
+  {
+    id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
+    , amount: "₹ 59, 999", status: "", detail: ""
+  },
+  {
+    id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
+    , amount: "₹ 59, 999", status: "", detail: ""
+  },
+  {
+    id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
+    , amount: "₹ 59, 999", status: "", detail: ""
+  },
+  {
+    id: "405-6059282", date: "20 June 2022", productName: "iPhone 13", quantity: "2", customer: "Tony Stark", vendor: "Stark Enterprises"
+    , amount: "₹ 59, 999", status: "", detail: ""
+  },
+
 
 
 ];
@@ -83,8 +120,8 @@ export default function Orderlist() {
               <DataGrid
                 rows={rows}
                 columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
+                pageSize={13}
+                rowsPerPageOptions={[13]}
                 disableSelectionOnClick
               />
             </Box>

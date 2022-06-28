@@ -76,6 +76,7 @@ const Banneredit = () => {
     } catch (error) {
       console.error(error);
     }
+    window.location.reload()
 
 
   };

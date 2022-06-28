@@ -127,8 +127,8 @@ const Databanner = () => {
       className="datagrid"
       rows={Banner}
       columns={userColumns.concat(actionColumn)}
-      pageSize={10}
-      rowsPerPageOptions={[10]}
+      pageSize={13}
+      rowsPerPageOptions={[13]}
       editRowsModel
       //checkboxSelection
     />
