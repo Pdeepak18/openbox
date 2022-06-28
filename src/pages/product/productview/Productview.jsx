@@ -17,11 +17,28 @@ const Productview = () => {
   const [highlightFeature, setFeature] = useState("")
   const [file, setImage] = useState([]);
   const [color, setColor] = useState([]);
+  
+  const [taxId, setTaxId] = useState("");
+  const [taxName, setTaxName] = useState("");
+
 
   useEffect(async () => {
 
+
     getProductDetails(params.id);
+    // taxDetails();
+    
   }, [])
+
+  // const taxDetails = async()=>{
+  //   var result1 = await axios.post('http://localhost:8000/api/tax/getTaxById',
+  //     { id:taxId })
+  //   var result1 = await result1.data
+
+  //   setTaxName(result1[0].name);
+  //   console.log(result1[0].name)
+
+  // }
 
   const getProductDetails = async (id) => {
 
@@ -44,6 +61,13 @@ const Productview = () => {
 
     setFeature(result[0].highlightFeature);
     console.log(result[0].highlightFeature)
+    
+    
+    setTaxId(result[0].taxId);
+    console.log(result[0].taxId)
+
+    // taxDetails()
+    
 
   }
 
@@ -79,6 +103,20 @@ const Productview = () => {
 
                     size="80"
                     defaultValue={productName}
+                    disabled
+                  />
+                </div>
+                {/* tax field */}
+                <div className="details mb-4">
+                  <h5 className="field" >
+                   Tax:
+                  </h5>
+                  <input
+                    type="text"
+                    name="Name"
+
+                    size="80"
+                    defaultValue={taxId}
                     disabled
                   />
                 </div>

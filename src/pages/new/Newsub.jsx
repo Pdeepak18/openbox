@@ -148,79 +148,79 @@ const Newsub = ({ title }) => {
                                 </div>
 
                                 <form className="d-flex justify-content-center">
-                                <div >
-                                    <div className="bodycat mb-4">
-                                        <h5 className='field'>Select the category</h5>
-                                        <Box sx={{ minWidth: 100 }}>
-                                            <FormControl fullWidth>
-                                                <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}>Category</InputLabel>
-                                                <Select
-                                                    labelId="demo-simple-select-label"
-                                                    id="demo-simple-select"
-                                                    value={value}
-                                                    label="Cat"
-                                                    style={{ width: 740 }}
-                                                    onChange={handleChange}
-                                                >
-                                                    {
-                                                        item.map((i) => (
-                                                            <MenuItem value={i.id}>{i.categoryName}</MenuItem>
-                                                        ))
-                                                    }
+                                    <div >
+                                        <div className="bodycat mb-4">
+                                            <h5 className='field'>Select the category</h5>
+                                            <Box sx={{ minWidth: 100 }}>
+                                                <FormControl fullWidth>
+                                                    <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}>Category</InputLabel>
+                                                    <Select
+                                                        labelId="demo-simple-select-label"
+                                                        id="demo-simple-select"
+                                                        value={value}
+                                                        label="Cat"
+                                                        style={{ width: 740 }}
+                                                        onChange={handleChange}
+                                                    >
+                                                        {
+                                                            item.map((i) => (
+                                                                <MenuItem value={i.id}>{i.categoryName}</MenuItem>
+                                                            ))
+                                                        }
 
 
-                                                </Select>
-                                            </FormControl>
-                                        </Box>
+                                                    </Select>
+                                                </FormControl>
+                                            </Box>
 
-                                    </div>
-                                    <input
-                                        type="file"
-                                        id="file"
-                                        onChange={onFileChange}
-                                        style={{ display: "none" }}
-                                        name="subcategoryIcon"
-                                    />
-
-
-                                    <div className="details mb-4">
-                                        <h5 className="field" color="grey">
-                                           Sub-Category Name:
-                                        </h5>
+                                        </div>
                                         <input
-                                            type="text"
-                                            name="Name"
-                                            id="categoryName"
-                                            size="100"
-                                            onChange={(e) => handle(e)}
-                                            placeholder="Category Name"
-                                            value={data.categoryName}
+                                            type="file"
+                                            id="file"
+                                            onChange={onFileChange}
+                                            style={{ display: "none" }}
+                                            name="subcategoryIcon"
                                         />
-                                    </div>
 
-                                    {/* <div className="formInput">
+
+                                        <div className="details mb-4">
+                                            <h5 className="field" color="grey">
+                                                Sub-Category Name:
+                                            </h5>
+                                            <input
+                                                type="text"
+                                                name="Name"
+                                                id="categoryName"
+                                                size="100"
+                                                onChange={(e) => handle(e)}
+                                                placeholder="Category Name"
+                                                value={data.categoryName}
+                                            />
+                                        </div>
+
+                                        {/* <div className="formInput">
                             <label><b> Description:</b></label>
                             <textarea placeholder="About Product....."  onChange={(e)=>handle(e)} rows="8"cols="62.5" width="10px" border-radius="0.8px" id="description" value={data.description} />
                         </div> */}
 
-                                    <div className=" mb-4">
-                                        <h5 className="field">Category Description:</h5>
-                                        <CKEditor
-                                            editor={ClassicEditor}
-                                            config={{
-                                                removePlugins: ["EasyImage", "ImageUpload"]
-                                            }}
-                                            data={richtext}
-                                            onChange={(event, editor) => {
-                                                const data = editor.getData()
-                                                setRichText(data)
+                                        <div className=" mb-4">
+                                            <h5 className="field">Category Description:</h5>
+                                            <CKEditor
+                                                editor={ClassicEditor}
+                                                config={{
+                                                    removePlugins: ["EasyImage", "ImageUpload"]
+                                                }}
+                                                data={richtext}
+                                                onChange={(event, editor) => {
+                                                    const data = editor.getData()
+                                                    setRichText(data)
 
-                                            }} />
+                                                }} />
+                                        </div>
+
+
+                                        <Link to="/subcategary"><button className="buttonN mb-3" onClick={(e) => uploadImage()}>  Add New Sub-Category  </button></Link>
                                     </div>
-
-
-                                    <Link to="/subcategary"><button className="buttonN mb-3" onClick={(e) => uploadImage()}>  Add New Sub-Category  </button></Link>
-                                </div>
                                 </form>
 
                             </div>

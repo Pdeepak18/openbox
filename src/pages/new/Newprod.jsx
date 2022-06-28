@@ -39,6 +39,10 @@ export default function Newprod() {
   const [temp, setFileImage] = useState([]);
   const [file, setFile] = useState("");
 
+  const [taxId, setTaxId] = useState();
+  const [taxItem, setTaxItem] = useState([]);
+  const [taxValue, setTaxValue] = useState("");
+
   const [data, setData] = useState({
     productName: "",
     productDescription: "",
@@ -54,6 +58,7 @@ export default function Newprod() {
   //useeffect to fetch category and subcategory
   useEffect(() => {
     fetchCategory();
+    fetchTax();
   }, []);
 
 
@@ -67,11 +72,18 @@ export default function Newprod() {
     console.log(newdata);
   }
 
+
   const handleChange = (e) => {
     setcategoryID(e.target.value);
     console.log(e.target);
     setValue(e.target.value);
     fetchsubCategory(e.target.value);
+  };
+
+  const handleTaxChange = (e) => {
+    setTaxId(e.target.value);
+    console.log(e.target);
+    setTaxValue(e.target.value);
   };
 
   const handlesubChange = (e) => {
@@ -89,6 +101,15 @@ export default function Newprod() {
     var temp = await result.json();
     console.log(temp);
     setItem(temp);
+  };
+
+  const fetchTax = async () => {
+    var result = await fetch(
+      "http://localhost:8000/api/tax/getAllTax"
+    );
+    var temp = await result.json();
+    console.log(temp);
+    setTaxItem(temp);
   };
 
 
@@ -127,6 +148,7 @@ export default function Newprod() {
       formData.append("highlightFeature", highlightFeature);
       formData.append("color", JSON.stringify(tags));
       formData.append("image", file);
+      formData.append("taxId", taxId  );
 
       console.log(formData);
 
@@ -150,17 +172,20 @@ export default function Newprod() {
   };
 
   return (
-    <div className="newProduct">
+    <div className="newProduct ">
       <Sidebar />
       <div className="subcontainer">
         <Navbar />
-        <div className="form">
+        <div className="formProduct ">
           <div className="top mb-5">
             <h1> <strong> Add New Product</strong></h1>
           </div>
           <div className="row">
             <div className="col-2"></div>
-            <div className="col-8">
+            <div className="col-8 ">
+            <form className="d-flex justify-content-center">
+             <div>
+              
               <div className="bodycat ">
                 <h5 className="field">Select the category</h5>
                 <Box sx={{ minWidth: 100 }}>
@@ -222,6 +247,30 @@ export default function Newprod() {
                   placeholder="Product Name"
                   value={data.productName}
                 />
+              </div>
+
+              {/* TAX */}
+              <div className="bodycat ">
+                <h5 className="field">Select Tax</h5>
+                <Box sx={{ minWidth: 100 }}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Tax</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={taxValue}
+                      label="Cat"
+                      style={{ width: 760 }}
+                      onChange={handleTaxChange}
+                    >
+                      {taxItem.map((i) => (
+                        <MenuItem value={i.id} key={i.id}>
+                          {i.name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Box>
               </div>
 
               {/* Description    */}
@@ -352,6 +401,8 @@ export default function Newprod() {
 
                 </button>
               </Link>
+              </div>
+              </form>
             </div>
             <div className="col-2"></div>
           </div>

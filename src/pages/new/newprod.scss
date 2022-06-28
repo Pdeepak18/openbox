@@ -4,7 +4,7 @@
     .subcontainer {
         flex: 6;
         flex-direction: column;
-        .form{
+        .formProduct{
             -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
             box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
             padding: 20px;
@@ -93,7 +93,7 @@
                 margin: 5px;
                 padding: 5px;
                 min-height: 40px;
-                width: 50%
+                width: 100%
             }
 
 
@@ -185,10 +185,15 @@ input[type="file"] {
     height: auto;
 }
 .editor{
-    width: 80%;
+    width: 100%;
 }
 .ck-editor__editable
 {
    min-height: 250px !important;
    max-height: 250px !important;
+}
+.ProductMaster{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

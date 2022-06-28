@@ -41,6 +41,20 @@ const DataVendor = () => {
         { id }
       );
   };
+  async function handleVerified(id) {
+    verified(id)
+    window.location.reload()
+
+    
+  }
+
+  const verified = async (id) => {
+   alert(id)
+    let del = await axios.post(
+        "http://localhost:8000/api/vendormanagement/editVerified",
+        { id }
+      );
+  };
 
   // View 
   async function handleView (id){
@@ -110,6 +124,20 @@ const DataVendor = () => {
     }
   }];
 
+  const actionVerified = [{
+    field: "verified",
+    headerName: "Verified",
+    width: 150,
+    renderCell: (params) => {
+      return(
+        <div className="cellAction" >
+            <RedSwitch  checked={params.row.isVerified==0 ? true :false}  onClick={() => handleVerified(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
+            <label >Verified</label>
+        </div>
+      )
+    }
+  }];
+
 
   return (
     <div className="data-sub">
@@ -117,7 +145,7 @@ const DataVendor = () => {
       <DataGrid
         className="datagrid"
         rows={vendor}
-        columns={userColumns.concat(actionColumn).concat(actionStatus)}
+        columns={userColumns.concat(actionColumn).concat(actionStatus).concat(actionVerified)}
         pageSize={13}
         rowsPerPageOptions={[13]}
       />
