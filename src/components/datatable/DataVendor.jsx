@@ -7,6 +7,7 @@ import axios from "axios";
 import Switch from "@mui/material/Switch";
 import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
+import { green } from '@mui/material/colors';
 import Vendordetails from '../vendor/vendorDetail/vendorDetails'
 import VendorProfile from '../../pages/Vendor/VendorProfile'
 import Box from '@mui/material/Box';
@@ -23,6 +24,17 @@ const DataVendor = () => {
     },
     '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
       backgroundColor: red[900],
+    },
+  }));
+  const GreenSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: green[600],
+      '&:hover': {
+        backgroundColor: alpha(green[600], theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: green[600],
     },
   }));
   
@@ -49,7 +61,7 @@ const DataVendor = () => {
   }
 
   const verified = async (id) => {
-   alert(id)
+  //  alert(id)
     let del = await axios.post(
         "http://localhost:8000/api/vendormanagement/editVerified",
         { id }
@@ -58,7 +70,7 @@ const DataVendor = () => {
 
   // View 
   async function handleView (id){
-    //alert(id)
+
    return(
       <div>
         <VendorProfile />
@@ -131,7 +143,7 @@ const DataVendor = () => {
     renderCell: (params) => {
       return(
         <div className="cellAction" >
-            <RedSwitch  checked={params.row.isVerified==0 ? true :false}  onClick={() => handleVerified(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
+            <GreenSwitch  checked={params.row.isVerified==0 ? true :false}  onClick={() => handleVerified(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
             <label >Verified</label>
         </div>
       )

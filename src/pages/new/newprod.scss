@@ -67,6 +67,7 @@
                 border: 1px solid #C4C4C4;
                 padding: 10px;
                 border-radius: 4px;
+                width: 100%;
             }
 
             textarea {
@@ -100,7 +101,7 @@
 
             select {
 
-                width: 100px;
+                width: 100%;
 
 
                 option {
@@ -184,7 +185,7 @@ input[type="file"] {
     width: auto;
     height: auto;
 }
-.editor{
+.editorProd{
     width: 100%;
 }
 .ck-editor__editable

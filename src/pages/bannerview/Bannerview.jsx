@@ -7,7 +7,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-
+ import iPhonex from "../../Backend/Admin/src/upload/1656348258860.jpg"
+// let iPhonex ="../../Backend/Admin/src/upload/1656348258860.jpg" 
 const Bannerview = () => {
   const params = useParams();
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const Bannerview = () => {
             <h1 className='d-flex justify-content-center mt-2 mb-4'><strong> {name}</strong></h1>
             <div className="row">
               <div className="col d-flex justify-content-center">
-                <img className='previewImageBanner img-thumbnail' src="https://images.news18.com/ibnlive/uploads/2021/09/flipkart_sale_bigbillion.jpg?impolicy=website&width=0&height=0" alt="image" />
+                <img className='previewImageBanner img-thumbnail' src={iPhonex} alt="image" />
               </div>
             </div>
             <div className="row   mt-5">

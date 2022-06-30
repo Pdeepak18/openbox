@@ -8,6 +8,8 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import UploadIcon from '@mui/icons-material/Upload';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const Productedit = () => {
   const params = useParams();
@@ -18,6 +20,9 @@ const Productedit = () => {
   const[highlightFeature,setFeature] =useState("")
   const [file, setImage] = useState([]);
   const[color,setColor] = useState([]);
+
+  const [taxId, setTaxId] = useState("");
+  const [taxName, setTaxName] = useState("");
 
   useEffect(async () => {
     
@@ -46,6 +51,9 @@ const getProductDetails = async (id) => {
 
   setFeature(result[0].highlightFeature);
   console.log(result[0].highlightFeature)
+
+  setTaxId(result[0].taxId);
+    console.log(result[0].taxId)
  
 }
 
@@ -61,11 +69,13 @@ const onFileChange = (e) => {
   try {
       const formData = new FormData();
       formData.append("id",params.id)
+      console.log(params.id,bannerFile,productName,productDescription,taxId,color)
       formData.append("image", bannerFile);
       formData.append("productName",productName );
       formData.append("productDescription", productDescription);
       formData.append("highlightFeature", highlightFeature);
       formData.append("color", JSON.stringify(color));
+      formData.append("taxId", parseInt(taxId));
       const config = {
           headers: {
               "content-type": "multipart/form-data"
@@ -142,17 +152,56 @@ const onFileChange = (e) => {
                     value={productName}  onChange={(e) => {setName(e.target.value)}}
                   />
                 </div>
+
+                {/* tax */}
+                <div className="details mb-4">
+                  <h5 className="field" >
+                   Tax Value (%):
+                  </h5>
+                  <input
+                    type="text"
+                    name="Name"
+
+                    size="80"
+                    defaultValue={taxId}
+                    onChange={(e) => { setTaxId(e.target.value) }}
+                    
+                  />
+                </div>
                 <div className="details mb-4">
                   <h5 className="field">
                     Product Description:
                   </h5>
-                  <input className='description' type="text" value={productDescription}  onChange={(e) => {setDescription(e.target.value)} }/>
+                  {/* <input className='description' type="text" value={productDescription}  onChange={(e) => {setDescription(e.target.value)} }/> */}
+                  <CKEditor
+                      editor={ClassicEditor}
+                      config={{
+                        removePlugins: ["EasyImage", "ImageUpload"]
+                      }}
+                      data={productDescription}
+                      onChange={(event, editor) => {
+                        const data = editor.getData();
+                        setDescription(data);
+                        //console.log( { event, editor, data } );
+                      }} />
                 </div>
                 <div className="details mb-4">
                   <h5 className="field">
                   Highlight Feature:
                   </h5>
-                  <input className='description' type="text" value={highlightFeature}  onChange={(e) => {setFeature(e.target.value)} }/>
+                  {/* <input className='description' type="text" value={highlightFeature}  onChange={(e) => {setFeature(e.target.value)} }/> */}
+                  <CKEditor
+                      editor={ClassicEditor}
+                      config={{
+                        removePlugins: ["EasyImage", "ImageUpload"]
+                      }}
+                      data={highlightFeature}
+                      onChange={(event, editor) => {
+                        const data = editor.getData();
+                        setFeature(data);
+                        //console.log( { event, editor, data } );
+                      }} />
+
                 </div>
                 <div className="details mb-4">
                   <h5 className="field" >

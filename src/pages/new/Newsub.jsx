@@ -159,7 +159,7 @@ const Newsub = ({ title }) => {
                                                         id="demo-simple-select"
                                                         value={value}
                                                         label="Cat"
-                                                        style={{ width: 740 }}
+                                                       
                                                         onChange={handleChange}
                                                     >
                                                         {

@@ -61,6 +61,7 @@ input[type="file"] {
       border: 1px solid #C4C4C4;
       padding: 10px;
       border-radius: 4px;
+      width: 100%;
   }
   .field{
     font-size: 10;
@@ -84,7 +85,10 @@ input[type="file"] {
 }
 
 .editor{
-  width: 80%;
+  width: 100px;
+}
+.editorCat{
+  width: 100%;
 }
 .ck-editor__editable
 {

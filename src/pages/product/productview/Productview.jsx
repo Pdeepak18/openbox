@@ -109,7 +109,7 @@ const Productview = () => {
                 {/* tax field */}
                 <div className="details mb-4">
                   <h5 className="field" >
-                   Tax:
+                   Tax Value (%):
                   </h5>
                   <input
                     type="text"

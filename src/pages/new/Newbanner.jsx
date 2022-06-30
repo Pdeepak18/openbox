@@ -19,10 +19,10 @@ const Newbanner = ({ title }) => {
   })
 
   function handle(e) {
-    const newdata = { ...data }
-    newdata[e.target.id] = e.target.value
-    setData(newdata)
-    console.log(newdata)
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+    console.log(newdata);
   }
 
   const onFileChange = (e) => {
@@ -77,8 +77,8 @@ const Newbanner = ({ title }) => {
                     className="img-thumbnail previewImage"
                     src={
                       bannerFile
-                      ? URL.createObjectURL(bannerFile)
-                      : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                        ? URL.createObjectURL(bannerFile)
+                        : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
                     }
                   />
                 </div>
@@ -109,12 +109,12 @@ const Newbanner = ({ title }) => {
                       </h5>
                       <input
                         type="text"
-                        name="Name"
-                        id="categoryName"
+                        name="Nname"
+                        id="name"
                         size="100"
                         onChange={(e) => handle(e)}
-                        placeholder="Category Name"
                         value={data.name}
+                        placeholder="Banner Name"
                       />
                     </div>
                     {/* <div className="formInput">
@@ -135,7 +135,7 @@ const Newbanner = ({ title }) => {
 
                         }} />
                     </div>
-                    <Link to="/categary"> <button className="buttonN mb-3" onClick={(e) => uploadImage()}>  Add New Banner </button></Link>
+                    <Link to="/banner"> <button className="buttonN mb-3" onClick={(e) => uploadImage()}>  Add New Banner </button></Link>
                   </div>
                 </form>
               </div>

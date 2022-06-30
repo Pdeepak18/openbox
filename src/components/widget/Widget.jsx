@@ -19,7 +19,7 @@ const Widget = ({ type }) => {
         title: "TOTAL USERS",
         isMoney: false,
         // <Link to="/vendor" style={{ textDecoration: "none" }}></Link>,
-        link:(<Link to="/customer" style={{ textDecoration: "none" }}><span>Customer List</span></Link> ),
+        link:(<Link to="/customer" style={{ textDecoration: "none",color:"black" }}><span>Customer List</span></Link> ),
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -35,7 +35,7 @@ const Widget = ({ type }) => {
       data = {
         title: "TOTAL VENDORS",
         isMoney: false,
-        link:(<Link to="/vendor" style={{ textDecoration: "none" }}><span>Vendor List</span></Link> ),
+        link:(<Link to="/vendor" style={{ textDecoration: "none",color:"black" }}><span>Vendor List</span></Link> ),
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"

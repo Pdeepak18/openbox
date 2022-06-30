@@ -113,6 +113,7 @@ const Datasub = () => {
 
     var result = await axios.post('http://localhost:8000/api/subcategory/getsubCategoryByCategoryId',
       { categoryId: id })
+     
     var ans = await result.data
     setsubCategory(ans)
   }

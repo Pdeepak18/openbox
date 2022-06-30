@@ -135,7 +135,7 @@ const New = ({ title }) => {
                            
                             <textarea placeholder="About Product....." onChange={(e) => handle(e)} rows="8" cols="62.5" width="10px" border-radius="0.8px" id="description" value={data.description} />
                         </div> */}
-                                    <div className=" mb-4">
+                                    <div className="editorCat mb-4">
                                         <h5 className="field">Category Description:</h5>
                                         <CKEditor
                                             editor={ClassicEditor}

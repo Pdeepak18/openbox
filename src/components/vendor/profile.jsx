@@ -20,10 +20,10 @@ function ProfileCard(props) {
 					<h1 className="bold-text">{props.productsSold}</h1>
 					<h2 className="smaller-text">Products Sold</h2>
 				</div>
-				<div className="photos">
+				{/* <div className="photos">
 					<h1 className="bold-text">{props.rating}</h1>
 					<h2 className="smaller-text">Rating</h2>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

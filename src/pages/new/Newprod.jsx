@@ -182,7 +182,7 @@ export default function Newprod() {
           </div>
           <div className="row">
             <div className="col-2"></div>
-            <div className="col-8 ">
+            <div className="col-8">
             <form className="d-flex justify-content-center">
              <div>
               
@@ -196,7 +196,7 @@ export default function Newprod() {
                       id="demo-simple-select"
                       value={value}
                       label="Cat"
-                      style={{ width: 760 }}
+                      
                       onChange={handleChange}
                     >
                       {item.map((i) => (
@@ -220,7 +220,7 @@ export default function Newprod() {
                       id="demo-simple-select"
                       value={subvalue}
                       label="Sub"
-                      style={{ width: 760 }}
+                    
                       onChange={handlesubChange}
                     >
                       {subitem.map((i) => (
@@ -260,7 +260,7 @@ export default function Newprod() {
                       id="demo-simple-select"
                       value={taxValue}
                       label="Cat"
-                      style={{ width: 760 }}
+                     
                       onChange={handleTaxChange}
                     >
                       {taxItem.map((i) => (
@@ -279,7 +279,7 @@ export default function Newprod() {
                 <h5 className="field" color="grey">
                   Description:
                 </h5>
-                <div className="editor">
+                <div className="editorProd">
                   <CKEditor
                     editor={ClassicEditor}
                     config={{
@@ -324,7 +324,7 @@ export default function Newprod() {
                 <h5 className="field" color="grey">
                   Highlight Features:
                 </h5>
-                <div className="editor">
+                <div className="editorProd">
                   <CKEditor
                     editor={ClassicEditor}
                     config={{
