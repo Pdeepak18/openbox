@@ -63,8 +63,8 @@ const Productview = () => {
     console.log(result[0].highlightFeature)
     
     
-    setTaxId(result[0].taxId);
-    console.log(result[0].taxId)
+    setTaxId(result[0].value);
+    console.log(result[0].value)
 
     // taxDetails()
     

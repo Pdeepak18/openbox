@@ -11,8 +11,13 @@ import { green } from '@mui/material/colors';
 import Vendordetails from '../vendor/vendorDetail/vendorDetails'
 import VendorProfile from '../../pages/Vendor/VendorProfile'
 import Box from '@mui/material/Box';
+const initialSort = [{
+  field: 'verified',
+  dir: 'asc'
+}];
 
 const DataVendor = () => {
+  const [sort, setSort] = useState(initialSort);
   const [data, setData] = useState();
   //Switch
   const RedSwitch = styled(Switch)(({ theme }) => ({
@@ -124,13 +129,13 @@ const DataVendor = () => {
 
   const actionStatus = [{
     field: "status",
-    headerName: "Status",
+    headerName: "isActive",
     width: 150,
     renderCell: (params) => {
       return(
         <div className="cellAction" >
             <RedSwitch  checked={params.row.isActive==0 ? true :false}  onClick={() => handleStatus(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
-            <label >Disable</label>
+            <label >{params.row.isActive==0 ? "Disable" :"Enable"}</label>
         </div>
       )
     }
@@ -138,13 +143,15 @@ const DataVendor = () => {
 
   const actionVerified = [{
     field: "verified",
-    headerName: "Verified",
+    headerName: "IsVerified",
     width: 150,
+    type: 'string',
     renderCell: (params) => {
+
       return(
         <div className="cellAction" >
-            <GreenSwitch  checked={params.row.isVerified==0 ? true :false}  onClick={() => handleVerified(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
-            <label >Verified</label>
+            <GreenSwitch  checked={params.row.isVerified==1 ? true :false}  onClick={() => handleVerified(params.row.id)}  inputProps={{ 'aria-label': 'controlled' }}/>
+            <label >  {params.row.isVerified==1 ? "Verified" :"Not Verified"}</label>
         </div>
       )
     },
@@ -156,6 +163,7 @@ const DataVendor = () => {
     <div className="data-sub">
       <Box sx={{ height: 800, width: '100%' }}>
       <DataGrid
+     // sortable={true} sort={sort} onSortChange={e => {setSort(e.sort)}}
         className="datagrid"
         rows={vendor}
         columns={userColumns.concat(actionColumn).concat(actionStatus).concat(actionVerified)}

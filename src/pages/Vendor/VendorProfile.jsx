@@ -9,6 +9,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState,useEffect } from "react";
 import axios from "axios";
 import Producttable from "../../components/vendor/Producttable";
+import Transactiontable from "../../components/vendor/Transactiontable";
 
 
 
@@ -67,7 +68,7 @@ const getStoreDetailsById = async (id) => {
         </div>
         <div className="bottom">
           <h1 className="title"><strong>Transaction History</strong></h1>
-          <Table />
+          <Transactiontable />
         </div>
       </div>
     </div>

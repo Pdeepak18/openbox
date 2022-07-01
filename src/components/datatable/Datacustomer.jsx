@@ -102,7 +102,7 @@ const Datacustomer = () => {
       return (
         <div className="cellAction" >
           <RedSwitch checked={params.row.isActive == 0 ? true : false} onClick={() => handleStatus(params.row.id)} inputProps={{ 'aria-label': 'controlled' }} />
-          <label >Disable</label>
+          <label >{params.row.isActive==0 ? "Disable" :"Enable"}</label>
         </div>
       )
     }
