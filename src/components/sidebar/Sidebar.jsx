@@ -106,10 +106,13 @@ const Sidebar = () => {
             <PsychologyOutlinedIcon className="icon" />
             <span>User Right Accounting</span>
           </li>
+          <Link to="/Setting" style={{ textDecoration: "none" }}>
+
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
           </li>
+          </Link>
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />

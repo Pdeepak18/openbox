@@ -12,6 +12,7 @@ import Producttable from "../../components/vendor/Producttable";
 
 
 
+
 function VendorProfile() {
 
   const params = useParams();

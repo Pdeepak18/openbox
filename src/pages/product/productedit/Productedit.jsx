@@ -92,6 +92,8 @@ const onFileChange = (e) => {
   } catch (error) {
       console.error(error);
   }
+  navigate("/product")
+  window.location.reload()
 
 
 };

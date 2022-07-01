@@ -1,6 +1,7 @@
 .Orderdetail {
   display: flex;
   flex:1;
+  min-width: 1920px;
 
   .mainContainer {
     flex: 6;
@@ -58,4 +59,11 @@
 
 .de{
   border: 0.5px solid red;
+}
+.vl {
+  border-right: 1px solid #C4C4C4;
+  height: 100%;
+}
+.dB{
+  min-width: 50px;
 }

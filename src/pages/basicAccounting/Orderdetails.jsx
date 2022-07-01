@@ -15,9 +15,9 @@ export default function Orderdetails() {
           <div className="m-3 orderlist ">
             <h3> <strong> Order Details</strong></h3>
           
-          <div className="row">
+          <div className="row mt-4 ">
             {/* <div className="col-lg-3"></div> */}
-            <div className="col-9 ">
+            <div className="col-11 ">
               
               <div className="card">
 
@@ -36,7 +36,7 @@ export default function Orderdetails() {
 
                 <div className="card-body">
                   <div>
-                    <div className="conatiner-1 p-3">
+                    <div className="conatiner-1 p-3 ">
                       <div className="row">
                         <div className="col-4 p-1">
                           <div className="row"> <span><strong>Shipping Address</strong></span> </div>
@@ -46,7 +46,8 @@ export default function Orderdetails() {
                           <div className="row"> <span>Pincode:90265</span> </div>
                           <div className="row"> <span>Phone no.: 212-970-4133</span> </div>
                         </div>
-                        <div className="col-4">
+                       
+                        <div className="col-3 ms-5">
                           <div className="row"> <span><strong>Payment Method</strong></span> </div>
                           <div className="row"> <span>BHIM UPI</span> </div>
                         </div>
@@ -72,21 +73,51 @@ export default function Orderdetails() {
                   </div>
                   <div className="container-2 mt-3 p-4 ">
                     <div className="row ">
-                      <div className="col-7">
-                        <div className="row">
-                          <div className="col-4  productIMG">
-                            <img src={iPhone} width="100px" height="100px" alt="Product Photo" />
+                      <div className="col-5 ">
+                        <div className="row vl me-2 ">
+                        <span><strong>Product</strong></span>
+                          <div className="col-4  productIMG ">
+                            <img src={iPhone} width="100px" height="px" alt="Product Photo" />
 
                           </div>
-                          <div className="col-8  productDetails">
+                          <div className="col-8  productDetails ">
                             <div className="row"><span> <strong>Apple iPhone 11(128GB) -White</strong> </span></div>
                             <div className="row"><span> <strong>₹ 59,999</strong> </span></div>
-                            <div className="row"><span> Sold by : Appario Sellers </span></div>
+                            <div className="row"><span> Sold by : Stark Enterprises </span></div>
                           </div>
                         </div>
                       </div>
-                      <div className="col-5">
+                      <div className="col-3 ">
+                      <div className="row  vl"> <span><strong>Payment</strong></span>
+                      <div className="col">
+                        <div className="row">
+                          <div className="col-7"> <span>Grand Total:</span></div>
+                          <div className="col-5"><span>₹ 59,999</span> </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-7"> <span>GST(10%):</span></div>
+                          <div className="col-5" ><span>₹ 6,000</span> </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-7"> <span>Price:</span></div>
+                          <div className="col-5"><span>₹ 54,000</span> </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-7"> <span>Platform Fees(10%):</span></div>
+                          <div className="col-5" style={{color:"red"}}><span>₹ 6,000</span> </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-7"> <span>Payment to Vendor:</span></div>
+                          <div className="col-5" style={{color:"green"}}><span>₹ 48,000</span> </div>
+                        </div>
+                      </div>
+                          </div>
+
+                      </div>
+                      {/* <div class="vr"></div> */}
+                      <div className="col-4">
                         <div className="row d-flex flex-row status">
+                        <span><strong>Status</strong></span>
                           <div className="col-6"> <span>Delivery Status:</span> </div>
                           <div className="col-6">
                             <div className="dropdown ">
@@ -103,7 +134,7 @@ export default function Orderdetails() {
                           </div>
                         </div>
 
-                        <div className="row d-flex flex-row status mt-2">
+                        <div className="row d-flex flex-row status mt-2 ">
                           <div className="col-6"> <span>Payment Status:</span> </div>
                           <div className="col-6">
                             <div className="dropdown">

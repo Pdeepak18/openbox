@@ -147,7 +147,8 @@ const DataVendor = () => {
             <label >Verified</label>
         </div>
       )
-    }
+    },
+ 
   }];
 
 

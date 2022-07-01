@@ -114,7 +114,7 @@ export default function Orderlist() {
       <div className="mainContainer">
         <Navbar />
         <div className="m-3 orderlist">
-          <h1> <strong> Bassic Accounting</strong></h1>
+          <h1> <strong> Basic Accounting</strong></h1>
           <div>
             <Box sx={{ height: 800, width: '100%' }}>
               <DataGrid

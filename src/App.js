@@ -4,7 +4,7 @@ import Categary from "./pages/list/Categary";
 import Subcategary from "./pages/list/Subcategary";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-import { BrowserRouter, Routes, Route,Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Switch } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
@@ -18,7 +18,7 @@ import Taxmaster from "./pages/taxmaster/Taxmaster.jsx";
 import Taxedit from "./pages/taxmaster/taxedit/Taxedit"
 import Banner from "./pages/banner/Banner";
 import { EditorState } from "draft-js";
-import {Editor} from "react-draft-wysiwyg";
+import { Editor } from "react-draft-wysiwyg";
 import Newbanner from "./pages/new/Newbanner";
 import Bannerview from "./pages/bannerview/Bannerview";
 import Banneredit from "./pages/banneredit/Banneredit";
@@ -36,10 +36,14 @@ import Vendor from "./pages/Vendor/Vendor";
 import VendorProfile from "./pages/Vendor/VendorProfile"
 // Customer
 import Customer from "./pages/Customer/Customer"
+import CustomerProfile from "./pages/Customer/CustomerProile"
 
 // Bassic Accounting
 import Orderlist from "./pages/basicAccounting/Orderlist"
 import Orderdetails from "./pages/basicAccounting/Orderdetails"
+
+// Setting
+import Setting from "./pages/settingOPNBOX/Setting"
 
 // Bootstarp
 import 'bootstrap/dist/js/bootstrap.bundle.min'
@@ -59,45 +63,45 @@ function App() {
             {/* category */}
             <Route path="categary">
               <Route index element={<Categary />} />
-              
-              <Route path="view/:id" element={<Categoryview  />} /> 
+
+              <Route path="view/:id" element={<Categoryview />} />
               <Route path="edit/:id" element={<Categoryedit />} />
               <Route
                 path="new"
-                element={<New  title="Add New Category" />}
+                element={<New title="Add New Category" />}
               />
             </Route>
 
-              {/* subcategory */}
+            {/* subcategory */}
             <Route path="subcategary">
               <Route index element={<Subcategary />} />
-              <Route path="view/:id" element={<Subcategoryview  />} /> 
+              <Route path="view/:id" element={<Subcategoryview />} />
               <Route path="edit/:id" element={<Subcategoryedit />} />
               <Route
                 path="new"
-                element={<Newsub  title="Add New Sub-Category" />}
+                element={<Newsub title="Add New Sub-Category" />}
               />
             </Route>
 
-              {/* Product */}
+            {/* Product */}
             <Route path="Product" >
               <Route index element={<Product />} />
-              <Route path="view/:id" element={<Productview  />} /> 
+              <Route path="view/:id" element={<Productview />} />
               <Route path="edit/:id" element={<Productedit />} />
 
               <Route
                 path="new"
-                element={<Newprod  title="Add New Product" />}
+                element={<Newprod title="Add New Product" />}
               />
             </Route>
 
-              {/* Taxmaster */}
+            {/* Taxmaster */}
             <Route path="taxmaster" >
               <Route index element={<Taxmaster />} />
               <Route path="edit/:id" element={<Taxedit />} />
               <Route
                 path="new"
-                element={<Newtax  title="Add New Tax-Details" />}
+                element={<Newtax title="Add New Tax-Details" />}
               />
             </Route>
 
@@ -107,32 +111,39 @@ function App() {
               <Route path="orderdetails" element={<Orderdetails />} />
             </Route>
 
-              {/* Banner */}
+            {/* Banner */}
             <Route path="Banner" >
               <Route index element={<Banner />} />
-              <Route path="view/:id" element={<Bannerview  />} /> 
+              <Route path="view/:id" element={<Bannerview />} />
               <Route path="edit/:id" element={<Banneredit />} />
               <Route
                 path="new"
-                element={<Newbanner  title="Add New Banner" />}
+                element={<Newbanner title="Add New Banner" />}
               />
             </Route>
 
             {/* Vendor */}
             <Route path="Vendor">
-            <Route index element={<Vendor />} />
-            {/* <Route path="view/:id" element={Vendordetails />} /> */}
-            <Route path="view/:id" element={<VendorProfile />} />
+              <Route index element={<Vendor />} />
+              {/* <Route path="view/:id" element={Vendordetails />} /> */}
+              <Route path="view/:id" element={<VendorProfile />} />
             </Route>
 
             {/* Customer */}
             <Route path="Customer" >
               <Route index element={<Customer />} />
-              
-              </Route>
+              <Route path="view/:id" element={<CustomerProfile />} />
 
-              
-            
+            </Route>
+
+
+            <Route path="Setting" >
+              <Route index element={<Setting />} />
+
+            </Route>
+
+
+
 
           </Route>
         </Routes>
