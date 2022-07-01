@@ -5,19 +5,27 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const Widget = ({ type }) => {
+const Widget = ({ type,countt }) => {
+
+ 
+ 
+
   let data;
 
-  //temporary
+  
   const amount = 100;
   const diff = 18;
 
   switch (type) {
+
     case "user":
       data = {
-        title: "TOTAL USERS",
+        title: "Total Users",
         isMoney: false,
+        count:{countt},
         // <Link to="/vendor" style={{ textDecoration: "none" }}></Link>,
         link:(<Link to="/customer" style={{ textDecoration: "none",color:"black" }}><span>Customer List</span></Link> ),
         icon: (
@@ -31,10 +39,12 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
+
+    case "vendor":
       data = {
-        title: "TOTAL VENDORS",
+        title: "Total Vendors",
         isMoney: false,
+        count:{countt},
         link:(<Link to="/vendor" style={{ textDecoration: "none",color:"black" }}><span>Vendor List</span></Link> ),
         icon: (
           <ShoppingCartOutlinedIcon
@@ -45,13 +55,16 @@ const Widget = ({ type }) => {
             }}
           />
         ),
+        
       };
       break;
-    case "earning":
+
+    case "pending":
       data = {
-        title: "EARNINGS",
+        title: "Pending Vendors",
         isMoney: true,
-        link: "View net earnings",
+        count:{countt},
+        link: (<Link to="/vendor" style={{ textDecoration: "none",color:"black" }}><span>Pending List</span></Link> ),
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -60,11 +73,14 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "balance":
+
+
+    case "order":
       data = {
-        title: "BALANCE",
+        title: "Monthly Orders",
         isMoney: true,
-        link: "See details",
+        count:{countt},
+        link: (<Link to="/basicAccounting" style={{ textDecoration: "none",color:"black" }}><span>Order's List</span></Link> ),
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -85,7 +101,8 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+           {countt}
+         
         </span>
         <span className="link">{data.link}</span>
       </div>
@@ -94,8 +111,9 @@ const Widget = ({ type }) => {
           <KeyboardArrowUpIcon />
           {diff} %
         </div>
-        {data.icon}
+        {data.icon} 
       </div>
+      {/* //{console.log(countCustomer ,countVendor ,pendingVendor,monthlyOrders)} */}
     </div>
   );
 };

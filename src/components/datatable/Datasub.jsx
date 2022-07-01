@@ -198,7 +198,7 @@ const Datasub = () => {
       return (
         <div className="cellAction" >
           <RedSwitch checked={params.row.isActive == 0 ? true : false} onClick={() => handleStatus(params.row.id)} inputProps={{ 'aria-label': 'controlled' }} />
-          <label >Disable</label>
+          <label >{params.row.isActive==0 ? "Disable" :"Enable"}</label>
         </div>
       )
     }
@@ -219,7 +219,7 @@ const Datasub = () => {
         <h3 className='temp'>Select the category</h3>
      
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}>Category </InputLabel>
+            <InputLabel id="demo-simple-select-label" style={{ fontSize: 20}}>Category </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"

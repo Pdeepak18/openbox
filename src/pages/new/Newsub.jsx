@@ -153,7 +153,7 @@ const Newsub = ({ title }) => {
                                             <h5 className='field'>Select the category</h5>
                                             <Box sx={{ minWidth: 100 }}>
                                                 <FormControl fullWidth>
-                                                    <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}>Category</InputLabel>
+                                                    <InputLabel id="demo-simple-select-label" style={{ fontSize: 20 }}></InputLabel>
                                                     <Select
                                                         labelId="demo-simple-select-label"
                                                         id="demo-simple-select"

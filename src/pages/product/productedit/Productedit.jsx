@@ -52,8 +52,8 @@ const getProductDetails = async (id) => {
   setFeature(result[0].highlightFeature);
   console.log(result[0].highlightFeature)
 
-  setTaxId(result[0].taxId);
-    console.log(result[0].taxId)
+  setTaxId(result[0].value);
+    console.log(result[0].value)
  
 }
 
@@ -75,7 +75,7 @@ const onFileChange = (e) => {
       formData.append("productDescription", productDescription);
       formData.append("highlightFeature", highlightFeature);
       formData.append("color", JSON.stringify(color));
-      formData.append("taxId", parseInt(taxId));
+      formData.append("value", parseInt(taxId));
       const config = {
           headers: {
               "content-type": "multipart/form-data"
@@ -92,6 +92,8 @@ const onFileChange = (e) => {
   } catch (error) {
       console.error(error);
   }
+  navigate("/product")
+  window.location.reload()
 
 
 };

@@ -20,7 +20,7 @@ const Producttable = () => {
   }, []);
 
   const fetchProductByvendorId = async () => {
-    alert(params.id);
+   
     var result = await axios.post(
       "http://localhost:9000/api/list/getAllProduct",
       { id:params.id }
