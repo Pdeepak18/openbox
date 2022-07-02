@@ -8,6 +8,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import React from 'react'
+import CustomerProfile from "../../pages/Customer/CustomerProile";
 
 
 const Datacustomer = () => {
@@ -46,7 +47,7 @@ const Datacustomer = () => {
     //alert(id)
     return (
       <div>
-        {/* <Customerprofile /> */}
+        <CustomerProfile />
       </div>
     )
   }

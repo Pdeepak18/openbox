@@ -4,8 +4,24 @@ import "./customerprofile.scss";
 import DataCustomerOrderList from "../../components/datatable/DataCustomerOrderList";
 import Profile from "../../components/customer/Profile"
 import Details from "../../components/customer/Details"
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from 'react-router-dom'
+
 
 export default function CustomerProfile(){
+  const params = useParams();
+  const [name, setName] = useState("");
+  useEffect(async () => {
+    getCustomerDetailsById(params.id);
+  }, [])
+
+  const getCustomerDetailsById = async (id) => {
+    var result = await axios.post('http://localhost:8000/api/customermanagement/getCustomerDetailsById', { id })
+    var result = await result.data
+    setName(result[0].name);
+  }
+
   return(
     <div className="customerProfile">
       <Sidebar/>
@@ -15,7 +31,7 @@ export default function CustomerProfile(){
 
         <div className="top">
           <Profile
-            name="Tony Stark"
+            name={name}
             productsBuyed="800"
           ></Profile>
           {/* <div className="right">

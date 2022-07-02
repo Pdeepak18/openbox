@@ -70,10 +70,7 @@ const Datatable = () => {
   )
 }
 
-
-
-
-  const [category, setCategory] = useState([]);
+const [category, setCategory] = useState([]);
 
   useEffect(() => {
     getAllCategory();
@@ -88,26 +85,34 @@ const Datatable = () => {
     var temp = await result.json();
     console.log(result);
     setCategory(temp);
+
   };
 
   const userColumns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "categoryName", headerName: "CategoryName", width: 200 },
-    // { field: "description", headerName: "Description", width: 400}
   ];
 
   //Delete function 
   async function handleDelete(id) {
     if (window.confirm("Want to delete?")) {
-      setCategory(category.filter((item) => item.id !== id));
+     // setCategory(category.filter((item) => item.id !== id));
 
       let del = await axios.post(
         "http://localhost:8000/api/category/deleteCategoryById",
         { id }
       );
 
-      del = await del.json();
-      console.log(del);
+      del = await del.data;
+      var mssg=del.message
+      if( mssg=="product"){
+        alert("Unable to Delete you have product in these category ")
+      }else if(mssg == "subcategory"){
+        alert("Unable to Delete you have subcategory in these category ")
+      }else{
+        setCategory(category.filter((item) => item.id !== id));
+      }
+      
       getAllCategory();
     }
   }

@@ -9,6 +9,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 //  import iPhonex from "../../Backend/Admin/src/upload/1656348258860.jpg"
 // // let iPhonex ="../../Backend/Admin/src/upload/1656348258860.jpg" 
+
 const Bannerview = () => {
   const params = useParams();
   const navigate = useNavigate();

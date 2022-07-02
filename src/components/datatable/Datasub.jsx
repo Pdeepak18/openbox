@@ -37,9 +37,9 @@ const Datasub = () => {
 
   async function handleStatus(id) {
     status(id)
-    window.location.reload()
-
-
+    //window.location.reload()
+    fetchSubCategoryById(value)
+   
   }
 
   const status = async (id) => {
@@ -87,6 +87,7 @@ const Datasub = () => {
     setcategoryID(e.target.value)
     console.log(e.target)
     setValue(e.target.value);
+   
     fetchSubCategoryById(e.target.value)
 
   }
@@ -119,27 +120,9 @@ const Datasub = () => {
   }
 
 
-
-
-  // useEffect(() => {
-  //   fetchSubCategoryById(categoryId)
-  // },[])
-
-
-  // const getAllSubCategory = async () => {
-  //   var result = await fetch("http://localhost:8000/api/subcategory/getAllsubCategory")
-  //   var temp = await result.json()
-  //   console.log(result)
-  //   setsubCategory(temp)
-
-  // }
-
-
-  //
   const userColumns = [
     { field: "id", headerName: "ID", width: 70 },
-    { field: "subcategoryName", headerName: "SubCategoryName", width: 200 },
-    //{ field: "description", headerName: "Description", width: 400}
+    { field: "subcategoryName", headerName: "SubCategoryName", width: 200 }
   ]
 
 
@@ -148,13 +131,19 @@ const Datasub = () => {
 
 
     if (window.confirm("Want to delete?")) {
-      setsubCategory(subcategory.filter((item) => item.id !== id));
+     
 
 
       let del = await axios.post('http://localhost:8000/api/subcategory/deleteSubcategoryById',
         { id })
 
-      del = await del.json();
+      del = await del.data;
+      var mssg=del.message
+      if( mssg=="product"){
+        alert("Unable to Delete you have product in these category ")
+      }else{
+        setsubCategory(subcategory.filter((item) => item.id !== id));
+      }
       console.log(del);
     }
 

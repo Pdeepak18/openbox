@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./details.scss"
 
-function Details() {
+function  Details() {
   const params = useParams();
   const navigate = useNavigate();
   //get vendor details
@@ -17,11 +17,11 @@ function Details() {
   const [pincode, setPincode] = useState("")
 
   useEffect(async () => {
-    getVendorDetailsById(params.id);
+    getCustomerDetailsById(params.id);
   }, [])
 
-  const getVendorDetailsById = async (id) => {
-    var result = await axios.post('http://localhost:8000/api/vendormanagement/getvendorDetailsbyId', { id })
+  const getCustomerDetailsById = async (id) => {
+    var result = await axios.post('http://localhost:8000/api/customermanagement/getCustomerDetailsById', { id })
     var result = await result.data
     setName(result[0].name);
     setPhone(result[0].phone);
@@ -43,7 +43,7 @@ function Details() {
             <span><strong>Name:</strong></span>
           </div>
           <div className="col-6">
-            <span>Tony Stark</span>
+            <span>{name}</span>
           </div>
         </div>
         <div className="row">
@@ -51,7 +51,7 @@ function Details() {
             <span><strong>Email:</strong></span>
           </div>
           <div className="col-6">
-            <span>tony@strak.com</span>
+            <span>{email}</span>
           </div>
         </div>
         <div className="row">
@@ -59,7 +59,7 @@ function Details() {
             <span><strong>Phone:</strong></span>
           </div>
           <div className="col-6">
-            <span>212-970-4133</span>
+            <span>{phone}</span>
           </div>
         </div>
         <div className="row mt-2">
@@ -70,7 +70,7 @@ function Details() {
                 <span>Lane:</span>
               </div>
               <div className="col-6">
-                <span>10880 Malibu Point</span>
+                <span>{lane} </span>
               </div>
             </div>
             <div className="row">
@@ -78,7 +78,7 @@ function Details() {
                 <span>City:</span>
               </div>
               <div className="col-6">
-                <span>Malibu</span>
+                <span>{city}</span>
               </div>
             </div>
             <div className="row">
@@ -86,7 +86,7 @@ function Details() {
                 <span>State:</span>
               </div>
               <div className="col-6">
-                <span>California</span>
+                <span>{state}</span>
               </div>
             </div>
             <div className="row">
@@ -94,7 +94,7 @@ function Details() {
                 <span>Country:</span>
               </div>
               <div className="col-6">
-                <span>USA</span>
+                <span>{country}</span>
               </div>
             </div>
             <div className="row">
@@ -102,7 +102,7 @@ function Details() {
                 <span>Pincode:</span>
               </div>
               <div className="col-6">
-                <span>90265</span>
+                <span> {pincode}</span>
               </div>
             </div>
           </div>
