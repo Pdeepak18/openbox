@@ -46,7 +46,8 @@ const DataVendor = () => {
 
   async function handleStatus(id) {
     status(id)
-    window.location.reload()
+    //window.location.reload()
+    getAllVendor();
 
     
   }
