@@ -20,9 +20,11 @@ function VendorProfile() {
   const navigate = useNavigate();
   //vendor name
   const [name, setName] = useState("");
+
   useEffect(async () => {
     getVendorDetailsById(params.id);
 }, [])
+
 const getVendorDetailsById = async (id) => { 
   var result =await axios.post('http://localhost:8000/api/vendormanagement/getvendorDetailsbyId', {id})
   var result = await result.data
@@ -31,6 +33,7 @@ const getVendorDetailsById = async (id) => {
 
   //vendor businessname
   const [businessname, setBusinessName] = useState("");
+
   useEffect(async () => {
     getStoreDetailsById(params.id);
 }, [])
@@ -40,6 +43,23 @@ const getStoreDetailsById = async (id) => {
   var result1 = await result1.data
   setBusinessName(result1[0].businessName);
 }
+
+const [dateRegistered, setDateRegistered] = useState("");
+const [sold,setSold]=useState("")
+
+useEffect(async () => {
+  getdateandsoldno(params.id);
+}, [])
+
+const getdateandsoldno = async (id) => { 
+  var result1 =await axios.post('http://localhost:8000/api/vendormanagement/getStoreDetailsbyId', {id})
+  var result1 = await result1.data
+  setDateRegistered(result1[0].dateRegistered);
+  setSold(result1[0].dateRegistered)
+
+}
+
+
 
   return (
     <div className="VendorDetail">
@@ -51,10 +71,10 @@ const getStoreDetailsById = async (id) => {
             name={name}
             //age="32"
             storeName={businessname}
-            dateRegistered="5-6-22"
+            dateRegistered="5-6-22" 
             productsSold="800"
             rating="3.4/5"
-          ></ProfileCard>
+          />
           {/* <div className="right">
             <Chart1 aspect={3 / 1} title="Product Sold/Month" />
           </div> */}

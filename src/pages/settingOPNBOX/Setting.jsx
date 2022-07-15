@@ -61,7 +61,7 @@ export default function Setting() {
     }, []);
   
     const getPlatformcommision = async (id) => {
-      var result =  await fetch( "http://localhost:9000/api/platform/getPlatformFees" );
+      var result =  await fetch( "http://localhost:8000/api/platform/getPlatformFees" );
       var result = await result.json();
   
       setFees(result[0].fees);
@@ -69,7 +69,7 @@ export default function Setting() {
     }
 
     const updatePlatformcommision = async ()=>{
-      var result =await axios.post("http://localhost:9000/api/platform/updatePlatformFees",
+      var result =await axios.post("http://localhost:8000/api/platform/updatePlatformFees",
       {id:1,
       fees:fees})
       var result = await result.data;

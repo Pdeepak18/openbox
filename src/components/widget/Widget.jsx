@@ -23,7 +23,7 @@ const Widget = ({ type,countt }) => {
 
     case "user":
       data = {
-        title: "Total Users",
+        title: "Total Customers",
         isMoney: false,
         count:{countt},
         // <Link to="/vendor" style={{ textDecoration: "none" }}></Link>,

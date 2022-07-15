@@ -51,8 +51,8 @@ const [monthlyOrders, setMonthlyOrders] = useState("")
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
-          <Widget type="user" countt={countVendor} />
-          <Widget type="vendor" countt={countCustomer}/>
+          <Widget type="user" countt={countCustomer} />
+          <Widget type="vendor" countt={countVendor}/>
           <Widget type="pending" countt={pendingVendor} />
           <Widget type="order" countt={monthlyOrders}/>
         </div>
